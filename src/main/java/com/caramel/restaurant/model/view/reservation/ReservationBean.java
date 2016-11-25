@@ -36,6 +36,7 @@ public class ReservationBean implements Serializable{
 	private boolean disableWeekends = false;
 	private String openingTimes = "9";
 	private String closingTimes = "23";
+	private int items;//how many tables for people
 	private String firstname;
 	private String surname;
 	private String phone;
@@ -116,16 +117,17 @@ public class ReservationBean implements Serializable{
 		if(checkList.size() <= 15 
 				&& res.getDate().after(actualDate)
 				
-				&& res.getFirstTime().before(openDateChecker) //between opening time and closing time
-				&& res.getFirstTime().after(closeDateChecker)
+				&& res.getFirstTime().before(closeDateChecker) //between opening time and closing time
+				&& res.getFirstTime().after(openDateChecker)
 				
-				&& res.getSecondTime().before(openDateChecker) //between opening time and closing time
-				&& res.getSecondTime().after(closeDateChecker)
+				&& res.getSecondTime().before(closeDateChecker) //between opening time and closing time
+				&& res.getSecondTime().after(openDateChecker)
 				
 				&& (res.getPeople().equals("2") || res.getPeople().equals("6") )// only for 2 people and 6
-				&& res.getFirstTime().before( res.getSecondTime() )//first is before second
+				&& res.getFirstTime().before( res.getSecondTime() )//first should be before second
 				&& !res.getFirstTime().equals( res.getSecondTime() )){//first time isn't equal to second
 			dao.save(res);
+			
 		//show information to client
 		requestContext.update("form:success");
 		requestContext.execute("PF('success').show()");
@@ -139,35 +141,39 @@ public class ReservationBean implements Serializable{
 		log.info("start");
 		
 		if(!(checkList.size() <= 15)){
-			log.info("checkList.size() <= 15 return true");
+			log.info("!checkList.size() <= 15 return true");
 		}
 		
 		if(!(res.getDate().after(actualDate))){
-			log.info("res.getDate().after(actualDate) return true");
+			log.info("!res.getDate().after(actualDate) return true");
 		}
 			
-		if(!(res.getFirstTime().after(closeDateChecker))){
-			log.info("res.getFirstTime().after(closeDateChecker) return true");
+		if(!(res.getFirstTime().before(closeDateChecker))){
+			log.info("!res.getFirstTime().before(closeDateChecker) return true " + closeDateChecker);
 		}
 			
-		if( !(res.getSecondTime().before(openDateChecker))){
-			log.info(" res.getSecondTime().before(openDateChecker) return true");
+		if( !(res.getSecondTime().after(openDateChecker))){
+			log.info("! res.getSecondTime().after(openDateChecker) return true " + openDateChecker);
 		}
 			
-		if( !(res.getSecondTime().after(closeDateChecker))){
-			log.info("res.getSecondTime().after(closeDateChecker) return true");
+		if( !(res.getSecondTime().before(closeDateChecker))){
+			log.info("!res.getSecondTime().before(closeDateChecker) return true " + closeDateChecker);
+		}
+		
+		if( !(res.getSecondTime().after(openDateChecker))){
+			log.info("!res.getSecondTime().after(openDateChecker) return true " + closeDateChecker);
 		}
 			
 		if( !(res.getPeople().equals("2") || res.getPeople().equals("6"))){
-			log.info("res.getPeople().equals(2) || res.getPeople().equals(6) return true");
+			log.info("!res.getPeople().equals(2) || res.getPeople().equals(6) return true");
 		}
 			
 		if( !(res.getFirstTime().before( res.getSecondTime() ))){
-			log.info("res.getFirstTime().before( res.getSecondTime() ) return true");
+			log.info("!res.getFirstTime().before( res.getSecondTime() ) return true");
 		}
 		
 		if(res.getFirstTime().equals( res.getSecondTime() )){
-			log.info("!res.getFirstTime().equals( res.getSecondTime() ) return false");
+			log.info("res.getFirstTime().equals( res.getSecondTime() ) return true");
 		}
 		
 		log.info("end");
@@ -273,5 +279,15 @@ public class ReservationBean implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public int getItems() {
+		return items;
+	}
+
+
+	public void setItems(int items) {
+		this.items = items;
 	}
 }

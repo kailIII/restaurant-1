@@ -42,20 +42,27 @@
 					<p:growl id="msgs" showDetail="true" />
 
 					<h:panelGrid columns="2" styleClass="reservation-form">
-						<h:outputText value="2 people table" styleClass="reservation-form-title" />
-						<h:outputText value="6 people table" styleClass="reservation-form-title" />
-						
-						<h:commandLink action="/reservation-form.xhtml?people=2&amp;faces-redirect=true">
-							<h:graphicImage value="/resources/img/couple.jpg"
-								style="width: 100%;" styleClass="reservation-form-image" />
-						</h:commandLink>
-						
-						<h:commandLink action="/reservation-form.xhtml?people=6&amp;faces-redirect=true">
-							<h:graphicImage value="/resources/img/people.jpg"
-								style="width: 100%;" styleClass="reservation-form-image" />
-						</h:commandLink>
+
+						<p:panel id="link-2-people-table" header="2 people table"
+							styleClass="reservation-form-title">
+							<h:commandLink
+								action="/reservation-form.xhtml?people=2&amp;faces-redirect=true">
+								<h:graphicImage value="/resources/img/couple.jpg"
+									style="width: 100%;" styleClass="reservation-form-image" />
+							</h:commandLink>
+						</p:panel>
+
+						<p:panel id="link-6-people-table" header="6 people table"
+							styleClass="reservation-form-title">
+							<h:commandLink
+								action="/reservation-form.xhtml?people=6&amp;faces-redirect=true">
+								<h:graphicImage value="/resources/img/people.jpg"
+									style="width: 100%;" styleClass="reservation-form-image" />
+							</h:commandLink>
+						</p:panel>
+
 					</h:panelGrid>
-					
+
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 				</h:form>

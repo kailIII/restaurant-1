@@ -44,6 +44,7 @@
 							<f:viewParam name="people" value="#{reservationBean.people}" />
 						</f:metadata>
 
+						<p:panel id="reservation-form-panel" header="Reservation">
 						<h:panelGrid columns="2" cellpadding="5" styleClass="reservation-form-content">
 
 							<h:outputText value="Date:" />
@@ -79,6 +80,7 @@
 								action="#{reservationBean.saveIfok()}"
 								icon="ui-icon-check" />
 						</h:panelGrid>
+						</p:panel>
 
 					<p:dialog appendTo="@(body)" modal="true" resizable="false" dynamic="true" 
 						header="Values" widgetVar="success" showEffect="fold">
