@@ -47,7 +47,7 @@ public class ReservationBean implements Serializable{
 	@SuppressWarnings("deprecation")
 	@PostConstruct
 	public void init(){
-		log.debug("create new calendar bean");
+		log.debug("create new reservation bean");
 		
 		firstTime.setHours(12);
 		firstTime.setMinutes(0);
@@ -126,7 +126,6 @@ public class ReservationBean implements Serializable{
 				&& res.getFirstTime().before( res.getSecondTime() )//first is before second
 				&& !res.getFirstTime().equals( res.getSecondTime() )){//first time isn't equal to second
 			dao.save(res);
-			
 		//show information to client
 		requestContext.update("form:success");
 		requestContext.execute("PF('success').show()");
@@ -137,6 +136,41 @@ public class ReservationBean implements Serializable{
 		requestContext.update("form:fail");
 		requestContext.execute("PF('fail').show()");
 		log.info("reservation failed");
+		log.info("start");
+		
+		if(!(checkList.size() <= 15)){
+			log.info("checkList.size() <= 15 return true");
+		}
+		
+		if(!(res.getDate().after(actualDate))){
+			log.info("res.getDate().after(actualDate) return true");
+		}
+			
+		if(!(res.getFirstTime().after(closeDateChecker))){
+			log.info("res.getFirstTime().after(closeDateChecker) return true");
+		}
+			
+		if( !(res.getSecondTime().before(openDateChecker))){
+			log.info(" res.getSecondTime().before(openDateChecker) return true");
+		}
+			
+		if( !(res.getSecondTime().after(closeDateChecker))){
+			log.info("res.getSecondTime().after(closeDateChecker) return true");
+		}
+			
+		if( !(res.getPeople().equals("2") || res.getPeople().equals("6"))){
+			log.info("res.getPeople().equals(2) || res.getPeople().equals(6) return true");
+		}
+			
+		if( !(res.getFirstTime().before( res.getSecondTime() ))){
+			log.info("res.getFirstTime().before( res.getSecondTime() ) return true");
+		}
+		
+		if(res.getFirstTime().equals( res.getSecondTime() )){
+			log.info("!res.getFirstTime().equals( res.getSecondTime() ) return false");
+		}
+		
+		log.info("end");
 	}
 	
 	
