@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition
+		template="WEB-INF/templates/restaurant-main-template.xhtml">
+		<ui:define name="content">
+
+			<div class="banner big-center one-edge-shadow">
+				<div class="buttons-wrapper">
+
+					<ui:insert name="buttons">
+						<ui:include src="WEB-INF/templates/restaurant-buttons.xhtml" />
+					</ui:insert>
+
+				</div>
+
+				<div class="switch-wrapper">
+					<div class="image-filter">
+
+						<p:imageSwitch styleClass="image-switch">
+
+							<ui:repeat value="#{imageViewBean.smallImages}" var="image"
+								id="fadeEffectImages">
+								<p:graphicImage name="img/#{image}" id="image"
+									styleClass="image-inside-switch normal-edge-shadow" />
+
+							</ui:repeat>
+						</p:imageSwitch>
+					</div>
+				</div>
+			</div>
+
+			<div class="content one-edge-shadow">
+				<h:form id="form">
+					<p:growl id="msgs" showDetail="true" />
+
+					<h:panelGrid columns="2" styleClass="reservation-form">
+						<h:outputText value="2 people table" styleClass="reservation-form-title" />
+						<h:outputText value="6 people table" styleClass="reservation-form-title" />
+						
+						<h:commandLink action="/reservation-form.xhtml?people=2&amp;faces-redirect=true">
+							<h:graphicImage value="/resources/img/couple.jpg"
+								style="width: 100%;" styleClass="reservation-form-image" />
+						</h:commandLink>
+						
+						<h:commandLink action="/reservation-form.xhtml?people=6&amp;faces-redirect=true">
+							<h:graphicImage value="/resources/img/people.jpg"
+								style="width: 100%;" styleClass="reservation-form-image" />
+						</h:commandLink>
+					</h:panelGrid>
+					
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

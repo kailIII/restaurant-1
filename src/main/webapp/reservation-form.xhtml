@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition
+		template="WEB-INF/templates/restaurant-main-template.xhtml">
+		<ui:define name="content">
+
+			<div class="banner big-center one-edge-shadow">
+				<div class="buttons-wrapper">
+
+					<ui:insert name="buttons">
+						<ui:include src="WEB-INF/templates/restaurant-buttons.xhtml" />
+					</ui:insert>
+
+				</div>
+
+				<div class="switch-wrapper">
+					<div class="image-filter">
+
+						<p:imageSwitch styleClass="image-switch">
+
+							<ui:repeat value="#{imageViewBean.smallImages}" var="image"
+								id="fadeEffectImages">
+								<p:graphicImage name="img/#{image}" id="image"
+									styleClass="image-inside-switch normal-edge-shadow" />
+
+							</ui:repeat>
+						</p:imageSwitch>
+					</div>
+				</div>
+			</div>
+
+			<div class="content one-edge-shadow">
+				<h:form id="form" styleClass="reservation-form">
+					<p:growl id="msgs" showDetail="true" />
+						<f:metadata>
+							<f:viewParam name="people" value="#{reservationBean.people}" />
+						</f:metadata>
+
+						<h:panelGrid columns="2" cellpadding="5" styleClass="reservation-form-content">
+
+							<h:outputText value="Date:" />
+							<p:calendar id="date" value="#{reservationBean.date}"
+								mode="popup" mindate="now + 1" maxdate="now + 62" 
+								disabledWeekends="#{reservationBean.disableWeekends}"
+								pattern="dd/MM/yyyy" />
+
+							<h:outputText value="From:" />
+							<p:calendar id="fTime" value="#{reservationBean.firstTime}"
+								mode="popup" timeOnly="true" minHour="#{reservationBean.openingTimes}" 
+								pattern="HH:mm" maxHour="#{reservationBean.closingTimes}"
+								stepMinute="15" />
+
+							<h:outputText value="To:" />
+							<p:calendar id="sTime" value="#{reservationBean.secondTime}"
+								mode="popup" timeOnly="true" minHour="9" maxHour="#{reservationBean.closingTimes}"
+								pattern="HH:mm" stepMinute="15" />
+
+							<h:outputText value="Firstname:" />
+							<p:inputText value="#{reservationBean.firstname}" />
+
+							<h:outputText value="Surname:" />
+							<p:inputText value="#{reservationBean.surname}" />
+
+							<h:outputText value="Phone Number:" />
+							<p:inputText value="#{reservationBean.phone}" />
+
+							<h:outputText value="E-mail:" />
+							<p:inputText value="#{reservationBean.email}" />
+
+							<p:commandButton value="Submit" update="msgs"
+								action="#{reservationBean.saveIfok()}"
+								icon="ui-icon-check" />
+						</h:panelGrid>
+
+					<p:dialog appendTo="@(body)" modal="true" resizable="false" dynamic="true" 
+						header="Values" widgetVar="success" showEffect="fold">
+						<p:panelGrid id="success" columns="2" columnClasses="label,value">
+
+							<h:outputText value="Date:" />
+							<h:outputText value="#{reservationBean.date}">
+								<!-- 		                set server timezone -->
+								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET"
+									locale="en_US" />
+							</h:outputText>
+
+							<h:outputText value="From:" />
+							<h:outputText value="#{reservationBean.firstTime}">
+								<!-- 		                set server timezone -->
+								<f:convertDateTime pattern="HH:mm" timeZone="CET" locale="en_US" />
+							</h:outputText>
+
+							<h:outputText value="To:" />
+							<h:outputText value="#{reservationBean.secondTime}">
+								<!-- 		                set server timezone -->
+								<f:convertDateTime pattern="HH:mm" timeZone="CET" locale="en_US" />
+
+							</h:outputText>
+							
+							<h:outputText value="surname:" />
+							<h:outputText value="#{reservationBean.surname}" />
+							
+							<h:outputText value="first name:" />
+								<h:outputText value="#{reservationBean.firstname}" />
+							
+							<h:outputText value="email: " />
+								<h:outputText value="#{reservationBean.email}" />
+							
+							<h:outputText value="Table for max : " />
+								<h:outputText value="#{reservationBean.people} people" />
+
+						</p:panelGrid>
+					</p:dialog>
+					
+					<p:dialog appendTo="@(body)" modal="true" resizable="false" dynamic="true" 
+						header="Values" widgetVar="fail" showEffect="fold">
+						<p:panelGrid id="failed" columns="2" columnClasses="label,value">
+							<h:outputText value="Sorry, this date is already booked or your times are not properly selected" />
+						</p:panelGrid>
+					</p:dialog>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+   <body>	
+		<!-- deserts template -->
+		<ui:composition name="widge-menu" 
+			xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:ui="http://java.sun.com/jsf/facelets"
+			xmlns:f="http://java.sun.com/jsf/core"
+			xmlns:h="http://java.sun.com/jsf/html"
+			xmlns:p="http://primefaces.org/ui">
+			
+				<ui:insert name="menu">
+					<ui:include src="admin-menu-gui.xhtml" />
+				</ui:insert>
+			
+			<h:form styleClass="admin-menu-form">
+				<p:tabView orientation="top">
+					<p:tab title="Main Dinner">
+						<h:panelGrid columns="1" cellpadding="10">
+							
+							<ui:insert name="main-Dinners" >
+					  			<ui:include src="admin-menu-dinners.xhtml" />
+							</ui:insert>
+							
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Beverages">
+						<h:panelGrid columns="1" cellpadding="10">
+							
+							<ui:insert name="beverages" >
+					  			<ui:include src="admin-menu-beverages.xhtml" />
+							</ui:insert>
+							
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Deserts">
+						<h:panelGrid columns="1" cellpadding="10">
+
+							<ui:insert name="deserts" >
+					  			<ui:include src="admin-menu-deserts.xhtml" />
+							</ui:insert>							
+						</h:panelGrid>
+					</p:tab>
+				</p:tabView>
+			</h:form>
+		
+		</ui:composition>
+	</body>
+</html>

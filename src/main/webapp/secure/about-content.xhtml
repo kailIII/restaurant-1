@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="../WEB-INF/templates/admin-main-template.xhtml">
+	<ui:define name="content">
+
+		<h:form styleClass="editor-form">
+			<!-- set which record should be loaded -->
+			<f:metadata>
+			    <f:viewAction action="#{editorBean.setTarget('about')}" />
+			</f:metadata>
+			
+			<p:editor id="editor" widgetVar="editorWidget"
+				value="#{editorBean.text}" styleClass="editor" height="600" />
+			
+			<p:commandButton value="Submit" icon="ui-icon-disk" update="display" 
+				oncomplete="PF('dlg').show()" styleClass="editor-submit-button" 
+				action="#{editorBean.save()}">
+				
+				<f:param name="#{editorBean.target}" value="about" />
+				
+			</p:commandButton>
+
+			<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+				hideEffect="fade" resizable="false" >
+				<h:outputText id="display" value="Succes" escape="false" />
+			</p:dialog>
+
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+

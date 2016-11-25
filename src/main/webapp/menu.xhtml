@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="WEB-INF/templates/restaurant-main-template.xhtml">
+	<ui:define name="content">
+
+		<div class="banner big-center one-edge-shadow">
+			<div class="buttons-wrapper">
+				
+				<ui:insert name="buttons" >
+		  			<ui:include src="WEB-INF/templates/restaurant-buttons.xhtml" />
+				</ui:insert>
+
+			</div>
+
+			<div class="switch-wrapper">
+				<div class="image-filter">
+
+						<p:imageSwitch styleClass="image-switch">
+
+							<ui:repeat value="#{imageViewBean.smallImages}" var="image"
+								id="fadeEffectImages">
+								<p:graphicImage name="img/#{image}" id="image"
+									styleClass="image-inside-switch normal-edge-shadow" />
+
+							</ui:repeat>
+						</p:imageSwitch>
+				</div>
+			</div>
+		</div>
+		<div class="content one-edge-shadow">
+			<div class="content-inside">
+				<h:outputText value="#{messageBean.getMessageFromDB('menu')}"
+					escape="false" />
+
+				<ui:insert name="widget-menu" >
+					  <ui:include src="WEB-INF/templates/menu/restaurant-menu.xhtml" />
+				</ui:insert>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

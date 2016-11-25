@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- beverages template -->
+<ui:composition name="beverages" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dataScroller value="#{dataScrollerBean.beverages}" var="food"
+		chunkSize="10">
+		<f:facet name="header">
+			<span class="menu-header-title">Beverages</span>
+		</f:facet>
+
+		<h:panelGrid columns="1" style="width:100%"
+			styleClass="menu-form-single-data-wrapper"
+			columnClasses="logo,detail">
+
+			<p:outputPanel>
+				<h:panelGrid columns="1" cellpadding="5" width="100%">
+
+					<h:outputText value="#{food.name}" styleClass="menu-form-name"
+						style="word-break: break-all;" />
+
+					<h:outputText value="#{food.description}"
+						styleClass="menu-form-desc" style="word-break: break-all;" escape="false" />
+
+					<p:graphicImage name="img/free-hr.jpg" width="100%" styleClass="menu-img-special-style" />
+				</h:panelGrid>
+			</p:outputPanel>
+		</h:panelGrid>
+	</p:dataScroller>
+
+
+</ui:composition>

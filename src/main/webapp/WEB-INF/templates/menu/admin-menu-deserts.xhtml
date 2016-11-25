@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+   <body>	
+		<!-- deserts template -->
+		<ui:composition name="deserts" 
+			xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:ui="http://java.sun.com/jsf/facelets"
+			xmlns:f="http://java.sun.com/jsf/core"
+			xmlns:h="http://java.sun.com/jsf/html"
+			xmlns:p="http://primefaces.org/ui">
+			
+			<p:dataScroller value="#{dataScrollerBean.deserts}" var="food"
+				chunkSize="30" >
+				<f:facet name="header">
+            Deserts
+        </f:facet>
+
+
+
+					<p:outputPanel>
+						<h:panelGrid columns="6" cellpadding="5">
+						
+							<h:outputText value="id:" />
+							<h:outputText value="#{food.id}" style="font-weight: bold" />
+
+							<h:outputText value="name:" />
+							<h:outputText value="#{food.name}"/>
+							
+							<h:outputText value="desc: " />
+							<h:outputText value="#{food.description}" style="word-break: break-all;" escape="false"/>
+							
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</h:panelGrid>
+					</p:outputPanel>
+			</p:dataScroller>
+		
+		</ui:composition>
+
+	</body>
+</html>

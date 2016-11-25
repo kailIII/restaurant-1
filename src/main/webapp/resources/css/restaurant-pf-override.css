@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+
+/* file should contains only classes constructed by primefaces's components*/
+
+/* tabs container*/
+.ui-tabs-nav{
+	font-size: 28px !important;
+	background: rgba(240, 240, 240, 0) !important;
+}
+
+/* container which is dynamically changed by tabs*/
+.ui-tabs-panel{
+	background: rgba(235, 235, 200, 0.9) !important;
+	border: 1px solid rgba(200, 200, 150, 1) !important;
+}
+
+/* tabs */
+.ui-corner-top{
+	background: rgba(212,179,94,0.9) !important;
+	background: -webkit-linear-gradient(rgba(222,189,94,0.9), rgba(212,179,94,0.9)) !important; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(222,189,94,0.9), rgba(212,179,94,0.9)) !important; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(222,189,94,0.9), rgba(212,179,94,0.9)) !important; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(222,189,94,0.9), rgba(212,179,94,0.9)) !important; /* Standard syntax */
+}
+
+/* active ui components like tabs*/
+.ui-state-active{
+	background: rgba(192, 159, 94, 0.9) !important;
+}
+
+/* text inside tabs */
+.ui-tabs-nav LI A{
+	color: #f6f6f6 !important;
+	text-shadow: 1px 1px 3px #262626 !important;
+	word-break: break-all;
+}

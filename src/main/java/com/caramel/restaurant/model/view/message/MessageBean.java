@@ -1,0 +1,56 @@
+package com.caramel.restaurant.model.view.message;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean(eager = true)
+@SessionScoped
+@ViewScoped
+public class MessageBean implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7807535320421353434L;
+	
+	private int Id;
+	private String message;
+	private String target;
+	
+	public String getMessageFromDB(String passedTarget){
+		MessageDAO messageDAO = new MessageDAO();
+		return messageDAO.getMessageByTarget(passedTarget);
+	}
+	
+	public void deleteMessageFromDB(String passedTarget){
+		MessageDAO messageDAO = new MessageDAO();
+		messageDAO.deleteMessageByTarget(passedTarget);
+	}
+	
+	public void saveMessage(Message passedMessage){
+		MessageDAO messageDAO = new MessageDAO();
+		messageDAO.save(passedMessage);
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getTarget() {
+		return target;
+	}
+	public void setTarget(String target) {
+		this.target = target;
+	}
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+}

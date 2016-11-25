@@ -1,0 +1,51 @@
+@CHARSET "ISO-8859-1";
+
+html,
+body{
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+body{
+}
+
+.wrapper{
+}
+
+.panel{
+	position: absolute;
+	background-color: rgb(225,225,225);
+	width: 100%;
+	top: 30%;
+}
+
+.content{
+	padding: 15px;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.info{
+	text-align: center;
+}
+
+.error{
+	color: #dd0000;
+	text-align: right;
+	padding: 2px;
+	font-size: 21px;
+}
+
+.login-button{
+	width: 100%;
+	height: 25px;
+}
+
+.submit-button-row{
+	padding-top: 15px;
+}

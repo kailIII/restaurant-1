@@ -1,0 +1,219 @@
+@CHARSET "ISO-8859-1";
+
+@import url('//fonts.googleapis.com/css?family=Dosis');
+@import url('//fonts.googleapis.com/css?family=Indie+Flower');
+@import url('//fonts.googleapis.com/css?family=Poiret+One');
+@import url('//fonts.googleapis.com/css?family=Yellowtail');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+.header{
+	padding: 0;
+	border-bottom: 2px solid rgba(245,245,245,1);
+	border-top: 2px solid rgba(245,245,245,1);
+	background-color: rgba(39,40,44,0.9);
+}
+
+.nav-button:ACTIVE,
+.nav-button:FOCUS,
+.nav-button:HOVER,
+.nav-button{
+	font-family: 'Dosis', sans-serif;
+	font-size: 24px;
+	border-radius: 0;
+	margin: 0 !important;
+	height: 44px;
+	color: #ffffff;
+	border: 1px solid rgba(255,244,230,1);
+	border-top: 0px;
+	text-shadow: 0px 1px 1px #161616;
+	box-shadow: 0px 0px 0px;
+	webkikit-box-shadow: 0px 0px 0px;
+	width: 25%;
+	z-index: 100;
+}
+
+/* override nav-button:hover, etc */
+.nav-button:ACTIVE,
+.nav-button:FOCUS,
+.nav-button:HOVER{
+	background-color: rgba(0,0,0,0.6);
+	color: #f6f6f6;
+	text-shadow: 0px 0px 1px #262626;
+	height: 44px;
+	border: 1px solid rgba(245,234,220,1);
+	border-bottom: 3px solid rgba(255,255,255,1);
+	border-top: 0px;
+}
+
+.button-wrapper{
+}
+
+.header-logo-img{
+	resize: none;
+	border: 1px solid #a8a8a8;
+	display: block;
+	float: left;
+}
+
+.wrapper{
+}
+
+.contact-title{
+	font-size: 24px;
+	text-align: center;
+	padding-bottom: 3px;
+}
+
+.contact-data{
+	padding: 5px;
+	font-family: 'Poiret One', cursive;
+	color: #f6f6f6;
+	float: right;
+	line-height: 20px;
+}
+
+.banner{
+	background-color: rgba(255,255,210,1);
+	border-radius: 2px;
+	overflow-x: hidden; 
+}
+
+/* main website title*/
+.title{
+	font-family: 'Yellowtail', cursive;
+	font-size: 128px;
+	color: rgba(232,199,114,1);
+	text-shadow: 1px 4px 6px rgba(0,0,0,0.6);
+}
+
+.image-switch{
+	width: 100%;
+	text-align: center;
+}
+
+.image-inside-switch{
+	width: 100% !important;
+	border-radius: 2px;
+}
+
+.image-filter{
+	border-radius: 2px;
+}
+
+.switch-wrapper{
+ 	padding: 0 20px 10px 20px;
+}
+
+.content{
+	font-family: 'Merriweather', serif;
+	background-color: rgba(255,255,230,1);
+	padding: 15px;
+	font-size: 18px;
+}
+
+.footer{
+	font-family: 'Poiret One', cursive;
+	text-align: center;
+	border-top: 1px solid #a8a8a8;
+	background-color: rgb(39,40,44);
+	color: #f0f0f0;
+}
+
+/* icon settings*/
+.fa{
+	width: 26px;
+	height: 26px;
+	border-radius: 0;
+	top: 40% !important;
+}
+
+.background-image{
+	background-image: url("#{resource['img/floor-1256804_1920.jpg']}");
+	background-color: #be9b7b;	
+}
+
+.one-edge-shadow {
+	-webkit-box-shadow: 0 12px 9px -8px black;
+	   -moz-box-shadow: 0 12px 9px -8px black;
+	        box-shadow: 0 12px 9px -8px black;
+}
+
+.normal-edge-shadow {
+	-webkit-box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
+	   -moz-box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
+	        box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
+}
+
+.menu-form-container{
+	background: rgba(255, 255, 255, 0); /* remove white space around menu form */
+	border: 0; /* remove border around menu form */
+}
+
+.menu-header-title{
+	color: #f6f6f6 !important;
+	text-shadow: 1px 1px 3px #262626 !important;
+	word-break: break-all;
+}
+
+.menu-form-single-data-wrapper{
+}
+
+/* good looking image as hr inside menu*/
+.menu-img-special-style{
+	border: 0;
+	display: block;
+	text-align: center;
+}
+
+/* removes last img inside menu (counting starts from 
+root div inside form which contains all form elements)*/
+.menu-form-container div div 
+table tbody tr td div div ul li:LAST-CHILD 
+table tbody tr td div 
+table tbody tr:LAST-CHILD td img{
+	visibility: hidden;
+	height: 0;
+}
+
+.menu-form-desc,
+.menu-form-name{
+	display: block;
+	text-align: center;
+}
+
+.menu-form-name{
+	font-family: 'Poiret One', cursive;
+	font-size: 64px;
+}
+
+.menu-form-desc{
+	font-size: 21px;
+}
+
+.reservation-form-content{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.reservation-form-title{
+	font-family: 'Poiret One', cursive;
+	font-size: 38px;
+}
+
+.reservation-form-image{
+	background: rgba(255, 255, 255, 1);
+	border-radius: 4px;
+}
+
+.reservation-form td{
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+}
+
+.simple-gradient{
+	background: -webkit-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* Standard syntax */
+}

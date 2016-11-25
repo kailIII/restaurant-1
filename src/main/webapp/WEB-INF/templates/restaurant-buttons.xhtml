@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+
+	<ui:composition name="buttons" xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui">
+
+		<p:button outcome="index.xhtml" value="Welcome" icon="fa fa-home"
+			styleClass="nav-button simple-gradient normal-edge-shadow">
+		</p:button>
+
+		<p:button outcome="menu.xhtml" value="Menu" icon="fa fa-coffee"
+			styleClass="nav-button simple-gradient normal-edge-shadow">
+		</p:button>
+
+		<p:button outcome="reservation.xhtml" value="Reservation"
+			icon="fa fa-calendar"
+			styleClass="nav-button simple-gradient normal-edge-shadow">
+		</p:button>
+
+		<p:button outcome="about.xhtml" value="About Us"
+			icon="fa fa-location-arrow"
+			styleClass="nav-button simple-gradient normal-edge-shadow">
+		</p:button>
+
+	</ui:composition>
+</body>
+</html>

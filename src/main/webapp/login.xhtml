@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+    <h:head>
+        <title>Restaurant - admin panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+    <h:outputStylesheet name="css/admin-login.css" />
+    
+    </h:head>
+    <h:body>
+
+	<div class="wrapper">
+		<div class="panel">
+			<div class="content">
+
+			<div class="ui-grid">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12 info">
+					<h3>Admin Panel</h3>
+				</div>
+			</div>
+			
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12 error">
+					<h:outputLabel value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+				</div>
+			</div>
+			
+			<div class="ui-grid login-form">
+					<form action="${request.contextPath}/applogin" method="post">
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-6"><h:outputLabel value="Enter UserName:" /></div>
+						<div class="ui-grid-col-6"><input type="text" name="username" /></div>
+					</div>
+					
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-6"><h:outputLabel value="Enter Password:" /></div>
+						<div class="ui-grid-col-6"><input type="password" name="password" /></div>
+					</div>
+
+						<div class="ui-grid-row submit-button-row">
+							<div class="ui-grid-col-10"></div>
+							<div class="ui-grid-col-2">
+								<input type="submit"
+									value="Login" class="login-button"></input> 
+								<input type="hidden" name="${_csrf.parameterName}" 
+									value="${_csrf.token}" />
+							</div>
+						</div>
+					</form>
+				</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>  
+

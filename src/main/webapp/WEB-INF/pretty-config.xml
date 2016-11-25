@@ -1,0 +1,47 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+  http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="default">
+		<pattern value="/" />
+		<view-id value="/index.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="index">
+		<pattern value="/index" />
+		<view-id value="/index.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="menu">
+		<pattern value="/menu" />
+		<view-id value="/menu.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="reservation">
+		<pattern value="/reservation" />
+		<view-id value="/reservation.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="about">
+		<pattern value="/about" />
+		<view-id value="/about.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/login.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="student">
+		<pattern value="/secure/admin" />
+		<view-id value="/secure/admin.xhtml" />
+	</url-mapping>
+
+
+	<!-- Maps "/user/#{username}" to the URL "/user/view.xhtml?username=value" -->
+<!-- 	<url-mapping id="view-user"> -->
+<!-- 		<pattern value="/user/#{username}" /> -->
+<!-- 		<view-id value="/user/view.xhtml" /> -->
+<!-- 	</url-mapping> -->	
+</pretty-config>

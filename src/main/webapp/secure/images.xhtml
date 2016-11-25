@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="../WEB-INF/templates/admin-main-template.xhtml">
+		<ui:define name="content">
+
+		<!-- limit 15MB -->
+		<h:form enctype="multipart/form-data">
+			<p:growl id="messages" showDetail="true" />
+
+			<p:fileUpload value="#{fileUploadBean.file}" mode="simple"
+				skinSimple="true" sizeLimit="150000000" />
+
+			<p:commandButton value="Submit" ajax="false"
+			actionListener="#{fileUploadBean.upload}" 
+			action="#{fileUploadBean.saveToDisk}"/>
+			
+				<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+

@@ -1,0 +1,23 @@
+.top-nav{
+	text-align: right;
+}
+
+.editor-submit-button{
+	float: right;
+}
+
+.refresh-menu-button{
+	padding-bottom: 25px;	
+}
+
+.delete-button-form{
+	padding: 5px;
+}
+
+.add-button-form{
+	padding: 5px;
+}
+
+.admin-menu-form{
+	padding: 25px;
+}

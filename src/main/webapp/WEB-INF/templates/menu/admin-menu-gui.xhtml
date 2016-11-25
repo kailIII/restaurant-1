@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+   <body>	
+		<!-- element template -->
+		<ui:composition name="widge-menu" 
+			xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:ui="http://java.sun.com/jsf/facelets"
+			xmlns:f="http://java.sun.com/jsf/core"
+			xmlns:h="http://java.sun.com/jsf/html"
+			xmlns:p="http://primefaces.org/ui">
+				
+				<div class="button-form">
+					<h:form styleClass="refresh-menu-button">
+						<p:panel header="refresh elements">
+						<p:growl id="growl" life="2000" />
+						<div><p:commandButton value="Refresh menu list" update="growl" 
+							action="#{dataScrollerBean.refresh()}" title="delete element" /></div>
+								</p:panel>
+						<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+					</h:form>
+
+					<h:form styleClass="delete-menu-button">
+					<p:panel header="delete element">
+						<p:growl id="growl" life="2000" />
+						<div>
+						<p:inputText id="input-index" value="#{deleteButtonBean.index}" title="id"/>
+						<p:watermark value="id" for="input-index" />
+						</div>
+						<div><p:commandButton value="delete element" update="growl" 
+							action="#{deleteButtonBean.deleteMenuByIndex()}" title="delete element" /></div>
+						
+						<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+					</p:panel>
+					</h:form>
+				</div>
+				
+				<div class="button-form">
+					<h:form styleClass="add-menu-button">
+					<p:panel header="add element">
+						<p:growl id="growl" life="2000" />
+
+						<div><p:selectOneMenu id="cat" value="#{addButtonBean.cat}">
+				            <f:selectItem itemLabel="Main" itemValue="main" />
+				            <f:selectItem itemLabel="Deserts" itemValue="deserts" />
+				            <f:selectItem itemLabel="Beverages" itemValue="beverages" />
+				        </p:selectOneMenu></div>
+
+						<div>
+						<p:inputText id="input-name" value="#{addButtonBean.name}" title="name"/>
+						<p:watermark value="name" for="input-name" />
+						</div>
+
+						<div>
+						<p:editor id="editor" widgetVar="editorWidget"
+							value="#{addButtonBean.desc}" styleClass="menu-editor" height="200" />
+						</div>
+						
+						
+						<div><p:commandButton value="add new element" update="growl" 
+							action="#{addButtonBean.saveMenu()}" title="add new element"/></div>
+						
+						<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+								</p:panel>
+					</h:form>
+				</div>
+				
+				
+		</ui:composition>
+	</body>
+</html>

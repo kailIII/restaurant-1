@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   If you're using GlassFish V3, you can update the version attribute to 3.0 and the schema document to web-app_3_0.xsd
+   JBoss AS 6.0.0.M1 does not support Servlet 3.0 (expected in 6.0.0.M2)
+-->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/spring/security-context.xml</param-value>
+  </context-param>
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/errors/403.html</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/errors/404.html</location>
+  </error-page>
+  <context-param>
+    <param-name>facelets.DEVELOPMENT</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.richfaces.enableControlSkinning</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  <context-param>
+    <param-name>primefaces.FONT_AWESOME</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <mime-mapping>
+    <extension>woff2</extension>
+    <mime-type>application/x-font-woff2</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>ttf</extension>
+    <mime-type>application/x-font-ttf</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>ttf</extension>
+    <mime-type>application/x-font-truetype</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>jpg</extension>
+    <mime-type>image/jpeg</mime-type>
+  </mime-mapping>
+</web-app>
