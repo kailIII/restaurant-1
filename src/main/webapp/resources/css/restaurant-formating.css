@@ -190,25 +190,60 @@ table tbody tr:LAST-CHILD td img{
 	font-size: 21px;
 }
 
-.reservation-form-content{
-	margin-left: auto;
-	margin-right: auto;
-}
 
-.reservation-form-title{
-	font-family: 'Poiret One', cursive;
+.reservation-form-panel{
+	font-family: 'Dosis', sans-serif;
 	font-size: 38px;
 }
 
 .reservation-form-image{
 	background: rgba(255, 255, 255, 1);
-	border-radius: 4px;
+	border-radius: 0 0 4px 4px;
 }
 
 .reservation-form td{
 	padding-left: 5px;
 	padding-right: 5px;
 	text-align: center;
+}
+
+/* css for pf's wrapper around every one dialog element*/
+.reservation-form div div{
+	padding: 0 !important;
+}
+
+/* title bar */
+.reservation-form-panel .ui-panel-titlebar{
+	border-radius: 4px 4px 0 0;
+	font-weight: normal;
+	color: #f6f6f6;
+	text-shadow: 0px 1px 1px #161616;
+	
+	background: -webkit-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* Standard syntax */
+}
+
+.reservation-form2 .ui-panel{
+	padding: 0 !important;
+}
+
+.reservation-form2-content{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.reservation-form2-panel .ui-panel-titlebar{
+	border-radius: 4px 4px 0 0;
+	font-weight: normal;
+	color: #f6f6f6;
+	text-shadow: 0px 1px 1px #161616;
+	
+	background: -webkit-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* Standard syntax */
 }
 
 .simple-gradient{

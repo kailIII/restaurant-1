@@ -38,14 +38,14 @@
 			</div>
 
 			<div class="content one-edge-shadow">
-				<h:form id="form" styleClass="reservation-form">
+				<h:form id="form" styleClass="reservation-form2">
 					<p:growl id="msgs" showDetail="true" />
 						<f:metadata>
 							<f:viewParam name="people" value="#{reservationBean.people}" />
 						</f:metadata>
 
-						<p:panel id="reservation-form-panel" header="Reservation">
-						<h:panelGrid columns="2" cellpadding="5" styleClass="reservation-form-content">
+						<p:panel id="reservation-form2-panel" header="Reservation">
+						<h:panelGrid columns="2" cellpadding="5" styleClass="reservation-form2-content">
 
 							<h:outputText value="Date:" />
 							<p:calendar id="date" value="#{reservationBean.date}"
