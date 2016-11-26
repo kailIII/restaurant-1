@@ -2,8 +2,10 @@
                                  restaurant 
 
 To work with project i recommend to import db from root dir.
-Project is already configured to work with mysql from xampp.
+Project is already configured to work with mariadb from xampp.
 You can find db configuration inside hibernate.cfg.xml and SecurityConfig class.
+Tested with windows 10, jdk 1.8.0_102, mariadb 10.1.16-MariaDB.
+
 
 features
 ===========
@@ -17,7 +19,7 @@ features
 - text editor for about page,
 
 
-To-Do
+To-Do list
 ===========
 - upload, download option for admins,
 - accounts creator,
