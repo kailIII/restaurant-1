@@ -7,18 +7,22 @@ You can find db configuration inside hibernate.cfg.xml and SecurityConfig class.
 
 features
 ===========
-- dynamically managed menu,
+- beautiful banner and template,
+- dynamically managed food menu with ajax,
 - booking tables for 2 or 6 people,
 - admin panel and login page,
-- excel and pdf import option for admin,
+- chart with reservation data,
+- table with reservation data,
+- excel and pdf import option for reservation data,
 - text editor for about page,
+
 
 To-Do
 ===========
 - upload, download option for admins,
 - accounts creator,
 - charts with reservation data,
-- form to set basic website messages (e.g. e-mail, phone),
+- form to set basic website informations (e.g. e-mail, phone),
 - page to check single reservation, available for clients,
 
 
