@@ -6,10 +6,16 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../WEB-INF/templates/admin-main-template.xhtml">
 	<ui:define name="content">
+		
+		<h:form>
+			<p:chart type="bar" model="#{reservationChartBean.barChart}" responsive="true" />
+		</h:form>
+	
+	
 		<h:form styleClass="reservation-form">
 			<p:dataTable id="tbl" var="reservation" value="#{adminReservationBean.reservations}"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-				paginator="true" rows="20" style="margin-bottom:20px">
+				paginator="true" rows="15" style="margin-bottom:20px">
 
 				<f:facet name="{Exporters}">
 		            <h:commandLink>

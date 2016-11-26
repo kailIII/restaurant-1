@@ -22,13 +22,11 @@ import org.primefaces.event.SelectEvent;
 @ViewScoped
 public class ReservationBean implements Serializable{
 	
-	
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = -1277131828348490458L;
 	private final Logger log = LogManager.getLogger(ReservationBean.class.getName());
-	
 	
 	private Date date = new Date();
 	private Date firstTime = new Date();
@@ -75,6 +73,14 @@ public class ReservationBean implements Serializable{
 	}
 	
 	public void saveIfok(){
+		
+		//validation
+		//saving allowed only for 2 and 6
+		if( !(people.equals("2") || people.equals("6")) ){
+			log.info("reservation failed for " + people + " people parameter");
+			return;
+		}
+		
 		//creates new object to save in database
 		Reservation res = new Reservation();
 		res.setEmail(email);

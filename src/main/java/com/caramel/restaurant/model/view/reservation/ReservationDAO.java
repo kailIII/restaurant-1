@@ -31,8 +31,8 @@ public class ReservationDAO implements Serializable{
 														+ "WHERE date(a.date) like date(:date) " //date() cuts off time from date, the same date and
 															+ "AND a.people = :people "// which table type
 															+ "AND ((a.secondTime >= :first AND a.secondTime <= :second ) " //second time should be between first and second
-															+ "OR (a.firstTime >= :first AND a.firstTime <= :second ) "// or first time should be between first and second
-															+ "OR (a.firstTime <= :first AND a.secondTime >= :second )) "// and data can be between two parameters from other records
+																+ "OR (a.firstTime >= :first AND a.firstTime <= :second ) "// or first time should be between first and second
+																+ "OR (a.firstTime <= :first AND a.secondTime >= :second )) "// and data can be between two parameters from other records
 														+ "ORDER by a.date DESC, a.firstTime DESC")
 											.setDate("date", date)
 											.setTime("first", firstTime)

@@ -45,7 +45,8 @@
 						</f:metadata>
 
 						<p:panel id="reservation-form2-panel" header="Reservation">
-						<h:panelGrid columns="2" cellpadding="5" styleClass="reservation-form2-content">
+						<h:panelGrid columns="1" cellpadding="0" styleClass="reservation-form2-content">
+						<h:panelGrid columns="2" cellpadding="5">
 
 							<h:outputText value="Date:" />
 							<p:calendar id="date" value="#{reservationBean.date}"
@@ -75,10 +76,12 @@
 
 							<h:outputText value="E-mail:" />
 							<p:inputText value="#{reservationBean.email}" />
-
+							</h:panelGrid>
+							
 							<p:commandButton value="Submit" update="msgs"
 								action="#{reservationBean.saveIfok()}"
-								icon="ui-icon-check" />
+								icon="ui-icon-check" style="width: 100%;"/>
+								
 						</h:panelGrid>
 						</p:panel>
 
