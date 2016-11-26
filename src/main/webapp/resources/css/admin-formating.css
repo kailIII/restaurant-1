@@ -7,7 +7,7 @@
 }
 
 .refresh-menu-button{
-	padding-bottom: 25px;	
+	padding-bottom: 25px;
 }
 
 .delete-button-form{
@@ -20,4 +20,14 @@
 
 .admin-menu-form{
 	padding: 25px;
+}
+
+.admin-settings-form{
+	display: inline-block;
+	text-align: center;
+}
+
+.admin-settings-grid{
+	margin-left: auto;
+	margin-right: auto;
 }

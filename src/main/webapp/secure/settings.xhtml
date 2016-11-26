@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="../WEB-INF/templates/admin-main-template.xhtml">
+		<ui:define name="content">
+		
+			<h:panelGrid columns="2" cellpadding="5" styleClass="admin-settings-grid">
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Restaurant name: " />
+					<p:inputText />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="E-mail: " />
+					<p:inputText />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Phone: " />
+					<p:inputText />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Address: " />
+					<p:inputText />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Logo url: " />
+					<p:inputText />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Information inside footer: " />
+					<p:inputText />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Tables for 2 people: " />
+					<p:inputNumber />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Tables for 6 people: " />
+					<p:inputNumber />
+					<p:commandButton value="submit" style="width: 100%;" />
+				</h:panelGrid>
+				</h:form>
+				
+			</h:panelGrid>
+		
+	</ui:define>
+</ui:composition>
+
