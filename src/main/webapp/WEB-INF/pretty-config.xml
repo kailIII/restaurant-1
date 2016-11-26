@@ -33,11 +33,35 @@
 		<view-id value="/login.xhtml" />
 	</url-mapping>
 	
-	<url-mapping id="student">
-		<pattern value="/secure/admin" />
-		<view-id value="/secure/admin.xhtml" />
+	<url-mapping id="sec-reservation">
+		<pattern value="/secure/reservation" />
+		<view-id value="/secure/reservation.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="sec-menu">
+		<pattern value="/secure/menu" />
+		<view-id value="/secure/menu.xhtml" />
 	</url-mapping>
 
+	<url-mapping id="sec-about">
+		<pattern value="/secure/about" />
+		<view-id value="/secure/about.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="sec-images">
+		<pattern value="/secure/images" />
+		<view-id value="/secure/images.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="sec-accounts">
+		<pattern value="/secure/accounts" />
+		<view-id value="/secure/accounts.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="sec-settings">
+		<pattern value="/secure/settings" />
+		<view-id value="/secure/settings.xhtml" />
+	</url-mapping>
 
 	<!-- Maps "/user/#{username}" to the URL "/user/view.xhtml?username=value" -->
 <!-- 	<url-mapping id="view-user"> -->
