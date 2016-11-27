@@ -52,30 +52,30 @@
 							<p:calendar id="date" value="#{reservationBean.date}"
 								mode="popup" mindate="now + 1" maxdate="now + 62" 
 								disabledWeekends="#{reservationBean.disableWeekends}"
-								pattern="dd/MM/yyyy" />
+								pattern="dd/MM/yyyy" required="true" requiredMessage="Date is required" />
 
 							<h:outputText value="From:" />
 							<p:calendar id="fTime" value="#{reservationBean.firstTime}"
-								mode="popup" timeOnly="true" minHour="#{reservationBean.openingTimes}" 
-								pattern="HH:mm" maxHour="#{reservationBean.closingTimes}"
-								stepMinute="15" />
+								mode="popup" timeOnly="true" minHour="#{basicDataBean.openTime}" 
+								pattern="HH:mm" maxHour="#{basicDataBean.closeTime}"
+								stepMinute="15" required="true" requiredMessage="time of arrival is required" />
 
 							<h:outputText value="To:" />
 							<p:calendar id="sTime" value="#{reservationBean.secondTime}"
-								mode="popup" timeOnly="true" minHour="9" maxHour="#{reservationBean.closingTimes}"
-								pattern="HH:mm" stepMinute="15" />
+								mode="popup" timeOnly="true" minHour="#{basicDataBean.openTime}" maxHour="#{basicDataBean.closeTime}"
+								pattern="HH:mm" stepMinute="15" required="true" requiredMessage="time of departure is required" />
 
 							<h:outputText value="Firstname:" />
-							<p:inputText value="#{reservationBean.firstname}" />
+							<p:inputText value="#{reservationBean.firstname}" required="true" requiredMessage="firstname is required" />
 
 							<h:outputText value="Surname:" />
-							<p:inputText value="#{reservationBean.surname}" />
+							<p:inputText value="#{reservationBean.surname}" required="true" requiredMessage="surname is required" />
 
 							<h:outputText value="Phone Number:" />
-							<p:inputText value="#{reservationBean.phone}" />
+							<p:inputText value="#{reservationBean.phone}" required="true" requiredMessage="phone number is required" />
 
 							<h:outputText value="E-mail:" />
-							<p:inputText value="#{reservationBean.email}" />
+							<p:inputText value="#{reservationBean.email}" required="true" requiredMessage="e-mail is required" />
 							</h:panelGrid>
 							
 							<p:commandButton value="Submit" update="msgs"
