@@ -7,7 +7,7 @@ You can find db configuration inside hibernate.cfg.xml and SecurityConfig class.
 Tested with windows 10, jdk 1.8.0_102, mariadb 10.1.16-MariaDB.
 
 
-features
+features:
 ===========
 - beautiful banner and template,
 - dynamically managed food menu with ajax,
@@ -19,7 +19,7 @@ features
 - text editor for about page,
 
 
-To-Do list
+To-Do list:
 ===========
 - upload, download option for admins,
 - accounts creator,
@@ -27,6 +27,17 @@ To-Do list
 - form to set basic website informations (e.g. e-mail, phone),
 - page to check single reservation, available for clients,
 
+
+URL
+===========
+project url: your-host-ip:port/restaurant
+admin panel url: your-host-ip:port/restaurant/login
+
+
+admin account
+===========
+login: root
+password: 123
 
 
 Sources:

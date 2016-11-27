@@ -5,9 +5,9 @@
    	http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.caramel</groupId>
-	<artifactId>restaurantjsf2</artifactId>
+	<artifactId>restaurant</artifactId>
 	<packaging>war</packaging>
-	<name>restaurantjsf2</name>
+	<name>restaurant</name>
 	<version>1.0.0</version>
 
 	<properties>
