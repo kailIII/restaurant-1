@@ -96,7 +96,7 @@
 				<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
 					<h:outputText value="Tables for 2 people: " />
-					<p:inputNumber value="#{basicDataBean.tablesFor2}" emptyValue="0" id="tablesFor2" title="number of tables for 2 people" />
+					<p:spinner value="#{basicDataBean.tablesFor2}" id="tablesFor2" title="number of tables for 2 people" />
 					<p:commandButton value="submit" style="width: 100%;" 
 						action="#{basicDataBean.saveTF2()}" />
 						
@@ -110,7 +110,7 @@
 				<h:panelGrid columns="1">
 					<h:outputText value="Tables for 6 people: " />
 					
-					<p:inputNumber value="#{basicDataBean.tablesFor6}"  emptyValue="0" 
+					<p:spinner value="#{basicDataBean.tablesFor6}"
 						title="amount of tables for 6 people" id="tablesFor6" />
 						
 					<p:commandButton value="submit" style="width: 100%;" 
@@ -125,7 +125,7 @@
 				<h:panelGrid columns="1">
 					<h:outputText value="Open time: " />
 					
-					<p:inputNumber value="#{basicDataBean.openTime}"  emptyValue="0" id="openTime" />
+					<p:spinner value="#{basicDataBean.openTime}" id="openTime" />
 						
 					<p:commandButton value="submit" style="width: 100%;" 
 						action="#{basicDataBean.saveOpenTime()}" />
@@ -139,7 +139,7 @@
 				<h:panelGrid columns="1">
 					<h:outputText value="Tables for 6 people: " />
 					
-					<p:inputNumber value="#{basicDataBean.closeTime}"  emptyValue="0" id="closeTime" />
+					<p:spinner value="#{basicDataBean.closeTime}" id="closeTime" />
 						
 					<p:commandButton value="submit" style="width: 100%;" 
 						action="#{basicDataBean.saveCloseTime()}" />
