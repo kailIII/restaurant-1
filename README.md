@@ -28,13 +28,13 @@ To-Do list:
 - page to check single reservation, available for clients,
 
 
-URL
+URL:
 ===========
 - project url: your-host-ip:port/restaurant
 - admin panel url: your-host-ip:port/restaurant/login
 
 
-admin account
+admin account:
 ===========
 - login: root
 - password: 123
