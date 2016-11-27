@@ -256,6 +256,22 @@ table tbody tr:LAST-CHILD td img{
     background: linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* Standard syntax */
 }
 
+.restaurant-client-check-form{
+	left: 10% !important;
+	right: 10% !important;
+	top: 10% !important;
+}
+
+.reservation-checker{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.reservation-checker-button{
+	width: 100%;
+	padding: 0 !important;
+}
+
 .simple-gradient{
 	background: -webkit-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(rgba(232,199,114,0.9), rgba(212,179,94,0.9)); /* For Opera 11.1 to 12.0 */

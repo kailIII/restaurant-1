@@ -63,14 +63,14 @@ public class ReservationDAO implements Serializable{
 	}
 	
 	//return list of reservations with selected surname and ordered by date
-	public List<Reservation> getBySurname(String surname){
+	public List<Reservation> getByEmail(String email){
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
 		@SuppressWarnings("unchecked")
-		List<Reservation> result = session.createQuery("FROM Reservation a WHERE a.surname = :param ORDER by a.date DESC, a.firstTime DESC")
-											.setParameter("param", surname)
+		List<Reservation> result = session.createQuery("FROM Reservation a WHERE a.email = :param ORDER by a.date DESC, a.firstTime DESC")
+											.setParameter("param", email)
 											.getResultList();
 		
 		session.getTransaction().commit();

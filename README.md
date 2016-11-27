@@ -18,6 +18,7 @@ features:
 - excel and pdf import option for reservation data,
 - text editor for about page,
 - form to set basic website informations (e.g. e-mail, phone),
+- page to check single reservation, available for clients,
 
 
 To-Do list:
@@ -25,7 +26,6 @@ To-Do list:
 - upload, download option for admins,
 - accounts creator,
 - charts with reservation data,
-- page to check single reservation, available for clients,
 
 
 URL:

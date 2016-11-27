@@ -6,12 +6,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@ApplicationScoped
 @ManagedBean
 public class AdminReservationBean implements Serializable{
 
@@ -26,28 +28,20 @@ public class AdminReservationBean implements Serializable{
 	private Date secondTime = new Date();
 	private boolean disableWeekends = false;
 	private String openingTimes = "9";
-	private String closingTimes = "24";
+	private String closingTimes = "23";
 	private String firstname;
 	private String surname;
 	private String phone;
 	private String email;
 	private String people;
 
+	@ManagedProperty("#{reservation}")
+	List<Reservation> reservations;
+
 	@PostConstruct
 	public void init(){
 		ReservationDAO dao = new ReservationDAO();
 		reservations = dao.getAll();
-	}
-	
-	@ManagedProperty("#{reservation}")
-	List<Reservation> reservations;
-	
-	public List<Reservation> getReservations() {
-		return reservations;
-	}
-
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
 	}
 	
 	
@@ -77,11 +71,15 @@ public class AdminReservationBean implements Serializable{
 	}
 	
 	
-	
-	
-	
-	
 	//getters and setters
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+	
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
 	public Date getDate() {
 		return date;
 	}

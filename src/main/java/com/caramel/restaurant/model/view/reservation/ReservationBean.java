@@ -9,6 +9,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -46,7 +47,10 @@ public class ReservationBean implements Serializable{
 	private String phone;
 	private String email;
 	private String people;
-
+	
+	@ManagedProperty("#{reservation}")
+	List<Reservation> reservations;
+	
 	
 	//all date object is deprecated, but primefaces uses it
 	@SuppressWarnings("deprecation")
@@ -70,7 +74,12 @@ public class ReservationBean implements Serializable{
 			log.warn("failed to set times and numbers of items: " + e.getStackTrace().toString());
 		}
 	}
-
+	
+	public void setReservationsListByEmail(){
+		ReservationDAO reservationDAO = new ReservationDAO();
+		log.info("list was changed: " + email);
+		this.reservations =  reservationDAO.getByEmail(email);
+	}
 	
 	public void save(){
 		//creates new object to save in database
@@ -239,6 +248,13 @@ public class ReservationBean implements Serializable{
 	
 	
 	//getters and setters
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+	
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
 
 	public boolean isDisableWeekends() {
 		return disableWeekends;

@@ -4,8 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a4j="http://richfaces.org/a4j" 
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:body>
 	<ui:composition
@@ -41,7 +40,7 @@
 				<h:form id="form">
 					<p:growl id="msgs" showDetail="true" />
 
-					<h:panelGrid columns="2" styleClass="reservation-form">
+					<h:panelGrid columns="2" cellspacing="15" styleClass="reservation-form">
 
 						<p:panel id="link-2-people-table" header="2 people table"
 							styleClass="reservation-form-panel">
@@ -60,12 +59,84 @@
 									style="width: 100%;" styleClass="reservation-form-image" />
 							</h:commandLink>
 						</p:panel>
+					</h:panelGrid>
+					
+					<h:panelGrid columns="1" styleClass="reservation-checker" style="width: 100%;">
+						<p:panel header="Check your booking">
+						<p:inputText id="input-reservation" value="#{reservationBean.email}" styleClass="reservation-checker-button" />
+						<p:watermark value="E-mail" for="input-reservation" />
 
+						<p:commandButton value="Submit" icon="fa fa-question"
+							update="table-for-clients" oncomplete="PF('dlg').show()"
+							action="#{reservationBean.setReservationsListByEmail()}" 
+							style="width: 100%;"/>
+						</p:panel>
 					</h:panelGrid>
 
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 				</h:form>
+
+
+
+
+
+				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+					hideEffect="fade" resizable="false" draggable="false" styleClass="restaurant-client-check-form">
+					
+					<h:form styleClass="reservation-form" id="table-for-clients" >
+						<p:dataTable id="tbl" var="reservation"
+							value="#{reservationBean.reservations}"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+							paginator="true" rows="5" style="margin-bottom:20px">
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="people" />
+								</f:facet>
+								<h:outputText value="#{reservation.people}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="date" />
+								</f:facet>
+								<h:outputText value="#{reservation.date}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Since:" />
+								</f:facet>
+								<h:outputText value="#{reservation.firstTime}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="To:" />
+								</f:facet>
+								<h:outputText value="#{reservation.secondTime}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="email" />
+								</f:facet>
+								<h:outputText value="#{reservation.email}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="surname" />
+								</f:facet>
+								<h:outputText value="#{reservation.surname}" />
+							</p:column>
+						</p:dataTable>
+						
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+				</h:form>
+				</p:dialog>
 			</div>
 		</ui:define>
 	</ui:composition>
