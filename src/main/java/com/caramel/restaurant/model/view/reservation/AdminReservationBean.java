@@ -21,6 +21,8 @@ public class AdminReservationBean implements Serializable{
 	private static final long serialVersionUID = -6726115116009569826L;
 	private final Logger log = LogManager.getLogger(AdminReservationBean.class.getName());
 
+	private Date date = new Date();
+	private Date firstTime = new Date();
 	private Date secondTime = new Date();
 	private boolean disableWeekends = false;
 	private String openingTimes = "9";
@@ -40,8 +42,6 @@ public class AdminReservationBean implements Serializable{
 	@ManagedProperty("#{reservation}")
 	List<Reservation> reservations;
 	
-	private Date date = new Date();
-	private Date firstTime = new Date();
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
