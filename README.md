@@ -30,14 +30,14 @@ To-Do list:
 
 URL
 ===========
-project url: your-host-ip:port/restaurant
-admin panel url: your-host-ip:port/restaurant/login
+- project url: your-host-ip:port/restaurant
+- admin panel url: your-host-ip:port/restaurant/login
 
 
 admin account
 ===========
-login: root
-password: 123
+- login: root
+- password: 123
 
 
 Sources:
