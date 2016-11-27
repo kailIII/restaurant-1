@@ -1,17 +1,24 @@
 package com.caramel.restaurant.model.view.menuform;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import com.caramel.restaurant.model.view.foodscroller.Food;
 import com.caramel.restaurant.model.view.foodscroller.FoodDAO;
 
-@ViewScoped
 @ManagedBean
-public class AddButtonBean {
+@SessionScoped
+public class AddButtonBean implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -117768526281429448L;
+
 	private FoodDAO foodDao = new FoodDAO();
 	
 	private String name;

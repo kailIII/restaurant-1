@@ -43,21 +43,24 @@
 
 	<div class="wrapper">
 
-		<div class="before-header"></div><!-- margin-top can destroy footer, this div is doing the same but safely -->
+		<div class="before-header"></div>
+		<!-- margin-top can destroy footer, this div is doing the same but safely -->
 
 		<div class="header">
 
 			<div class="center">
-				<h:graphicImage value="/resources/img/weld.png" alt="logo"
-					styleClass="header-logo-img" />
+				<div class="header-img"><h:graphicImage value="/resources/img/weld.png" alt="logo"
+					styleClass="header-logo-img" /></div>
 
 				<div class="contact-data">
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>
-					E-mail: emailinfo@gmail.com<br />
-					<i class="fa fa-phone" aria-hidden="true"></i>
-					Phone: 00 123 123 123<br />
-					<i class="fa fa-map-marker" aria-hidden="true"></i>
-					Address: fine street, new city, new country<br />
+					<i class="fa fa-envelope-o" aria-hidden="true"></i> E-mail:
+					<h:outputText value="#{basicDataBean.email}" />
+					<br /> <i class="fa fa-phone" aria-hidden="true"></i> Phone:
+					<h:outputText value="#{basicDataBean.phone}" />
+					<br /> <i class="fa fa-map-marker" aria-hidden="true"></i>
+					Address:
+					<h:outputText value="#{basicDataBean.address}" />
+					<br />
 				</div>
 			</div>
 
@@ -68,20 +71,34 @@
 			<ui:insert name="content">
               	[Template content will be inserted here]
             </ui:insert>
-			
+
 		</div>
 		<div class="footer">
-			<h:graphicImage value="/resources/img/weld.png" alt="logo" />
-			<p>footer</p>
+			<div class="footer-content">
+				<h:graphicImage value="/resources/img/weld.png" alt="logo" />
 
-			<div class="contact-data-footer">
-				<div class="contact-title">
-					Contact<br />
+				<div class="contact-data-footer">
+					<div class="contact-title">
+						Contact<br />
+					</div>
+					<i class="fa fa-envelope-o" aria-hidden="true"></i> E-mail:
+					<h:outputText value="#{basicDataBean.email}" />
+					<br /> 
+					
+					<i class="fa fa-phone" aria-hidden="true"></i> Phone:
+					<h:outputText value="#{basicDataBean.phone}" />
+					<br /> 
+					
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					Address:
+					<h:outputText value="#{basicDataBean.address}" />
+					<br />
+					
 				</div>
-				<i class="fa fa-envelope-o" aria-hidden="true"></i> E-mail: emailinfo@gmail.com<br /> 
-				<i class="fa fa-phone" aria-hidden="true"></i> Phone: 00 123 123 123<br /> 
-				<i class="fa fa-map-marker"
-					aria-hidden="true"></i> Address: fine street, new city, new country<br />
+
+				<div class="footer-info">
+					<h:outputText value="#{basicDataBean.footerInfo}" />
+				</div>
 			</div>
 
 		</div>

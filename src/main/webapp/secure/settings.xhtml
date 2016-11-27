@@ -12,66 +12,143 @@
 				<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
 					<h:outputText value="Restaurant name: " />
-					<p:inputText />
-					<p:commandButton value="submit" style="width: 100%;" />
+					
+					<p:inputText value="#{basicDataBean.restaurantName}" title="restaurant name" />
+					
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveRestaurantName()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</h:panelGrid>
 				</h:form>
 				
-				<h:form styleClass="admin-settings-form">
+
+			<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
-					<h:outputText value="E-mail: " />
-					<p:inputText />
-					<p:commandButton value="submit" style="width: 100%;" />
-				</h:panelGrid>
-				</h:form>
 				
-				<h:form styleClass="admin-settings-form">
+					<h:outputText value="E-mail: " />
+					
+					<p:inputText value="#{basicDataBean.email}"
+						title="restaurant email" />
+						
+					<p:commandButton value="submit" style="width: 100%;"
+						action="#{basicDataBean.saveEmail()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+			</h:form>
+			
+
+			<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
 					<h:outputText value="Phone: " />
-					<p:inputText />
-					<p:commandButton value="submit" style="width: 100%;" />
+					<p:inputText value="#{basicDataBean.phone}" title="restaurant phone" />
+					<p:commandButton value="submit" style="width: 100%;"  
+						action="#{basicDataBean.savePhone()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</h:panelGrid>
 				</h:form>
+				
 				
 				<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
 					<h:outputText value="Address: " />
-					<p:inputText />
-					<p:commandButton value="submit" style="width: 100%;" />
+					<p:inputText value="#{basicDataBean.address}" title="restaurant address" />
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveAddress()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</h:panelGrid>
 				</h:form>
+				
 				
 				<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
 					<h:outputText value="Logo url: " />
-					<p:inputText />
-					<p:commandButton value="submit" style="width: 100%;" />
+					<p:inputText value="#{basicDataBean.logoUrl}" title="url to website logo" />
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveLogoUrl()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</h:panelGrid>
 				</h:form>
+				
 
 				<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
 					<h:outputText value="Information inside footer: " />
-					<p:inputText />
-					<p:commandButton value="submit" style="width: 100%;" />
+					<p:inputText value="#{basicDataBean.footerInfo}" title="information to display inside footer" />
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveFooterInfo()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+				</h:form>
+				
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Tables for 2 people: " />
+					<p:inputNumber value="#{basicDataBean.tablesFor2}" emptyValue="0" id="tablesFor2" title="number of tables for 2 people" />
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveTF2()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+				</h:form>
+				
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Tables for 6 people: " />
+					
+					<p:inputNumber value="#{basicDataBean.tablesFor6}"  emptyValue="0" 
+						title="amount of tables for 6 people" id="tablesFor6" />
+						
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveTF6()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</h:panelGrid>
 				</h:form>
 				
 				<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
-					<h:outputText value="Tables for 2 people: " />
-					<p:inputNumber />
-					<p:commandButton value="submit" style="width: 100%;" />
+					<h:outputText value="Open time: " />
+					
+					<p:inputNumber value="#{basicDataBean.openTime}"  emptyValue="0" id="openTime" />
+						
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveOpenTime()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</h:panelGrid>
 				</h:form>
 				
 				<h:form styleClass="admin-settings-form">
 				<h:panelGrid columns="1">
 					<h:outputText value="Tables for 6 people: " />
-					<p:inputNumber />
-					<p:commandButton value="submit" style="width: 100%;" />
+					
+					<p:inputNumber value="#{basicDataBean.closeTime}"  emptyValue="0" id="closeTime" />
+						
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveCloseTime()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</h:panelGrid>
 				</h:form>
+				
 				
 			</h:panelGrid>
 		

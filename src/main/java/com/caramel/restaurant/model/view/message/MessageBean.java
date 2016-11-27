@@ -2,12 +2,14 @@ package com.caramel.restaurant.model.view.message;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
+
+//this bean was created for long strings like page's content
 @ManagedBean(eager = true)
-@SessionScoped
+@ApplicationScoped
 @ViewScoped
 public class MessageBean implements Serializable{
 	

@@ -8,11 +8,11 @@ import org.hibernate.Session;
 
 import com.caramel.restaurant.utils.HibernateUtil;
 
-public class MessageDAO { 
-	private static Logger log = LogManager.getLogger(MessageDAO.class.getName());
+public class NumericMessageDAO { 
+	private static Logger log = LogManager.getLogger(NumericMessageDAO.class.getName());
 	
 	//method to save message object
-	public void save(Message message){
+	public void save(NumericMessage message){
 		
 		log.trace("begin transaction with db");
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -27,18 +27,17 @@ public class MessageDAO {
 	}
 	
 	//returning message with specified target, 
-	//can be used to return a few records in one string
-	public String getMessageByTarget(String target){
+	public int getMessageByTarget(String target){
 		
 		//querying db
-		String hql = "SELECT a FROM Message a where a.target = :param";
+		String hql = "SELECT a FROM NumericMessage a where a.target = :param";
 		log.debug("quering db to get data: " + hql);
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
 		@SuppressWarnings("unchecked")
-		List<Message> result = session.createQuery(hql)
+		List<NumericMessage> result = session.createQuery(hql)
 												.setParameter("param", target)
 												.getResultList();
 		
@@ -46,18 +45,42 @@ public class MessageDAO {
 		session.close();
 		
 		//default value to return 
-		String message = new String();
+		int message;
 		
-		//comparing data to arg and if true then saving it to variable
-		for (Message message_t : result) {
-				message += message_t.getMessage();
+		if(!result.isEmpty()){
+			message = result.get(0).getNumber();
+			return message;
 		}
 		
-		return message;
+		return -1;
+	}
+	
+	public boolean doExist(String target){
+		
+		//querying db
+		String hql = "SELECT a FROM NumericMessage a where a.target = :param";
+		log.debug("quering db to get data: " + hql);
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+
+		@SuppressWarnings("unchecked")
+		List<NumericMessage> result = session.createQuery(hql)
+												.setParameter("param", target)
+												.getResultList();
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		if(!result.isEmpty()){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	//deleting message with specified target
-	public void deleteMessageByTarget(String target){
+public void deleteMessageByTarget(String target){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
@@ -65,17 +88,19 @@ public class MessageDAO {
 		log.debug("quering db to find records with target: " + target);
 		//querying db
 		@SuppressWarnings("unchecked")
-		List<Message> result = session.createQuery("FROM Message a WHERE a.target = :param")
+		List<NumericMessage> result = session.createQuery("FROM NumericMessage a WHERE a.target = :param")
 										.setParameter("param", target)
 										.getResultList();
 		
+		
 		log.info("delete by target: " + target);
 		//comparing data to arg and if true then saving it to variable
-		for (Message message_t : result) {
-			log.trace("delete message from db: " + message_t.getMessage());
+		for (NumericMessage message_t : result) {
+			log.trace("delete numericmessage from db: " + message_t.getNumber());
 			session.delete(message_t);	
 			session.flush();
 		}
+		
 		session.getTransaction().commit();
 		session.close();
 	}

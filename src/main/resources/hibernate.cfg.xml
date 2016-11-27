@@ -32,6 +32,7 @@
        	<mapping class="com.caramel.restaurant.model.view.foodscroller.Food" />      
        	<mapping class="com.caramel.restaurant.model.view.image.ImageView" />
        	<mapping class="com.caramel.restaurant.model.view.message.Message" />
+       	<mapping class="com.caramel.restaurant.model.view.message.NumericMessage" />
        	<mapping class="com.caramel.restaurant.model.view.reservation.Reservation" />
    </session-factory>
 </hibernate-configuration> 

@@ -9,20 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name="Message")
-@Table(name="message")
-public class Message implements Serializable{
+@Entity(name="NumericMessage")
+@Table(name="numericmessage")
+public class NumericMessage implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6179256628450030634L;
+	private static final long serialVersionUID = 283516804044024058L;
 
-	public Message(){}
+	public NumericMessage(){}
 	
-	public Message(String target, String message){
+	public NumericMessage(String target, int number){
 		this.target = target;
-		this.message = message;
+		this.number = number;
 	}
 	
 	@Id
@@ -33,9 +33,19 @@ public class Message implements Serializable{
 	@Column(name="target")
 	private String target;
 	
-	@Column(name="message", length=1000000)
-	private String message;
+	@Column(name="number")
+	private int number;
 	
+	
+	//getters and setters
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -50,13 +60,5 @@ public class Message implements Serializable{
 
 	public void setTarget(String target) {
 		this.target = target;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 }
