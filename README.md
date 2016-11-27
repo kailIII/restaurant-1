@@ -25,7 +25,7 @@ To-Do list:
 ===========
 - upload, download option for admins,
 - accounts creator,
-- charts with reservation data,
+- fix charts with reservation data,
 
 
 URL:
