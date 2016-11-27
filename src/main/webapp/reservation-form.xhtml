@@ -54,7 +54,7 @@
 								disabledWeekends="#{reservationBean.disableWeekends}"
 								pattern="dd/MM/yyyy" required="true" requiredMessage="Date is required" />
 
-							<h:outputText value="From:" />
+							<h:outputText value="Since:" />
 							<p:calendar id="fTime" value="#{reservationBean.firstTime}"
 								mode="popup" timeOnly="true" minHour="#{basicDataBean.openTime}" 
 								pattern="HH:mm" maxHour="#{basicDataBean.closeTime}"
@@ -96,7 +96,7 @@
 									locale="en_US" />
 							</h:outputText>
 
-							<h:outputText value="From:" />
+							<h:outputText value="Since:" />
 							<h:outputText value="#{reservationBean.firstTime}">
 								<!-- 		                set server timezone -->
 								<f:convertDateTime pattern="HH:mm" timeZone="CET" locale="en_US" />

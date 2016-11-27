@@ -44,7 +44,7 @@ public class ReservationChartBean implements Serializable{
         six.set("2006", 110);
         six.set("2007", 135);
         six.set("2008", 120);
- 
+        
         model.addSeries(two);
         model.addSeries(six);
          
@@ -60,6 +60,7 @@ public class ReservationChartBean implements Serializable{
          
         barChart.setTitle("Bar Chart");
         barChart.setLegendPosition("ne");
+        barChart.setAnimate(true);
          
         Axis xAxis = barChart.getAxis(AxisType.X);
         xAxis.setLabel("time");

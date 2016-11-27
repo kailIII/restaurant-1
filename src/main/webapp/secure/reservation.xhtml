@@ -10,23 +10,24 @@
 		<h:form>
 			<p:chart type="bar" model="#{reservationChartBean.barChart}" responsive="true" />
 		</h:form>
-	
-	
+
+
 		<h:form styleClass="reservation-form">
-			<p:dataTable id="tbl" var="reservation" value="#{adminReservationBean.reservations}"
+			<p:dataTable id="tbl" var="reservation"
+				value="#{adminReservationBean.reservations}"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
 				paginator="true" rows="15" style="margin-bottom:20px">
 
 				<f:facet name="{Exporters}">
-		            <h:commandLink>
-		                <p:graphicImage name="img/excel.png" width="24"/>
-		                <p:dataExporter type="xls" target="tbl" fileName="reservation" />
-		            </h:commandLink>
-		 
-		            <h:commandLink>
-		                <p:graphicImage name="img/pdf.png" width="24"/>
-		                <p:dataExporter type="pdf" target="tbl" fileName="reservation"/>
-		            </h:commandLink>
+					<h:commandLink>
+						<p:graphicImage name="img/excel.png" width="24" />
+						<p:dataExporter type="xls" target="tbl" fileName="reservations" pageOnly="true" />
+					</h:commandLink>
+
+					<h:commandLink>
+						<p:graphicImage name="img/pdf.png" width="24" />
+						<p:dataExporter type="pdf" target="tbl" fileName="reservations" pageOnly="true" />
+					</h:commandLink>
 				</f:facet>
 
 				<p:column>
@@ -38,28 +39,75 @@
 
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Year" />
+						<h:outputText value="people" />
 					</f:facet>
 					<h:outputText value="#{reservation.people}" />
 				</p:column>
 
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Brand" />
+						<h:outputText value="date" />
 					</f:facet>
 					<h:outputText value="#{reservation.date}" />
 				</p:column>
 
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Color" />
+						<h:outputText value="Since:" />
 					</f:facet>
 					<h:outputText value="#{reservation.firstTime}" />
 				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="To:" />
+					</f:facet>
+					<h:outputText value="#{reservation.secondTime}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="phone" />
+					</f:facet>
+					<h:outputText value="#{reservation.phone}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="email" />
+					</f:facet>
+					<h:outputText value="#{reservation.email}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="first name" />
+					</f:facet>
+					<h:outputText value="#{reservation.firstname}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="surname" />
+					</f:facet>
+					<h:outputText value="#{reservation.surname}" />
+				</p:column>
 			</p:dataTable>
 			
+			<div class="admin-reservation-everything">
+			<p>Export everything to file</p>
+				<h:commandLink>
+					<p:graphicImage name="img/excel.png" />
+					<p:dataExporter type="xls" target="tbl" fileName="reservations-all" />
+				</h:commandLink>
+	
+				<h:commandLink>
+					<p:graphicImage name="img/pdf.png" />
+					<p:dataExporter type="pdf" target="tbl" fileName="reservations-all"/>
+				</h:commandLink>
+			</div>
 			<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
+				value="${_csrf.token}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

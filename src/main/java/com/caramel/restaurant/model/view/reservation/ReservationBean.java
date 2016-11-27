@@ -17,6 +17,9 @@ import org.apache.logging.log4j.Logger;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
+import com.caramel.restaurant.model.view.message.MessageDAO;
+import com.caramel.restaurant.model.view.message.NumericMessageDAO;
+
 
 @ManagedBean
 @ViewScoped
@@ -27,14 +30,17 @@ public class ReservationBean implements Serializable{
 	 */
 	private static final long serialVersionUID = -1277131828348490458L;
 	private final Logger log = LogManager.getLogger(ReservationBean.class.getName());
+	private static MessageDAO messageDAO = new MessageDAO();
+	private static NumericMessageDAO numericMessageDAO = new NumericMessageDAO();
 	
 	private Date date = new Date();
 	private Date firstTime = new Date();
 	private Date secondTime = new Date();
 	private boolean disableWeekends = false;
-	private String openingTimes = "9";
-	private String closingTimes = "23";
-	private int items;//how many tables for people
+	private String openingTime;
+	private String closingTime;
+	private int items2;//how many tables for people
+	private int items6;//how many tables for people
 	private String firstname;
 	private String surname;
 	private String phone;
@@ -53,6 +59,16 @@ public class ReservationBean implements Serializable{
 		
 		secondTime.setHours(12);
 		secondTime.setMinutes(0);
+		try {
+			
+		openingTime = messageDAO.getMessageByTarget("openTime");
+		closingTime = messageDAO.getMessageByTarget("closeTime");
+		items2 = numericMessageDAO.getMessageByTarget("tablesFor2");
+		items6 = numericMessageDAO.getMessageByTarget("tablesFor6");
+		} catch (Exception e) {
+			// TODO: handle exception
+			log.warn("failed to set times and numbers of items: " + e.getStackTrace().toString());
+		}
 	}
 
 	
@@ -111,44 +127,68 @@ public class ReservationBean implements Serializable{
 		
 		//create date with opening time for validation
 		Date openDateChecker = new Date(res.getFirstTime().getTime());
-		openDateChecker.setHours(Integer.parseInt(openingTimes));
+		openDateChecker.setHours(Integer.parseInt(openingTime));
 		
 		//create date with closing time for validation
 		Date closeDateChecker = new Date(res.getFirstTime().getTime());
-		closeDateChecker.setHours(Integer.parseInt(closingTimes));
+		closeDateChecker.setHours(Integer.parseInt(closingTime));
 		
 		
 		log.debug("validates reservation properties");
 		//simple validation with if statement
-		if(checkList.size() <= 15 
-				&& res.getDate().after(actualDate)
-				
-				&& res.getFirstTime().before(closeDateChecker) //between opening time and closing time
-				&& res.getFirstTime().after(openDateChecker)
-				
-				&& res.getSecondTime().before(closeDateChecker) //between opening time and closing time
-				&& res.getSecondTime().after(openDateChecker)
-				
-				&& (res.getPeople().equals("2") || res.getPeople().equals("6") )// only for 2 people and 6
-				&& res.getFirstTime().before( res.getSecondTime() )//first should be before second
-				&& !res.getFirstTime().equals( res.getSecondTime() )){//first time isn't equal to second
-			dao.save(res);
+		switch (people) {
+		case "2":
+			if(checkList.size() < items2 
+			&& res.getDate().after(actualDate)
 			
-		//show information to client
-		requestContext.update("form:success");
-		requestContext.execute("PF('success').show()");
-		log.info("reservation successed");
-		return;
+			&& res.getFirstTime().before(closeDateChecker) //between opening time and closing time
+			&& res.getFirstTime().after(openDateChecker)
+			
+			&& res.getSecondTime().before(closeDateChecker) //between opening time and closing time
+			&& res.getSecondTime().after(openDateChecker)
+			
+			&& (res.getPeople().equals("2") || res.getPeople().equals("6") )// only for 2 people and 6
+			&& res.getFirstTime().before( res.getSecondTime() )//first should be before second
+			&& !res.getFirstTime().equals( res.getSecondTime() )){//first time isn't equal to second
+				dao.save(res);
+				
+				//show information to client
+				requestContext.update("form:success");
+				requestContext.execute("PF('success').show()");
+				log.info("reservation successed");
+				return;
+			}
+			break;
+			
+			
+		case "6":
+			if(checkList.size() < items6 
+			&& res.getDate().after(actualDate)
+			
+			&& res.getFirstTime().before(closeDateChecker) //between opening time and closing time
+			&& res.getFirstTime().after(openDateChecker)
+			
+			&& res.getSecondTime().before(closeDateChecker) //between opening time and closing time
+			&& res.getSecondTime().after(openDateChecker)
+			
+			&& (res.getPeople().equals("2") || res.getPeople().equals("6") )// only for 2 people and 6
+			&& res.getFirstTime().before( res.getSecondTime() )//first should be before second
+			&& !res.getFirstTime().equals( res.getSecondTime() )){//first time isn't equal to second
+				dao.save(res);
+				
+				//show information to client
+				requestContext.update("form:success");
+				requestContext.execute("PF('success').show()");
+				log.info("reservation successed");
+				return;
+			}
+			break;
 		}
 		
 		requestContext.update("form:fail");
 		requestContext.execute("PF('fail').show()");
 		log.info("reservation failed");
 		log.info("start");
-		
-		if(!(checkList.size() <= 15)){
-			log.info("!checkList.size() <= 15 return true");
-		}
 		
 		if(!(res.getDate().after(actualDate))){
 			log.info("!res.getDate().after(actualDate) return true");
@@ -199,25 +239,30 @@ public class ReservationBean implements Serializable{
 	
 	
 	//getters and setters
-	public String getOpeningTimes() {
-		return openingTimes;
-	}
-
-	public void setOpeningTimes(String openingTimes) {
-		this.openingTimes = openingTimes;
-	}
-
-	public String getClosingTimes() {
-		return closingTimes;
-	}
-
-	public void setClosingTimes(String closingTimes) {
-		this.closingTimes = closingTimes;
-	}
 
 	public boolean isDisableWeekends() {
 		return disableWeekends;
 	}
+
+	public String getOpeningTime() {
+		return openingTime;
+	}
+
+
+	public void setOpeningTime(String openingTime) {
+		this.openingTime = openingTime;
+	}
+
+
+	public String getClosingTime() {
+		return closingTime;
+	}
+
+
+	public void setClosingTime(String closingTime) {
+		this.closingTime = closingTime;
+	}
+
 
 	public void setDisableWeekends(boolean disableWeekends) {
 		this.disableWeekends = disableWeekends;
@@ -287,13 +332,19 @@ public class ReservationBean implements Serializable{
 		this.email = email;
 	}
 
-
-	public int getItems() {
-		return items;
+	public int getItems6() {
+		return items6;
 	}
 
+	public void setItems6(int items6) {
+		this.items6 = items6;
+	}
 
-	public void setItems(int items) {
-		this.items = items;
+	public int getItems2() {
+		return items2;
+	}
+
+	public void setItems2(int items2) {
+		this.items2 = items2;
 	}
 }

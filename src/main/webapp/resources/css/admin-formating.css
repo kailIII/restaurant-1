@@ -31,3 +31,9 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.admin-reservation-everything{
+	text-align: center;
+	background-color: rgba(236, 236, 236, 0.9);
+	border-top: 1px solid rgba(36, 36, 36, 0.5);
+}
