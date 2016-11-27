@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 26 Lis 2016, 20:14
+-- Czas generowania: 27 Lis 2016, 21:06
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -92,7 +92,35 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id`, `message`, `target`) VALUES
-(17, '<h1 style="text-align: center;">Your Topic</h1><div style="text-align: center;"><span style="font-size: 10pt;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie tristique est eget scelerisque. Nulla in nisl sed magna pulvinar hendrerit sed non metus. In cursus bibendum odio, ac posuere ligula. Vestibulum ipsum lacus, dictum a nisl a, hendrerit gravida est. Nam ut nisl congue, porta ipsum vel, porta tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer placerat lorem at eros rhoncus vulputate. Sed tellus urna, tincidunt quis ipsum non, vestibulum placerat dolor. Nam neque mi, feugiat a turpis ut, iaculis imperdiet urna.\r\n\r\nDonec sit amet tempor lectus, vitae scelerisque lectus. Pellentesque viverra cursus tincidunt. Maecenas laoreet enim nec vulputate blandit.&nbsp;</span></div><div style="text-align: center;"><span style="font-size: 10pt;"><br></span></div><div style="text-align: center;"><span style="font-size: 10pt;">Nullam elementum vitae lorem ac commodo. Donec accumsan tincidunt mattis. Donec ex diam, ornare vitae mollis a, gravida porttitor dui. Proin rhoncus egestas nisl. Quisque malesuada dolor vel ante eleifend ultrices. Proin sodales sem sit amet cursus feugiat. Aliquam id tempor diam. Nullam pellentesque accumsan velit sed dapibus. Vivamus pellentesque ipsum ut erat eleifend, quis efficitur lectus consequat. Vestibulum lobortis quis enim ut finibus. Aenean quis tristique ligula. Aliquam id nisl ultricies, molestie magna egestas, blandit justo.\r\n\r\nDonec suscipit mattis turpis ut faucibus. Sed accumsan ex vel erat pharetra venenatis. In consequat blandit lectus, non ultricies risus. Vivamus dignissim nulla a vehicula molestie. Maecenas ullamcorper leo at risus tempus, semper aliquet orci sodales. Donec vitae fermentum justo. Maecenas interdum blandit lectus sit amet facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras vestibulum molestie ante pretium blandit.</span></div>', 'about');
+(17, '<h1 style="text-align: center;">Your Topic</h1><div style="text-align: center;"><span style="font-size: 10pt;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie tristique est eget scelerisque. Nulla in nisl sed magna pulvinar hendrerit sed non metus. In cursus bibendum odio, ac posuere ligula. Vestibulum ipsum lacus, dictum a nisl a, hendrerit gravida est. Nam ut nisl congue, porta ipsum vel, porta tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer placerat lorem at eros rhoncus vulputate. Sed tellus urna, tincidunt quis ipsum non, vestibulum placerat dolor. Nam neque mi, feugiat a turpis ut, iaculis imperdiet urna.\r\n\r\nDonec sit amet tempor lectus, vitae scelerisque lectus. Pellentesque viverra cursus tincidunt. Maecenas laoreet enim nec vulputate blandit.&nbsp;</span></div><div style="text-align: center;"><span style="font-size: 10pt;"><br></span></div><div style="text-align: center;"><span style="font-size: 10pt;">Nullam elementum vitae lorem ac commodo. Donec accumsan tincidunt mattis. Donec ex diam, ornare vitae mollis a, gravida porttitor dui. Proin rhoncus egestas nisl. Quisque malesuada dolor vel ante eleifend ultrices. Proin sodales sem sit amet cursus feugiat. Aliquam id tempor diam. Nullam pellentesque accumsan velit sed dapibus. Vivamus pellentesque ipsum ut erat eleifend, quis efficitur lectus consequat. Vestibulum lobortis quis enim ut finibus. Aenean quis tristique ligula. Aliquam id nisl ultricies, molestie magna egestas, blandit justo.\r\n\r\nDonec suscipit mattis turpis ut faucibus. Sed accumsan ex vel erat pharetra venenatis. In consequat blandit lectus, non ultricies risus. Vivamus dignissim nulla a vehicula molestie. Maecenas ullamcorper leo at risus tempus, semper aliquet orci sodales. Donec vitae fermentum justo. Maecenas interdum blandit lectus sit amet facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras vestibulum molestie ante pretium blandit.</span></div>', 'about'),
+(34, 'fine street, new city, new country', 'address'),
+(35, 'footer info for you', 'footerInfo'),
+(37, 'myEmail@gmail.com', 'email'),
+(38, '00 123 123 321', 'phone'),
+(41, '/restaurant/resources/img/weld.png', 'logoUrl'),
+(42, '23', 'closeTime'),
+(43, '8', 'openTime'),
+(46, 'Sushi Way', 'restaurantName');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `numericmessage`
+--
+
+CREATE TABLE `numericmessage` (
+  `id` int(11) NOT NULL,
+  `number` int(11) DEFAULT NULL,
+  `target` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `numericmessage`
+--
+
+INSERT INTO `numericmessage` (`id`, `number`, `target`) VALUES
+(5, 170, 'tablesFor6'),
+(6, 1000, 'tablesFor2');
 
 -- --------------------------------------------------------
 
@@ -161,7 +189,9 @@ INSERT INTO `reservation` (`id`, `date`, `email`, `firstTime`, `firstname`, `peo
 (45, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
 (46, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
 (47, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(48, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq');
+(48, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
+(49, '2016-11-28 12:00:00', '', '11:00:00', '', '6', '', '12:00:00', ''),
+(50, '2016-11-30 12:00:00', 'qwe', '11:00:00', 'qwe', '6', 'qwe', '12:00:00', 'qwe');
 
 -- --------------------------------------------------------
 
@@ -211,6 +241,12 @@ ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `numericmessage`
+--
+ALTER TABLE `numericmessage`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reservation`
 --
 ALTER TABLE `reservation`
@@ -240,12 +276,17 @@ ALTER TABLE `imageview`
 -- AUTO_INCREMENT dla tabeli `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+--
+-- AUTO_INCREMENT dla tabeli `numericmessage`
+--
+ALTER TABLE `numericmessage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT dla tabeli `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- Ograniczenia dla zrzutów tabel
 --
