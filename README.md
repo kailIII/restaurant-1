@@ -16,7 +16,7 @@ features:
 - chart with reservation data,
 - table with reservation data,
 - excel and pdf import option for reservation data,
-- text editor for about page,
+- text editor for about us page,
 - form to set basic website informations (e.g. e-mail, phone),
 - page to check single reservation, available for clients,
 
