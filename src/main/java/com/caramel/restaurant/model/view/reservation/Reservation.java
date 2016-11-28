@@ -1,5 +1,6 @@
 package com.caramel.restaurant.model.view.reservation;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
@@ -12,8 +13,13 @@ import javax.persistence.Table;
 
 @Entity(name="Reservation")
 @Table(name="reservation")
-public class Reservation {
+public class Reservation implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3405043945047950966L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;

@@ -18,8 +18,8 @@ import org.apache.logging.log4j.Logger;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
-import com.caramel.restaurant.model.view.message.MessageDAO;
-import com.caramel.restaurant.model.view.message.NumericMessageDAO;
+import com.caramel.restaurant.model.view.message.MessageDAOImpl;
+import com.caramel.restaurant.model.view.message.NumericMessageDAOImpl;
 
 
 @ManagedBean
@@ -31,8 +31,8 @@ public class ReservationBean implements Serializable{
 	 */
 	private static final long serialVersionUID = -1277131828348490458L;
 	private final Logger log = LogManager.getLogger(ReservationBean.class.getName());
-	private static MessageDAO messageDAO = new MessageDAO();
-	private static NumericMessageDAO numericMessageDAO = new NumericMessageDAO();
+	private static MessageDAOImpl messageDAO = new MessageDAOImpl();
+	private static NumericMessageDAOImpl numericMessageDAO = new NumericMessageDAOImpl();
 	
 	private Date date = new Date();
 	private Date firstTime = new Date();
@@ -76,7 +76,7 @@ public class ReservationBean implements Serializable{
 	}
 	
 	public void setReservationsListByEmail(){
-		ReservationDAO reservationDAO = new ReservationDAO();
+		ReservationDAOImpl reservationDAO = new ReservationDAOImpl();
 		log.info("list was changed: " + email);
 		this.reservations =  reservationDAO.getByEmail(email);
 	}
@@ -93,7 +93,7 @@ public class ReservationBean implements Serializable{
 		res.setFirstTime(new Time(firstTime.getHours(), firstTime.getMinutes(), 0));
 		res.setSecondTime(new Time(secondTime.getHours(), secondTime.getMinutes(), 0));
 		
-		ReservationDAO dao = new ReservationDAO();
+		ReservationDAOImpl dao = new ReservationDAOImpl();
 		dao.save(res);
 	}
 	
@@ -124,7 +124,7 @@ public class ReservationBean implements Serializable{
 		//create object which allow to communicate with client
 		RequestContext requestContext = RequestContext.getCurrentInstance();
 		
-		ReservationDAO dao = new ReservationDAO();
+		ReservationDAOImpl dao = new ReservationDAOImpl();
 		List<Reservation> checkList = dao.getBetweenTime(res.getDate(), 
 														res.getFirstTime(), 
 														res.getSecondTime(),

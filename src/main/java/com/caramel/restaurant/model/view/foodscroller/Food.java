@@ -1,5 +1,7 @@
 package com.caramel.restaurant.model.view.foodscroller;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +13,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name="Food")
 @Table(name="food")
-public class Food {
+public class Food implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7842268385407011287L;
+
 	public Food(String name, String desc, String category){
 		this.name = name;
 		this.description = desc;

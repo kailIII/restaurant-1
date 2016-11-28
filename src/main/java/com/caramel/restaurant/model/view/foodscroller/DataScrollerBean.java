@@ -18,10 +18,7 @@ public class DataScrollerBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 6783843624445469414L;
 	
-//	@ManagedProperty("#{foodBeanService}")
-//	private FoodBeanService service;
-	
-	private FoodDAO dao = new FoodDAO();
+	private FoodDAOImpl dao = new FoodDAOImpl();
     
 
 	//define list with obcject creation and store it 
@@ -49,6 +46,8 @@ public class DataScrollerBean implements Serializable{
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
+	
+	//getters and setters
 	public List<Food> getMain() {
 		return main;
 	}

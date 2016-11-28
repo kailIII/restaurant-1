@@ -34,5 +34,7 @@
        	<mapping class="com.caramel.restaurant.model.view.message.Message" />
        	<mapping class="com.caramel.restaurant.model.view.message.NumericMessage" />
        	<mapping class="com.caramel.restaurant.model.view.reservation.Reservation" />
+       	<mapping class="com.caramel.restaurant.model.users.User" />
+       	<mapping class="com.caramel.restaurant.model.users.UserRole" />
    </session-factory>
 </hibernate-configuration> 

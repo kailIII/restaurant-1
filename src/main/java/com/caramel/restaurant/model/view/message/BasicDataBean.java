@@ -20,8 +20,8 @@ public class BasicDataBean implements Serializable{
 	 */
 	private static final long serialVersionUID = -1616751649739679266L;
 	private static Logger log = LogManager.getLogger(BasicDataBean.class.getName());
-	private static MessageDAO dao = new MessageDAO();
-	private static NumericMessageDAO numDAO = new NumericMessageDAO();
+	private static MessageDAOImpl dao = new MessageDAOImpl();
+	private static NumericMessageDAOImpl numDAO = new NumericMessageDAOImpl();
 	
 	private int tablesFor2;
 	private int tablesFor6;

@@ -23,17 +23,17 @@ public class MessageBean implements Serializable{
 	private String target;
 	
 	public String getMessageFromDB(String passedTarget){
-		MessageDAO messageDAO = new MessageDAO();
+		MessageDAOImpl messageDAO = new MessageDAOImpl();
 		return messageDAO.getMessageByTarget(passedTarget);
 	}
 	
 	public void deleteMessageFromDB(String passedTarget){
-		MessageDAO messageDAO = new MessageDAO();
+		MessageDAOImpl messageDAO = new MessageDAOImpl();
 		messageDAO.deleteMessageByTarget(passedTarget);
 	}
 	
 	public void saveMessage(Message passedMessage){
-		MessageDAO messageDAO = new MessageDAO();
+		MessageDAOImpl messageDAO = new MessageDAOImpl();
 		messageDAO.save(passedMessage);
 	}
 	
