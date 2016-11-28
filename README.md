@@ -1,10 +1,12 @@
 
                                  restaurant 
 
+It's simple restaurant website build on jsf 2.2, Spring, Hibernate, PrimeFaces and PrettyFaces.
+
 To work with project i recommend to import db from root dir.
 Project is already configured to work with mariadb from xampp.
 You can find db configuration inside hibernate.cfg.xml and SecurityConfig class.
-Tested with windows 10, jdk 1.8.0_102, mariadb 10.1.16-MariaDB.
+Tested with windows 10, jdk 1.8.0_102, mariadb 10.1.16-MariaDB and Tomcat 8.0.38.
 
 
 features:
