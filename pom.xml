@@ -309,6 +309,17 @@
 				</configuration>
 				<version>${maven.compiler}</version>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<wtpversion>2.0</wtpversion>
+					<downloadSources>true</downloadSources> 
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+				<version>${maven.eclipse.plugin}</version>
+			</plugin>
 		</plugins>
 	</build>
 </project>
