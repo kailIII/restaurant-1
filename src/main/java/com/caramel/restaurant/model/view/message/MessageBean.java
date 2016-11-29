@@ -10,7 +10,6 @@ import javax.faces.bean.ViewScoped;
 //this bean was created for long strings like page's content
 @ManagedBean(eager = true)
 @ApplicationScoped
-@ViewScoped
 public class MessageBean implements Serializable{
 	
 	/**
@@ -23,17 +22,17 @@ public class MessageBean implements Serializable{
 	private String target;
 	
 	public String getMessageFromDB(String passedTarget){
-		MessageDAOImpl messageDAO = new MessageDAOImpl();
+		MessageDAO messageDAO = new MessageDAOImpl();
 		return messageDAO.getMessageByTarget(passedTarget);
 	}
 	
 	public void deleteMessageFromDB(String passedTarget){
-		MessageDAOImpl messageDAO = new MessageDAOImpl();
+		MessageDAO messageDAO = new MessageDAOImpl();
 		messageDAO.deleteMessageByTarget(passedTarget);
 	}
 	
 	public void saveMessage(Message passedMessage){
-		MessageDAOImpl messageDAO = new MessageDAOImpl();
+		MessageDAO messageDAO = new MessageDAOImpl();
 		messageDAO.save(passedMessage);
 	}
 	

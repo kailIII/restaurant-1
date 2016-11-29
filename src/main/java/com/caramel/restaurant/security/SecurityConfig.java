@@ -1,7 +1,5 @@
 package com.caramel.restaurant.security;
 
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +39,6 @@ public class SecurityConfig
                 .invalidateHttpSession(true)
         .and().csrf();
 		
-                
-//		and().logout().    //logout configuration
-//		logoutUrl("/appLogout"). 
-//		logoutSuccessUrl("/customLogin.xhtml");
-		
 		//uncomment to disable csrf
 		//http.csrf().disable();
 
@@ -65,15 +58,8 @@ public class SecurityConfig
 				"SELECT u.username, auth.authority FROM users u, authorities auth WHERE u.username = auth.username AND u.username = ?;");
 	}
 	
-	@Bean
-	public DriverManagerDataSource dataSource() throws SQLException {
-	    
-	    //postgres
-		DriverManagerDataSource driverManagerDataSource1 = new DriverManagerDataSource();
-	    driverManagerDataSource1.setDriverClassName("org.postgresql.Driver");
-	    driverManagerDataSource1.setUsername("root");
-	    driverManagerDataSource1.setPassword("12345");
-	    driverManagerDataSource1.setUrl("jdbc:postgresql://192.168.3.19:5432/restaurantdb");
+	@Bean(name="dataSource")
+	public DriverManagerDataSource dataSource() throws Exception {
 	    
 	    //mysql
 	    DriverManagerDataSource driverManagerDataSource2 = new DriverManagerDataSource();
@@ -100,7 +86,6 @@ public class SecurityConfig
 //	          ON UPDATE NO ACTION ON DELETE NO ACTION
 //	    ) ENGINE=INNODB;
 	
-	//for both
 	//INSERT INTO users(username,password,enabled) VALUES ("root","123", true);
 	//INSERT INTO authorities(username,authority) VALUES ("root", "ROLE_ADMIN");
 	

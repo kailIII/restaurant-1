@@ -36,7 +36,7 @@ public class EditorBean implements Serializable{
 		message.setMessage(text);
 		message.setTarget(target);
 		
-		MessageDAOImpl messageDAO = new MessageDAOImpl();
+		MessageDAO messageDAO = new MessageDAOImpl();
 		messageDAO.deleteMessageByTarget(message.getTarget());
 		messageDAO.save(message);
 	}

@@ -18,7 +18,7 @@ public class DataScrollerBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 6783843624445469414L;
 	
-	private FoodDAOImpl dao = new FoodDAOImpl();
+	private FoodDAO dao = new FoodDAOImpl();
     
 
 	//define list with obcject creation and store it 

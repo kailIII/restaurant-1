@@ -11,12 +11,11 @@ import org.hibernate.Session;
 import com.caramel.restaurant.utils.HibernateUtil;
 
 public class ReservationDAOImpl implements ReservationDAO{
-	
 	private final Logger log = LogManager.getLogger(ReservationDAOImpl.class.getName());
 
 	//return list of reservations with selected id and ordered by date
 	@Override
-	public List<Reservation> getBetweenTime(Date date, Time firstTime, Time secondTime, String numberOfPeople){
+	public List<Reservation> getBetweenTime(Date date, Time firstTime, Time secondTime, String numberOfPeople) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -41,10 +40,10 @@ public class ReservationDAOImpl implements ReservationDAO{
 		
 		return result;
 	}
-	
+
 	//return list of reservations with selected id and ordered by date
 	@Override
-	public List<Reservation> getById(int id){
+	public List<Reservation> getById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -58,11 +57,10 @@ public class ReservationDAOImpl implements ReservationDAO{
 		
 		return result;
 	}
-	
+
 	//return list of reservations with selected surname and ordered by date
 	@Override
-	public List<Reservation> getByEmail(String email){
-		
+	public List<Reservation> getByEmail(String email) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -76,10 +74,10 @@ public class ReservationDAOImpl implements ReservationDAO{
 		
 		return result;
 	}
-	
+
 	//return list of reservations ordered by date
 	@Override
-	public List<Reservation> getAll(){
+	public List<Reservation> getAll() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -94,7 +92,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 	}
 
 	@Override
-	public void save(Reservation res){
+	public void save(Reservation res) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -103,9 +101,9 @@ public class ReservationDAOImpl implements ReservationDAO{
 		session.getTransaction().commit();
 		session.close();
 	}
-	
+
 	@Override
-	public void deleteById(int id){
+	public void deleteById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -115,5 +113,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		
 		session.getTransaction().commit();
 		session.close();
+		
 	}
+	
 }

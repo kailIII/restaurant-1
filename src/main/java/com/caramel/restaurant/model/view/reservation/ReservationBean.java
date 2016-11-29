@@ -18,7 +18,9 @@ import org.apache.logging.log4j.Logger;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
+import com.caramel.restaurant.model.view.message.MessageDAO;
 import com.caramel.restaurant.model.view.message.MessageDAOImpl;
+import com.caramel.restaurant.model.view.message.NumericMessageDAO;
 import com.caramel.restaurant.model.view.message.NumericMessageDAOImpl;
 
 
@@ -31,8 +33,8 @@ public class ReservationBean implements Serializable{
 	 */
 	private static final long serialVersionUID = -1277131828348490458L;
 	private final Logger log = LogManager.getLogger(ReservationBean.class.getName());
-	private static MessageDAOImpl messageDAO = new MessageDAOImpl();
-	private static NumericMessageDAOImpl numericMessageDAO = new NumericMessageDAOImpl();
+	private static MessageDAO messageDAO = new MessageDAOImpl();
+	private static NumericMessageDAO numericMessageDAO = new NumericMessageDAOImpl();
 	
 	private Date date = new Date();
 	private Date firstTime = new Date();

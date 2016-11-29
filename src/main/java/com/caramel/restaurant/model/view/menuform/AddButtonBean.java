@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import com.caramel.restaurant.model.view.foodscroller.Food;
+import com.caramel.restaurant.model.view.foodscroller.FoodDAO;
 import com.caramel.restaurant.model.view.foodscroller.FoodDAOImpl;
 
 @ManagedBean
@@ -19,7 +20,7 @@ public class AddButtonBean implements Serializable{
 	 */
 	private static final long serialVersionUID = -117768526281429448L;
 
-	private FoodDAOImpl foodDao = new FoodDAOImpl();
+	private FoodDAO foodDao = new FoodDAOImpl();
 	
 	private String name;
 	private String desc;

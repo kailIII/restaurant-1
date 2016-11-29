@@ -40,13 +40,13 @@ public class AdminReservationBean implements Serializable{
 
 	@PostConstruct
 	public void init(){
-		ReservationDAOImpl dao = new ReservationDAOImpl();
+		ReservationDAO dao = new ReservationDAOImpl();
 		reservations = dao.getAll();
 	}
 	
 	
 	public boolean isEmpty(){
-		ReservationDAOImpl dao = new ReservationDAOImpl();
+		ReservationDAO dao = new ReservationDAOImpl();
 		
 		Time firstLocalTime = new Time(firstTime.getHours(), firstTime.getMinutes(), 0);
 		Time secondLocalTime = new Time(secondTime.getHours(), secondTime.getMinutes(), 0);
@@ -60,7 +60,7 @@ public class AdminReservationBean implements Serializable{
 	}
 
 	public List<Reservation> getBetween(){
-		ReservationDAOImpl dao = new ReservationDAOImpl();
+		ReservationDAO dao = new ReservationDAOImpl();
 		
 		Time firstLocalTime = new Time(firstTime.getHours(), firstTime.getMinutes(), 0);
 		Time secondLocalTime = new Time(secondTime.getHours(), secondTime.getMinutes(), 0);

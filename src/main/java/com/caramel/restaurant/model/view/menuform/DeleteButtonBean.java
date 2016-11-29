@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import com.caramel.restaurant.model.view.foodscroller.FoodDAO;
 import com.caramel.restaurant.model.view.foodscroller.FoodDAOImpl;
 
 @ManagedBean
@@ -18,7 +19,7 @@ public class DeleteButtonBean implements Serializable{
 	 */
 	private static final long serialVersionUID = -7199795023014449419L;
 
-	private FoodDAOImpl foodDao = new FoodDAOImpl();
+	private FoodDAO foodDao = new FoodDAOImpl();
 	
 	private int index;
 	

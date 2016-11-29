@@ -40,7 +40,7 @@ public class ImageViewBean implements Serializable{
     
     public String addImage(){
     	
-	    	ImageViewDAOImpl imageDAO = new ImageViewDAOImpl();
+	    	ImageViewDAO imageDAO = new ImageViewDAOImpl();
 
     		
 	    	ImageView image = new ImageView(name);
