@@ -11,7 +11,7 @@ Tested with windows 10, jdk 1.8.0_102, mariadb 10.1.16-MariaDB and Tomcat 8.0.38
 
 features:
 ===========
-- beautiful banner and template,
+- beautiful banner and old style template,
 - dynamically managed food menu with ajax,
 - booking tables for 2 or 6 people,
 - admin panel and login page,
