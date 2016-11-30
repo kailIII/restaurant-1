@@ -72,7 +72,6 @@ public class ReservationBean implements Serializable{
 		items2 = numericMessageDAO.getMessageByTarget("tablesFor2");
 		items6 = numericMessageDAO.getMessageByTarget("tablesFor6");
 		} catch (Exception e) {
-			// TODO: handle exception
 			log.warn("failed to set times and numbers of items: " + e.getStackTrace().toString());
 		}
 	}

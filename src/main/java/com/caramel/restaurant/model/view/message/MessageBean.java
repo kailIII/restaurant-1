@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 
 //this bean was created for long strings like page's content

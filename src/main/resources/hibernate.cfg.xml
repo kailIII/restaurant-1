@@ -3,12 +3,6 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-	
-<!--         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> -->
-<!--         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property> -->
-<!--         <property name="hibernate.connection.username">root</property> -->
-<!--         <property name="hibernate.connection.password">12345</property> -->
-<!--         <property name="hibernate.connection.url">jdbc:postgresql://192.168.3.19:5432/restaurantdb</property> -->
 
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -17,7 +11,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
 
-<!-- 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property> -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
     	<property name="hbm2ddl.auto">update</property>
        	<property name="show_sql">true</property>
         
