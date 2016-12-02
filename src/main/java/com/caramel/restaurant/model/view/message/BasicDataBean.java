@@ -3,8 +3,10 @@ package com.caramel.restaurant.model.view.message;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -51,6 +53,9 @@ public class BasicDataBean implements Serializable{
 		tablesFor6 = numDAO.getMessageByTarget("tablesFor6");
 	}
 	
+	public void sendPFSuccessMessage(){
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Value was saved ", null));
+	}
 	
 	public void saveTF2(){
 		log.info("saving message with target: " + tablesFor2);
@@ -59,6 +64,7 @@ public class BasicDataBean implements Serializable{
 		
 		numDAO.deleteMessageByTarget("tablesFor2");
 		numDAO.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void saveTF6(){
@@ -67,6 +73,7 @@ public class BasicDataBean implements Serializable{
 		
 		numDAO.deleteMessageByTarget("tablesFor6");
 		numDAO.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void saveOpenTime(){
@@ -77,6 +84,7 @@ public class BasicDataBean implements Serializable{
 		
 				dao.deleteMessageByTarget(message.getTarget());
 				dao.save(message);
+				sendPFSuccessMessage();
 			}
 		}catch (Exception e) {
 			log.warn("conversion to int failed");
@@ -92,6 +100,7 @@ public class BasicDataBean implements Serializable{
 		
 			dao.deleteMessageByTarget(message.getTarget());
 			dao.save(message);
+			sendPFSuccessMessage();
 			}
 		}catch (Exception e) {
 			log.warn("conversion to int failed");
@@ -105,6 +114,7 @@ public class BasicDataBean implements Serializable{
 		
 		dao.deleteMessageByTarget(message.getTarget());
 		dao.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void savePhone(){
@@ -114,6 +124,7 @@ public class BasicDataBean implements Serializable{
 		
 		dao.deleteMessageByTarget(message.getTarget());
 		dao.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void saveEmail(){
@@ -123,6 +134,7 @@ public class BasicDataBean implements Serializable{
 		
 		dao.deleteMessageByTarget(message.getTarget());
 		dao.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void saveRestaurantName(){
@@ -132,6 +144,7 @@ public class BasicDataBean implements Serializable{
 		
 		dao.deleteMessageByTarget(message.getTarget());
 		dao.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void saveFooterInfo(){
@@ -141,6 +154,7 @@ public class BasicDataBean implements Serializable{
 		
 		dao.deleteMessageByTarget(message.getTarget());
 		dao.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void saveAddress(){
@@ -150,6 +164,7 @@ public class BasicDataBean implements Serializable{
 		
 		dao.deleteMessageByTarget(message.getTarget());
 		dao.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	//getters and setters

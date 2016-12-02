@@ -7,7 +7,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.caramel.restaurant.model.users.UserDAO;
+import com.caramel.restaurant.model.users.UserDAOImpl;
 
 @ManagedBean(eager=true)
 @ApplicationScoped
@@ -32,6 +38,11 @@ public class DataScrollerBean implements Serializable{
     	main = dao.getMessageByCategory("main");
     	deserts = dao.getMessageByCategory("deserts");
     	beverages = dao.getMessageByCategory("beverages");
+    	
+    	
+//    	UserDAO userDao = new UserDAOImpl();
+//    	
+//    	userDao.saveNewAccount("jack", "123", true);
     }
     
     public void refresh(){

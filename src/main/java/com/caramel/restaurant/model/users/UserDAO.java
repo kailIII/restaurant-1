@@ -9,11 +9,13 @@ import com.caramel.restaurant.utils.HibernateUtil;
 public interface UserDAO {
 	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	
-	List<User> getAccounts();
+	public List<User> getAccounts();
 	
-	void saveNewAccount(String nick, String password, boolean enabled);
+	public void saveNewAccount(String nick, String password, boolean enabled);
 	
-	void changePasswordByName(String nick, String newPassword);	
+	public void changePasswordByName(String nick, String newPassword);	
 	
-	void deleteAccountByName(String nick);
+	public void deleteAccountByName(String nick);
+	
+	public List<User> getByName(String nick);
 }

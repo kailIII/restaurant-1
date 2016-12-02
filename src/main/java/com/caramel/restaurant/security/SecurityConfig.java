@@ -55,7 +55,7 @@ public class SecurityConfig
 		.usersByUsernameQuery(
 				"SELECT username, password, enabled FROM users WHERE enabled = true and username = ?;")
 		.authoritiesByUsernameQuery(
-				"SELECT u.username, auth.authority FROM users u, authorities auth WHERE u.username = auth.username AND u.username = ?;");
+				"SELECT u.username, auth.role FROM users u, authorities auth WHERE u.username = auth.username AND u.username = ?;");
 	}
 	
 	@Bean(name="dataSource")
@@ -80,13 +80,13 @@ public class SecurityConfig
 //	    CREATE TABLE authorities
 //	    (
 //	      username varchar(50) NOT NULL,
-//	      authority varchar(50) NOT NULL,
+//	      role varchar(50) NOT NULL,
 //	      CONSTRAINT fk_authorities_users FOREIGN KEY (username)
 //	          REFERENCES users (username) MATCH SIMPLE
 //	          ON UPDATE NO ACTION ON DELETE NO ACTION
 //	    ) ENGINE=INNODB;
 	
 	//INSERT INTO users(username,password,enabled) VALUES ("root","123", true);
-	//INSERT INTO authorities(username,authority) VALUES ("root", "ROLE_ADMIN");
+	//INSERT INTO authorities(username,role) VALUES ("root", "ROLE_ADMIN");
 	
 }

@@ -122,13 +122,14 @@
 				</h:form>
 				
 				<h:form styleClass="admin-settings-form">
+				<p:growl id="growl-open" life="2000" />
 				<h:panelGrid columns="1">
 					<h:outputText value="Open time: " />
 					
 					<p:spinner value="#{basicDataBean.openTime}" id="openTime" />
 						
 					<p:commandButton value="submit" style="width: 100%;" 
-						action="#{basicDataBean.saveOpenTime()}" />
+						action="#{basicDataBean.saveOpenTime()}" update="growl-open" />
 						
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />

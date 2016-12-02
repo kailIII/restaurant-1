@@ -37,16 +37,29 @@ public class FoodDAOImpl implements FoodDAO{
 	@Override
 	public void save(Food food){
 		
+		//with empty values hibernate throws null id exception
+		if(!(food.getName().length() > 0)){
+			log.info("name should not be empty");
+			return;
+		}
+		
 		log.trace("begin transaction with db");
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
 		
-		log.debug("saving to db " + Food.class.getName());
-		session.save(food);
+		try {			
+			session.beginTransaction();
 		
-		log.debug("commiting and closing connection to db");
-		session.getTransaction().commit();
-		session.close();
+			log.debug("saving to db " + Food.class.getName());
+			session.save(food);
+		
+		} catch (Exception e) {
+			log.warn("failed to save food object");
+		} 
+		finally {
+			log.debug("commiting and closing connection to db");
+			session.getTransaction().commit();
+			session.close();
+		}
 	}
 	
 	

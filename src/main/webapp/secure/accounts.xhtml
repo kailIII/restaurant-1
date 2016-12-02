@@ -6,7 +6,56 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../WEB-INF/templates/admin-main-template.xhtml">
 		<ui:define name="content">
-
+			
+			<h:panelGrid columns="2" cellpadding="5" styleClass="admin-accounts-form-grid">
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Create account: " />
+					
+					<p:inputText title="Nick" value="#{userBean.nick}" />
+					<p:password title="Password" value="#{userBean.password}" />
+					<p:password title="Confirm Password" />
+					
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{userBean.saveNewAccount()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+			</h:form>
+			
+			<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Change account password: " />
+					
+					<p:inputText title="Nick" />
+					<p:password title="Password" />
+					<p:password title="Confirm Password" />
+					
+					<p:commandButton value="submit" style="width: 100%;" 
+						 />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+			</h:form>
+			
+			<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Delete account: " />
+					
+					<p:inputText title="Nick" />
+					
+					<p:commandButton value="submit" style="width: 100%;" 
+						 />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+			</h:form>
+				
+		</h:panelGrid>
 
 
 	</ui:define>
