@@ -15,25 +15,6 @@ public class UserRoleDAOImpl implements UserRoleDAO{
 
 	@Override
 	public void saveAdminRole(String username) {
-		Session session = null;
-		User user = new User();
-		
-		//user.getUserRole().add(e)
-
-		//set id
-//		user.setUsername(username);
-//		UserRole userRole = new UserRole(username, "ROLE_ADMIN");
-//		
-//		try {
-//			session = HibernateUtil.getSessionFactory().openSession();
-//			session.beginTransaction();
-//			session.save(userRole);
-//			
-//		} finally {
-//			session.getTransaction().commit();
-//			session.close();
-//			
-//		}
 	}
 
 	@Override
