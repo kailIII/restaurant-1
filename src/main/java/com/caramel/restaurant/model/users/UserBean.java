@@ -5,7 +5,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,28 +25,38 @@ public class UserBean {
 	@PostConstruct
 	public void init(){
 		
-		List<User> usersByName = dao.getByName(nick);
+		List<User> usersByName = dao.getByName("root");
 		
 		if(usersByName.size() <= 0){
 			
 			log.info("creating root account");
-			dao.saveNewAccount("root", "1234", true);
-//			roleDAO.saveAdminRole("root");
+			dao.saveNewAccount("root", "123", true);
 		}
 	}
 	
 	
-	public List<User> getAccounts(){
-		return dao.getAccounts();
-	}
 	
 	
 	public void saveNewAccount(){
-		if(!(nick.length() > 0 || arePasswordsEqual()) )
+		
+		//password validation
+		if(!(nick.length() > 0 || arePasswordsEqual() || nick.equals("root")) )
 			return;
 		
+		
+		//check already created accounts
+		List<User> users = dao.getAccounts();
+		
+		users.forEach(e -> {
+			if(e.getUsername().equals(this.getNick()) ){
+				
+				log.info("account already exists");
+				return;
+			}
+		});
+		
+		//save
 		dao.saveNewAccount(nick, password, true);
-		roleDAO.saveAdminRole(nick);
 	}
 	
 	
@@ -63,17 +72,11 @@ public class UserBean {
 		if(SecurityContextHolder.getContext()//if client is not deleting himself/herself
 									.getAuthentication()
 									.getName()
-									.equals(nick))
+									.equals(nick)
+									|| nick.equals("root"))
 			return;
 		
 		dao.deleteAccountByName(nick);
-		
-		//delete usersRole even when usernames are duplicated
-		List<UserRole> roles = roleDAO.getByName(nick);
-		
-		for (UserRole role : roles) {
-			roleDAO.deleteRoleById(role.getUserRoleId());			
-		}
 	}
 	
 	
@@ -84,6 +87,9 @@ public class UserBean {
 		return false;
 	}
 	
+	public List<User> getAccounts(){
+		return dao.getAccounts();
+	}
 	
 	//getters nad setters
 	public String getNick() {

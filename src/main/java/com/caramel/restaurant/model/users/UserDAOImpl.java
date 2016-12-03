@@ -18,12 +18,13 @@ public class UserDAOImpl implements UserDAO {
 	@SuppressWarnings("unchecked")
 	public List<User> getAccounts() {
 
-		Session session = sessionFactory.openSession();
+		Session session = null;
 		List<User> result = null;
 
 		try {
-			session.beginTransaction().begin();
-			result = session.createQuery("FROM users").getResultList();
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			result = session.createQuery("FROM User").getResultList();
 
 		} finally {
 			session.getTransaction().commit();
@@ -43,18 +44,18 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
-
+			
+			//save user
 			session.save(user);
 
 		} finally {
 			session.getTransaction().commit();
 		}
 		
+		//save user role
 		user.getUserRole().add(role);
-		
 		try {
 			session.beginTransaction();
-
 			session.save(role);
 
 		} finally {
@@ -90,27 +91,52 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
-	@Override // delete user
+	@SuppressWarnings("unchecked")
+	@Override // delete user and its roles
 	public void deleteAccountByName(String nick) {
 		Session session = null;
-
+		List<UserRole>rolesResult = new ArrayList<UserRole>();
+		
+		
+		//get roles by nick
 		try {
 			session = sessionFactory.openSession();
-			session.beginTransaction().begin();
-
-			// find user with equal nick
+			session.beginTransaction();
+			
+			rolesResult = session.createQuery("FROM UserRole r WHERE r.username = :param")
+												.setParameter("param", nick)
+												.getResultList();
+			
+		} finally {
+			session.getTransaction().commit();
+		}
+		
+		
+		//delete users and their role
+		try {
+			session.beginTransaction();
+			
+			//delete roles
+			for (UserRole role : rolesResult) {
+				UserRole role_t = session.load(UserRole.class, role.getUserRoleId());
+				session.delete(role_t);
+			}
+			
+			//delete user by nick
 			User user = session.load(User.class, nick);
-
-			// remove users from db
-			session.delete("users", user);
+			session.delete(user);
+			
 			session.flush();
 
 		} finally {
 			session.getTransaction().commit();
 			session.close();
 		}
+		
 	}
 
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getByName(String nick) {
 		List<User> result = null;
@@ -121,13 +147,14 @@ public class UserDAOImpl implements UserDAO {
 			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			
-			result = session.createQuery("FROM User u WHERE u.username = :param").setParameter("param", nick).getResultList();
+			result = session.createQuery("FROM User u WHERE u.username = :param")
+											.setParameter("param", nick)
+											.getResultList();
 			
 		} finally {
 			session.getTransaction().commit();
 			session.close();
 		}
-		
 		
 		return result;
 	}

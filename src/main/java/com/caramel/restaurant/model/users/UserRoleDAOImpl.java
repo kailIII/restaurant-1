@@ -19,20 +19,20 @@ public class UserRoleDAOImpl implements UserRoleDAO{
 
 	@Override
 	public void deleteRoleById(int id) {
-		Session session = null;
-		
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			session.beginTransaction();
-			UserRole role = session.load(UserRole.class, id);
-			session.delete(role);
-			session.flush();
-			
-		} finally {
-			session.getTransaction().commit();
-			session.close();
-			
-		}
+//		Session session = null;
+//		
+//		try {
+//			session = HibernateUtil.getSessionFactory().openSession();
+//			session.beginTransaction();
+//			UserRole role = session.load(UserRole.class, id);
+//			session.delete(role);
+//			session.flush();
+//			
+//		} finally {
+//			session.getTransaction().commit();
+//			session.close();
+//			
+//		}
 	}
 
 	@SuppressWarnings("unchecked")
