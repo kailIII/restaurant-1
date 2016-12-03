@@ -10,11 +10,11 @@ import org.hibernate.query.Query;
 
 import com.caramel.restaurant.utils.HibernateUtil;
 
-//i can be my the best class in all this project...
 public class UserDAOImpl implements UserDAO {
 
 	private Logger log = LogManager.getLogger(UserDAOImpl.class.getName());
 
+	
 	@Override // get users
 	@SuppressWarnings("unchecked")
 	public List<User> getAccounts() {
@@ -35,12 +35,13 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
+	
 	@Override // save new user
 	public void saveNewAccount(String nick, String password, boolean enabled) {
 
 		Session session = null;
 		User user = new User(nick, password, enabled);
-		UserRole role = new UserRole(user, "ROLE_ADMIN");
+		UserRole role = new UserRole(user, "ROLE_MODERATOR");
 
 		try {
 			session = sessionFactory.openSession();
@@ -69,53 +70,39 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void changePasswordByName(String nick, String newPassword) {
 		Session session = null;
-		User user = new User(nick, newPassword, true);
 		
 		
-		try {//delete
+		try {//update data
 			session = sessionFactory.openSession();
 			session.beginTransaction();
-
-//			// find user with equal nick
-//			user = session.load(User.class, nick);
-//
-//			// remove users from db
-//			session.delete(user);
-//			session.flush();
 			
-			@SuppressWarnings("unused")
+			//get users from db
+			@SuppressWarnings("unchecked")
 			List<User> users = session.createQuery("FROM User u WHERE u.username = :param ")
 														.setParameter("param", nick)
 														.getResultList();
 			
-			} finally {
-				session.getTransaction().commit();
-				session.close();
+			//validation
+			if(users.size() == 1){
+				
+				//set new password
+				users.get(0).setPassword(newPassword);
+				
+				//change db data
+				session.update(users.get(0));
 			}
-		
-		
-//		try {//save new
-//			session = sessionFactory.openSession();
-//			session.beginTransaction();
-//				
-//			// change password
-//			user.setPassword(newPassword);
-//
-//			// save users from db
-//			session.save(user);
-//
-//		} finally {
-//			session.getTransaction().commit();
-//			session.close();
-//		}
+			
+		} finally {
+			session.getTransaction().commit();
+			session.close();
+		}
 	}
 
 	
-	@SuppressWarnings("unchecked")
+
 	@Override // delete user and its roles
 	public void deleteAccountByName(String nick) {
 		Session session = null;
-		List<UserRole>rolesResult = new ArrayList<UserRole>();
 		List<User>users = new ArrayList<User>();
 		
 		users = getByName(nick);
@@ -138,48 +125,15 @@ public class UserDAOImpl implements UserDAO {
 			}
 			session.flush();
 			
-			//			rolesResult = session.createQuery("FROM UserRole r WHERE r.user = :param")
-//					.setParameter("param", nick)
-//					.getResultList();
-			
-			//users.get(0).getUserRole().clear();
-			//session.delete(users);
-//			UserRole role = new UserRole();
-//			role.setUserRoleId();
-//			session.delete(role);
-			
-			
 		} finally {
 			session.getTransaction().commit();
 			session.close();
-		}
-		
-//		//delete users and their role
-//		try {
-//			session.beginTransaction();
-//			
-//			//delete roles
-//			for (UserRole role : rolesResult) {
-//				UserRole role_t = session.load(UserRole.class, role.getUserRoleId());
-//				session.delete(role_t);
-//			}
-//			
-//			//delete user by nick
-//			User user = session.load(User.class, nick);
-//			session.delete(user);
-//			
-//			session.flush();
-//
-//		} finally {
-//			session.getTransaction().commit();
-//			session.close();
-//		}
-//		
+		}	
 	}
 
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	@Override//return user with equal nick
 	public List<User> getByName(String nick) {
 		List<User> result = null;
 		Session session = null;

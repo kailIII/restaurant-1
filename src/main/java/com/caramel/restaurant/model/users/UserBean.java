@@ -8,7 +8,9 @@ import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 
 @ManagedBean(eager=true)
 @ApplicationScoped
@@ -16,7 +18,6 @@ public class UserBean {
 	private static Logger log = LogManager.getLogger(UserBean.class.getName());
 	
 	private static UserDAO dao = new UserDAOImpl();
-	private static UserRoleDAO roleDAO = new UserRoleDAOImpl();
 	
 	private String nick;
 	private String password;
@@ -38,11 +39,12 @@ public class UserBean {
 	
 	
 	public void saveNewAccount(){
-		
+
 		//password validation
-		if(!(nick.length() > 0 || arePasswordsEqual() || nick.equals("root")) )
+		if(nick.length() <=  3 || !arePasswordsEqual() || nick.equals("root") || password.length() < 6){
+			log.info("Cannot create new account. Validation failed");
 			return;
-		
+		}
 		
 		//check already created accounts
 		List<User> users = dao.getAccounts();
@@ -89,6 +91,18 @@ public class UserBean {
 	
 	public List<User> getAccounts(){
 		return dao.getAccounts();
+	}
+	
+	public boolean hasRole(String role){
+		UserRole role_t = new UserRole();
+		role_t.setRole(role);
+		
+		if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))){
+			log.debug("user has admin role");
+			return true;
+		}
+		
+		return false;
 	}
 	
 	

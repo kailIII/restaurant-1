@@ -25,7 +25,8 @@ public class SecurityConfig
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/secure/**").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/secure/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_MODERATOR')")
+		.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 		.and().formLogin().  //login configuration
                 loginPage("/login").
                 loginProcessingUrl("/applogin").

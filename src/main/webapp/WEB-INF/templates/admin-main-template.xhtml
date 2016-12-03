@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:th="http://www.thymeleaf.org" 
@@ -60,18 +61,20 @@
 	
 					<p:panelMenu styleClass="admin-actions-menu">
 						<p:submenu label="Main">
-							<p:menuitem value="reservation" url="reservation.xhtml" icon="ui-icon-home" />
+							<p:menuitem value="reservation" url="/secure/reservation.xhtml" icon="ui-icon-home" />
 						</p:submenu>
 						<p:submenu label="Website contents">
-							<p:menuitem value="Menu" url="menu.xhtml" icon="ui-icon-home" />
-							<p:menuitem value="Reservation" url="reservation.xhtml" icon="ui-icon-home" />
-							<p:menuitem value="About" url="about.xhtml" icon="ui-icon-home" />
+							<p:menuitem value="Menu" url="/secure/menu.xhtml" icon="ui-icon-home" />
+							<p:menuitem value="Reservation" url="/secure/reservation.xhtml" icon="ui-icon-home" />
+							<p:menuitem value="About" url="/secure/about.xhtml" icon="ui-icon-home" />
 						</p:submenu>
-						<p:submenu label="Settings">
-							<p:menuitem value="Images" url="images.xhtml" icon="ui-icon-home" />
-							<p:menuitem value="Settings" url="settings.xhtml" icon="ui-icon-home" />
-							<p:menuitem value="Accounts" url="accounts.xhtml" icon="ui-icon-home" />
-						</p:submenu>
+						<c:if test="#{userBean.hasRole('ROLE_ADMIN')}">
+							<p:submenu label="Settings">
+								<p:menuitem value="Images" url="/secure/images.xhtml" icon="ui-icon-home" />
+								<p:menuitem value="Settings" url="/admin/settings.xhtml" icon="ui-icon-home" />
+								<p:menuitem value="Accounts" url="/admin/accounts.xhtml" icon="ui-icon-home" />
+							</p:submenu>
+							</c:if>
 					</p:panelMenu>
 				</h:form>
 			</div>

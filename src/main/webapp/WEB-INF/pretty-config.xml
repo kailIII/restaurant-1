@@ -53,9 +53,9 @@
 		<view-id value="/secure/images.xhtml" />
 	</url-mapping>
 	
-	<url-mapping id="sec-accounts">
-		<pattern value="/secure/accounts" />
-		<view-id value="/secure/accounts.xhtml" />
+	<url-mapping id="admin-accounts">
+		<pattern value="/admin/accounts" />
+		<view-id value="/admin/accounts.xhtml" />
 	</url-mapping>
 	
 	<url-mapping id="sec-settings">

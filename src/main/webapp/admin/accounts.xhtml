@@ -15,7 +15,7 @@
 					
 					<p:inputText title="Nick" value="#{userBean.nick}" />
 					<p:password title="Password" value="#{userBean.password}" />
-					<p:password title="Confirm Password" />
+					<p:password title="Confirm Password" value="#{userBean.checkPassword}" />
 					
 					<p:commandButton value="submit" style="width: 100%;" 
 						action="#{userBean.saveNewAccount()}" />
@@ -63,6 +63,25 @@
 			</h:form>
 				
 		</h:panelGrid>
+
+		<p:dataTable var="user" value="#{userBean.getAccounts()}"
+			style="width: 100%;">
+			<p:column headerText="Usernames">
+				<h:outputText value="#{user.username}" />
+			</p:column>
+
+			<p:column headerText="Passwords">
+				<h:outputText value="#{user.password}" />
+			</p:column>
+
+			<p:column headerText="Roles">
+				<p:dataTable var="role" value="#{user.userRole.toArray()}">
+					<p:column>
+						<h:outputText value="#{role.role}" />
+					</p:column>
+				</p:dataTable>
+			</p:column>
+		</p:dataTable>
 
 
 	</ui:define>
