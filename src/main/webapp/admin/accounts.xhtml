@@ -7,27 +7,32 @@
 	template="../WEB-INF/templates/admin-main-template.xhtml">
 		<ui:define name="content">
 			
-			<h:panelGrid columns="2" cellpadding="5" styleClass="admin-accounts-form-grid">
+			<div class="admin-accounts-form-div">
 				
 				<h:form styleClass="admin-settings-form">
-				<h:panelGrid columns="1">
-					<h:outputText value="Create account: " />
+				<p:panel header="Delete account" >
 					
+					<h:panelGrid columns="2">
+					<h:outputText value="Nick: " />
 					<p:inputText title="Nick" value="#{userBean.nick}" />
+					
+					<h:outputText value="Password: " />
 					<p:password title="Password" value="#{userBean.password}" />
+					
+					<h:outputText value="Confirm password: " />
 					<p:password title="Confirm Password" value="#{userBean.checkPassword}" />
+					</h:panelGrid>
 					
 					<p:commandButton value="submit" style="width: 100%;" 
 						action="#{userBean.saveNewAccount()}" />
 						
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
-				</h:panelGrid>
+				</p:panel>
 			</h:form>
 			
 			<h:form styleClass="admin-settings-form">
-				<h:panelGrid columns="1">
-					<h:outputText value="Change account password: " />
+				<p:panel header="Change account password">
 					
 					<h:panelGrid columns="2">
 						<h:outputText value="Username: " />
@@ -45,24 +50,26 @@
 						
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
-				</h:panelGrid>
+				</p:panel>
 			</h:form>
 			
 			<h:form styleClass="admin-settings-form">
-				<h:panelGrid columns="1">
-					<h:outputText value="Delete account: " />
+				<p:panel header="Delete account">
 					
-					<p:inputText title="Nick" value="#{userBean.nick}" />
+					<h:panelGrid columns="2">
+						<h:outputText value="Username: " />
+						<p:inputText title="Nick" value="#{userBean.nick}" />
+					</h:panelGrid>
 					
 					<p:commandButton value="submit" style="width: 100%;" 
 						action="#{userBean.deleteAccountByName()}" />
 						
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
-				</h:panelGrid>
+				</p:panel>
 			</h:form>
 				
-		</h:panelGrid>
+		</div>
 
 		<p:dataTable var="user" value="#{userBean.getAccounts()}"
 			style="width: 100%;">

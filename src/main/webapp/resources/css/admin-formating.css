@@ -37,3 +37,32 @@
 	background-color: rgba(236, 236, 236, 0.9);
 	border-top: 1px solid rgba(36, 36, 36, 0.5);
 }
+
+.admin-actions-menu{
+	text-align: center;
+	padding: 0;
+	border: 0;
+}
+
+.admin-actions-menu tbody tr td{
+	padding: 5px 5px; !important;
+	border: 0
+}
+
+.admin-actions-menu-buttons{
+	width: 100%;
+	border-radius: 0;
+}
+
+.admin-actions-menu-text{
+	font-size: 28px;
+	font-family: 'Yellowtail', cursive;
+}
+
+.admin-accounts-form-div{
+	vertical-align: top;
+}
+
+.admin-settings-form{
+	display: inline-block;
+}

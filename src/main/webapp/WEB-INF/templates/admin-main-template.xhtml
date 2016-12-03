@@ -59,23 +59,23 @@
 				<h:form>
 					<p:growl autoUpdate="true" />
 	
-					<p:panelMenu styleClass="admin-actions-menu">
-						<p:submenu label="Main">
-							<p:menuitem value="reservation" url="/secure/reservation.xhtml" icon="ui-icon-home" />
-						</p:submenu>
-						<p:submenu label="Website contents">
-							<p:menuitem value="Menu" url="/secure/menu.xhtml" icon="ui-icon-home" />
-							<p:menuitem value="Reservation" url="/secure/reservation.xhtml" icon="ui-icon-home" />
-							<p:menuitem value="About" url="/secure/about.xhtml" icon="ui-icon-home" />
-						</p:submenu>
+					<p:panelGrid columns="1" styleClass="admin-actions-menu" style="width: 100%;">
+						<h:outputText value="Main" styleClass="admin-actions-menu-text" />
+						<p:button value="reservation" outcome="/secure/reservation.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+						
+						<h:outputText value="Website contents" styleClass="admin-actions-menu-text" />
+						<p:button value="Menu" outcome="/secure/menu.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+						<p:button value="Reservation" outcome="/secure/reservation.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+						<p:button value="About" outcome="/secure/about.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+						<p:button value="Images" outcome="/secure/images.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />						
+						
 						<c:if test="#{userBean.hasRole('ROLE_ADMIN')}">
-							<p:submenu label="Settings">
-								<p:menuitem value="Images" url="/secure/images.xhtml" icon="ui-icon-home" />
-								<p:menuitem value="Settings" url="/admin/settings.xhtml" icon="ui-icon-home" />
-								<p:menuitem value="Accounts" url="/admin/accounts.xhtml" icon="ui-icon-home" />
-							</p:submenu>
-							</c:if>
-					</p:panelMenu>
+						<h:outputText value="Settings" styleClass="admin-actions-menu-text" />
+							<p:button value="Settings" outcome="/admin/settings.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+							<p:button value="Accounts" outcome="/admin/accounts.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+						</c:if>
+						
+					</p:panelGrid>
 				</h:form>
 			</div>
 		</div>

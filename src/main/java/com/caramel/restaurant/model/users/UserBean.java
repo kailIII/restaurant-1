@@ -94,10 +94,8 @@ public class UserBean {
 	}
 	
 	public boolean hasRole(String role){
-		UserRole role_t = new UserRole();
-		role_t.setRole(role);
 		
-		if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))){
+		if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority(role))){
 			log.debug("user has admin role");
 			return true;
 		}

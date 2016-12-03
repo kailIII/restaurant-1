@@ -39,7 +39,7 @@ body{
 	padding-top: 35px; /* height of top-nav class + padding*/
 	background-color: rgba(205,205,205,1);
 	display: inline-block;
-	border-right: 2px solid rgba(35, 35, 35, 1);
+	border-right: 2px solid rgba(35, 35, 35, 0.7);
 }
 
 .left-column{
@@ -59,6 +59,8 @@ body{
 	background-color: rgba(255,255,255,1);
 	display: inline-block;
 	min-width: 468px; /* body min-width - left column - left colum left/right borders/margins/itp (for example 720 - 250 - 2 = 468px)*/
+	border-left: 1px solid rgba(26, 26, 26, 0.7);
+	overflow: auto;
 }
 
 .button-form{
