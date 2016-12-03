@@ -23,7 +23,7 @@ public class UserBean {
 	private String checkPassword;
 	
 	@PostConstruct
-	public void init(){
+	public void init(){//will create root account if it's not exist
 		
 		List<User> usersByName = dao.getByName("root");
 		
@@ -90,6 +90,7 @@ public class UserBean {
 	public List<User> getAccounts(){
 		return dao.getAccounts();
 	}
+	
 	
 	//getters nad setters
 	public String getNick() {

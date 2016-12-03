@@ -29,12 +29,19 @@
 				<h:panelGrid columns="1">
 					<h:outputText value="Change account password: " />
 					
-					<p:inputText title="Nick" />
-					<p:password title="Password" />
-					<p:password title="Confirm Password" />
+					<h:panelGrid columns="2">
+						<h:outputText value="Username: " />
+						<p:inputText title="Nick" value="#{userBean.nick}" />
+						
+						<h:outputText value="Password: " />
+						<p:password title="Password" value="#{userBean.password}" />
+						
+						<h:outputText value="Confirm User's Password: " />
+						<p:password title="Confirm Password" value="#{userBean.checkPassword}" />
+					</h:panelGrid>
 					
 					<p:commandButton value="submit" style="width: 100%;" 
-						 />
+						action="#{userBean.changePasswordByName()}" />
 						
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
@@ -45,10 +52,10 @@
 				<h:panelGrid columns="1">
 					<h:outputText value="Delete account: " />
 					
-					<p:inputText title="Nick" />
+					<p:inputText title="Nick" value="#{userBean.nick}" />
 					
 					<p:commandButton value="submit" style="width: 100%;" 
-						 />
+						action="#{userBean.deleteAccountByName()}" />
 						
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
