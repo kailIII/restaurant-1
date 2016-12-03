@@ -18,15 +18,17 @@ features:
 - chart with reservation data,
 - table with reservation data,
 - excel and pdf import option for reservation data,
-- text editor for about us page,
+- editable content,
 - form to set basic website informations (e.g. e-mail, phone),
-- page to check single reservation, available for clients,
+- page to check reservation, available for clients,
+- accounts creator,
+- 3 kinds of accounts (admin, anonymous and moderator)
+- restrictions for moderators
 
 
 To-Do list:
 ===========
 - upload, download option for admins,
-- accounts creator,
 - fix charts with reservation data,
 
 
