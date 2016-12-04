@@ -2,8 +2,10 @@ package com.caramel.restaurant.model.view.message;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 
 //this bean was created for long strings like page's content
@@ -35,6 +37,7 @@ public class MessageBean implements Serializable{
 		messageDAO.save(passedMessage);
 	}
 	
+	//getters and setters
 	public String getMessage() {
 		return message;
 	}

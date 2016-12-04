@@ -11,7 +11,7 @@
 		<h:form enctype="multipart/form-data">
 			<p:growl id="messages" showDetail="true" />
 
-			<p:fileUpload value="#{fileUploadBean.file}" mode="simple"
+			<p:fileUpload value="#{fileUploadBean.file}" mode="simple" 
 				skinSimple="true" sizeLimit="150000000" />
 
 			<p:commandButton value="Submit" ajax="false"
@@ -21,6 +21,31 @@
 				<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
 		</h:form>
+
+		<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+			draggable="false" closable="false" resizable="false">
+			<p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+		</p:dialog>
+
+		<h:form>
+			<p:commandButton value="Download" ajax="false"
+				onclick="PrimeFaces.monitorDownload(start, stop);"
+				icon="ui-icon-arrowthick-1-s">
+				<p:fileDownload value="#{fileDownloadBean.file}" />
+			</p:commandButton>
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</h:form>
+
+		<script type="text/javascript">
+			function start() {
+			    PF('statusDialog').show();
+			}
+			 
+			function stop() {
+			    PF('statusDialog').hide();
+			}
+		</script>
 
 	</ui:define>
 </ui:composition>

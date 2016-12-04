@@ -44,11 +44,11 @@
 	<div class="background-image"></div>
 	<div class="top-nav">
 		<div class="logout-wrapper">
-			<form action="${request.contextPath}/logout" method="post">
+			<h:form action="${request.contextPath}/logout" method="post">
 				<input type="submit" value="Logout" />
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-			</form>
+			</h:form>
 		</div>
 	</div>
 

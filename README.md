@@ -1,7 +1,7 @@
 
                                  restaurant 
 
-It's simple restaurant website build on jsf 2.2, Spring, Hibernate, PrimeFaces and PrettyFaces.
+It's simple restaurant website build on jsf 2.2, Spring, Spring mvc, Hibernate, PrimeFaces, PrettyFaces and log4j2.
 
 To work with project i recommend to import db from root dir.
 Project is already configured to work with mariadb from xampp.
@@ -15,8 +15,7 @@ features:
 - dynamically managed food menu with ajax,
 - booking tables for 2 or 6 people,
 - admin panel and login page,
-- chart with reservation data,
-- table with reservation data,
+- chart and table with reservation data,
 - excel and pdf import option for reservation data,
 - editable content,
 - form to set basic website informations (e.g. e-mail, phone),
@@ -24,6 +23,7 @@ features:
 - accounts creator,
 - 3 kinds of accounts (admin, anonymous and moderator)
 - restrictions for moderators
+- absolute dir for user to store files
 
 
 To-Do list:

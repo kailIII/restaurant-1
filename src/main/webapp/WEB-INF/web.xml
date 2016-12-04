@@ -33,6 +33,32 @@
   </filter-mapping>
   
   
+<!--   	   primefaces simple file upload -->
+   <context-param>
+   		<param-name>primefaces.UPLOADER</param-name>
+   		<param-value>native</param-value>
+   </context-param>
+   
+   <filter>
+   		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+   		<filter-class>
+   			org.primefaces.webapp.filter.FileUploadFilter
+   		</filter-class>
+   		
+   		<init-param> 
+        	<param-name>uploadDirectory</param-name> 
+        	<param-value>C:\mapped</param-value> 
+    	</init-param>
+   </filter>
+   <filter-mapping>
+   		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+   		<servlet-name>Faces Servlet</servlet-name>
+   		<url-pattern>/*</url-pattern>
+    	<dispatcher>FORWARD</dispatcher>
+    	<dispatcher>REQUEST</dispatcher>
+   </filter-mapping>
+  
+  
   	<!-- For spring mvc -->
 	<servlet>
 		<servlet-name>spring-mvc</servlet-name>
@@ -43,7 +69,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/spring-context.xml</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
@@ -79,6 +105,10 @@
   <error-page>
     <error-code>404</error-code>
     <location>/errors/404.xhtml</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/errors/500.xhtml</location>
   </error-page>
   
   

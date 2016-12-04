@@ -14,21 +14,15 @@
 			    <f:viewAction action="#{editorBean.setTarget('about')}" />
 			</f:metadata>
 			
-			<p:editor id="editor" widgetVar="editorWidget"
+			<p:editor id="editor" widgetVar="editorWidget" 
 				value="#{editorBean.text}" styleClass="editor" height="600" />
 			
-			<p:commandButton value="Submit" icon="ui-icon-disk" update="display" 
-				oncomplete="PF('dlg').show()" styleClass="editor-submit-button" 
-				action="#{editorBean.save()}">
+			<p:commandButton value="Submit" icon="ui-icon-disk" 
+				styleClass="editor-submit-button" action="#{editorBean.save()}">
 				
 				<f:param name="#{editorBean.target}" value="about" />
 				
 			</p:commandButton>
-
-			<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-				hideEffect="fade" resizable="false" >
-				<h:outputText id="display" value="Succes" escape="false" />
-			</p:dialog>
 
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />

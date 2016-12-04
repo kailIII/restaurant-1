@@ -17,6 +17,8 @@ public interface ReservationDAO {
 	public List<Reservation> getByEmail(String email);
 		
 	public List<Reservation> getAll();
+	
+	public List<Reservation> getByDay(int year, int month, int day, String people);
 
 	public void save(Reservation res);
 		

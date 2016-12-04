@@ -12,7 +12,6 @@
 
 	<mvc:annotation-driven />
 	
-	<context:component-scan base-package="com.caramel.restaurant.spring" />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:resources mapping="/files/**" location="file:c:\\mapped\" />
 	

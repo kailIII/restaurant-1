@@ -3,20 +3,20 @@ package com.caramel.restaurant.model.users;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 
 @ManagedBean(eager=true)
 @ApplicationScoped
 public class UserBean {
 	private static Logger log = LogManager.getLogger(UserBean.class.getName());
-	
 	private static UserDAO dao = new UserDAOImpl();
 	
 	private String nick;
@@ -35,7 +35,11 @@ public class UserBean {
 		}
 	}
 	
-	
+	public void sendMessage(String info){
+	    FacesContext context = FacesContext.getCurrentInstance();
+	    
+	    context.addMessage(null, new FacesMessage(info) );    
+	}
 	
 	
 	public void saveNewAccount(){
@@ -43,11 +47,13 @@ public class UserBean {
 		//password and nick validation
 		if(nick.length() <=  3 || !arePasswordsEqual() || nick.equals("root") || password.length() < 6){
 			log.info("Cannot create new account. Validation failed");
+			sendMessage("improper data");
 			return;
 		}
 		
 		//save
 		dao.saveNewAccount(nick, password, true);
+		sendMessage("New account saved");
 	}
 	
 	
@@ -56,6 +62,7 @@ public class UserBean {
 			return;
 			
 		dao.changePasswordByName(nick, password);
+		sendMessage("password was changed");
 	}
 	
 	
@@ -64,10 +71,14 @@ public class UserBean {
 									.getAuthentication()
 									.getName()
 									.equals(nick)
-									|| nick.equals("root"))
+									|| nick.equals("root")){
+			log.info("validation before deleting failed");
+			sendMessage("It is disallowed");
 			return;
+		}
 		
 		dao.deleteAccountByName(nick);
+		sendMessage("Account deleted");
 	}
 	
 	
@@ -77,6 +88,7 @@ public class UserBean {
 					
 		return false;
 	}
+	
 	
 	public List<User> getAccounts(){
 		return dao.getAccounts();

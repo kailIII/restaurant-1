@@ -2,8 +2,10 @@ package com.caramel.restaurant.model.view.message;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,18 +41,18 @@ public class EditorBean implements Serializable{
 		MessageDAO messageDAO = new MessageDAOImpl();
 		messageDAO.deleteMessageByTarget(message.getTarget());
 		messageDAO.save(message);
+		
+		addMessage("Message was saved");
 	}
 	
-	public String getTarget() {
-		log.debug("getting target from editor: " + target);
-		return target;
+	
+	public void addMessage(String summary) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-
-	public void setTarget(String target) {
-		log.debug("saving target to editor: " + target);
-		this.target = target;
-	}
-
+	
+	
+	//getters and setters
 	public String getText() {
 		log.debug("sending text to client editor");		
 		
@@ -62,5 +64,15 @@ public class EditorBean implements Serializable{
 	public void setText(String text) {
 		log.debug("save text to bean: " + text);
 		this.text = text;
+	}
+
+	public String getTarget() {
+		log.debug("getting target from editor: " + target);
+		return target;
+	}
+
+	public void setTarget(String target) {
+		log.debug("saving target to editor: " + target);
+		this.target = target;
 	}
 }

@@ -28,9 +28,10 @@ public class FileUploadBean implements Serializable{
 	private FileOutputStream foStream;
 	
 	//path where files will be saved
-	private String path = FacesContext.getCurrentInstance()
-								.getExternalContext()
-								.getRealPath("/resources/user/");
+	private String path = "C:/mapped/";
+//	= FacesContext.getCurrentInstance()
+//								.getExternalContext()
+//								.getRealPath("/resources/user/");
 	
 	
     public void upload() {
@@ -44,12 +45,10 @@ public class FileUploadBean implements Serializable{
     }
     
     public void saveToDisk() throws IOException, SecurityException{
-    	
     	log.info("trying to save file: " + file.getFileName().toString());
     	
     	//create new file to put data inside
     	File newFile = new File(path + file.getFileName());
-    	
     	log.info("trying to save file: " + newFile.getName().toString() + " into " + path);
     		
     		//write data
@@ -80,7 +79,7 @@ public class FileUploadBean implements Serializable{
 	}
 
 	public void setFile(UploadedFile file) {
-		log.info(file.getFileName() + ": file set was called");
+		log.info("received: " + file.getFileName());
 		this.file = file;
 	}
 }
