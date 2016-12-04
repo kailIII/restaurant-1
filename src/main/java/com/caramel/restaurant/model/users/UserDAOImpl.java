@@ -42,7 +42,14 @@ public class UserDAOImpl implements UserDAO {
 		Session session = null;
 		User user = new User(nick, password, enabled);
 		UserRole role = new UserRole(user, "ROLE_MODERATOR");
-
+		
+		//stop if it already exists
+		if(getByName(nick).size() > 0){
+			log.info("account already exists");
+			
+			return;
+		}
+		
 		try {
 			session = sessionFactory.openSession();
 			session.beginTransaction();

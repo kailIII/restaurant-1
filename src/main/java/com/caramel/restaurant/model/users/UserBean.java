@@ -40,22 +40,11 @@ public class UserBean {
 	
 	public void saveNewAccount(){
 
-		//password validation
+		//password and nick validation
 		if(nick.length() <=  3 || !arePasswordsEqual() || nick.equals("root") || password.length() < 6){
 			log.info("Cannot create new account. Validation failed");
 			return;
 		}
-		
-		//check already created accounts
-		List<User> users = dao.getAccounts();
-		
-		users.forEach(e -> {
-			if(e.getUsername().equals(this.getNick()) ){
-				
-				log.info("account already exists");
-				return;
-			}
-		});
 		
 		//save
 		dao.saveNewAccount(nick, password, true);
