@@ -1,4 +1,4 @@
-package com.caramel.restaurant.security;
+package com.caramel.restaurant.spring;
 
 import javax.sql.DataSource;
 

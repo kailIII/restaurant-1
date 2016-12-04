@@ -8,6 +8,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
 	version="3.1">
 	
+	<!-- spring security -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -30,7 +31,28 @@
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  
+  
+  	<!-- For spring mvc -->
+	<servlet>
+		<servlet-name>spring-mvc</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/spring-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>spring-mvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+  
 
+	<!-- jsf2 -->
   <context-param>
     <param-name>facelets.DEVELOPMENT</param-name>
     <param-value>true</param-value>
@@ -50,14 +72,13 @@
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
   
-  
   <error-page>
     <error-code>403</error-code>
-    <location>/errors/403.html</location>
+    <location>/errors/403.xhtml</location>
   </error-page>
   <error-page>
     <error-code>404</error-code>
-    <location>/errors/404.html</location>
+    <location>/errors/404.xhtml</location>
   </error-page>
   
   
@@ -67,6 +88,8 @@
   </context-param>
   
   
+  
+  <!-- mime -->
   <mime-mapping>
     <extension>woff2</extension>
     <mime-type>application/x-font-woff2</mime-type>
@@ -83,4 +106,5 @@
     <extension>jpg</extension>
     <mime-type>image/jpeg</mime-type>
   </mime-mapping>
+  
 </web-app>
