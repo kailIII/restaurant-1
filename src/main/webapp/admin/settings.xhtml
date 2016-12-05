@@ -150,6 +150,30 @@
 				</h:panelGrid>
 				</h:form>
 				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Title: " />
+					<p:inputText value="#{basicDataBean.title}" title="title" />
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveTitle()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+				</h:form>
+				
+				
+				<h:form styleClass="admin-settings-form">
+				<h:panelGrid columns="1">
+					<h:outputText value="Description: " />
+					<p:inputText value="#{basicDataBean.description}" title="information to display as description" />
+					<p:commandButton value="submit" style="width: 100%;" 
+						action="#{basicDataBean.saveDesc()}" />
+						
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:panelGrid>
+				</h:form>
 				
 			</h:panelGrid>
 		

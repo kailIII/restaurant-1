@@ -6,11 +6,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../WEB-INF/templates/admin-main-template.xhtml">
 	<ui:define name="content">
-		
-		<h:form>
-			<p:chart type="bar" model="#{reservationChartBean.barChart}" responsive="true" style="height: 750px;" />
-		</h:form>
-
 
 		<h:form styleClass="reservation-form">
 			<p:dataTable id="tbl" var="reservation"

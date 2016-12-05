@@ -36,25 +36,50 @@ public class BasicDataBean implements Serializable{
 	private String email;
 	private String restaurantName;
 	private String footerInfo;
+	private String title;
+	private String description;
 	
 	
 	@PostConstruct
 	public void init(){
-		logoUrl = dao.getMessageByTarget("logoUrl");
-		phone = dao.getMessageByTarget("phone");
-		address = dao.getMessageByTarget("address");
-		email = dao.getMessageByTarget("email");
-		restaurantName = dao.getMessageByTarget("restaurantName");
-		footerInfo = dao.getMessageByTarget("footerInfo");
+		setLogoUrl(dao.getMessageByTarget("logoUrl"));
+		setPhone(dao.getMessageByTarget("phone"));
+		setAddress(dao.getMessageByTarget("address"));
+		setEmail(dao.getMessageByTarget("email"));
+		setRestaurantName(dao.getMessageByTarget("restaurantName"));
+		setFooterInfo(dao.getMessageByTarget("footerInfo"));
+		setTitle(dao.getMessageByTarget("title"));
+		setDescription(dao.getMessageByTarget("description"));
+
 		setOpenTime(dao.getMessageByTarget("openTime"));
 		setCloseTime(dao.getMessageByTarget("closeTime"));
 		
-		tablesFor2 = numDAO.getMessageByTarget("tablesFor2");
-		tablesFor6 = numDAO.getMessageByTarget("tablesFor6");
+		setTablesFor2(numDAO.getMessageByTarget("tablesFor2"));
+		setTablesFor6(numDAO.getMessageByTarget("tablesFor6"));
 	}
 	
 	public void sendPFSuccessMessage(){
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Value was saved ", null));
+	}
+	
+	public void saveTitle(){
+		log.info("saving message with target: " + title);
+		
+		Message message = new Message("title", title);
+		
+		dao.deleteMessageByTarget("title");
+		dao.save(message);
+		sendPFSuccessMessage();
+	}
+	
+	public void saveDesc(){
+		log.info("saving message with target: " + description);
+		
+		Message message = new Message("description", description);
+		
+		dao.deleteMessageByTarget("description");
+		dao.save(message);
+		sendPFSuccessMessage();
 	}
 	
 	public void saveTF2(){
@@ -219,23 +244,35 @@ public class BasicDataBean implements Serializable{
 		this.restaurantName = restaurantName;
 	}
 
-
 	public String getCloseTime() {
 		return closeTime;
 	}
-
 
 	public void setCloseTime(String closeTime) {
 		this.closeTime = closeTime;
 	}
 
-
 	public String getOpenTime() {
 		return openTime;
 	}
 
-
 	public void setOpenTime(String openTime) {
 		this.openTime = openTime;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
