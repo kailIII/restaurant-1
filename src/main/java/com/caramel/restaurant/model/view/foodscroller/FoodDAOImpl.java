@@ -52,12 +52,12 @@ public class FoodDAOImpl implements FoodDAO{
 			log.debug("saving to db " + Food.class.getName());
 			session.save(food);
 		
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			log.warn("failed to save food object");
 		} 
 		finally {
-			log.debug("commiting and closing connection to db");
-			session.getTransaction().commit();
+			log.debug("closing connection to db");
 			session.close();
 		}
 	}

@@ -22,5 +22,5 @@ public interface ReservationDAO {
 
 	public void save(Reservation res);
 		
-	public void deleteById(int id);
+	public void deleteById(long id);
 }

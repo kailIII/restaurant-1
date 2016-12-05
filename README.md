@@ -24,7 +24,7 @@ features:
 - 3 kinds of accounts (admin, anonymous and moderator)
 - restrictions for moderators
 - absolute dir for user to store files
-- mapped absolute patch to upload files using ftp (conf inside /restaurant/src/main/webapp/WEB-INF/spring/spring-context.xml)
+- mapped absolute patch for uploaded files (conf inside /restaurant/src/main/webapp/WEB-INF/spring/spring-context.xml)
 
 
 To-Do list:

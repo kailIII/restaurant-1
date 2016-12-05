@@ -26,9 +26,9 @@ public class UserDAOImpl implements UserDAO {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 			result = session.createQuery("FROM User").getResultList();
+			session.getTransaction().commit();
 
 		} finally {
-			session.getTransaction().commit();
 			session.close();
 		}
 		
@@ -42,6 +42,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = null;
 		User user = new User(nick, password, enabled);
 		UserRole role = new UserRole(user, "ROLE_MODERATOR");
+		user.getUserRole().add(role);
 		
 		//stop if it already exists
 		if(getByName(nick).size() > 0){
@@ -56,19 +57,16 @@ public class UserDAOImpl implements UserDAO {
 			
 			//save user
 			session.save(user);
-
-		} finally {
 			session.getTransaction().commit();
-		}
+
 		
-		//save user role
-		user.getUserRole().add(role);
-		try {
+			
+			//save user role
 			session.beginTransaction();
 			session.save(role);
+			session.getTransaction().commit();
 
 		} finally {
-			session.getTransaction().commit();
 			session.close();
 		}
 	}
@@ -98,9 +96,9 @@ public class UserDAOImpl implements UserDAO {
 				//change db data
 				session.update(users.get(0));
 			}
+			session.getTransaction().commit();
 			
 		} finally {
-			session.getTransaction().commit();
 			session.close();
 		}
 	}
@@ -131,9 +129,9 @@ public class UserDAOImpl implements UserDAO {
 				session.delete(user);
 			}
 			session.flush();
+			session.getTransaction().commit();
 			
 		} finally {
-			session.getTransaction().commit();
 			session.close();
 		}	
 	}
@@ -153,9 +151,10 @@ public class UserDAOImpl implements UserDAO {
 			result = session.createQuery("FROM User u WHERE u.username = :param")
 											.setParameter("param", nick)
 											.getResultList();
+
+			session.getTransaction().commit();
 			
 		} finally {
-			session.getTransaction().commit();
 			session.close();
 		}
 		

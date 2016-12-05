@@ -7,7 +7,22 @@
 	template="../WEB-INF/templates/admin-main-template.xhtml">
 	<ui:define name="content">
 
-		<h:form styleClass="reservation-form">
+		<h:form styleClass="admin-settings-form">
+			<h:panelGrid columns="1">
+			<h:outputText value="Id to delete: " />
+	
+				<p:inputText value="#{adminReservationBean.id}" />
+
+				<p:commandButton value="submit" style="width: 100%;" 
+					update="reservation-form:tbl" action="#{adminReservationBean.deleteById()}" />
+			</h:panelGrid>
+
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+		</h:form>
+
+
+		<h:form id="reservation-form" styleClass="reservation-form">
 			<p:dataTable id="tbl" var="reservation"
 				value="#{adminReservationBean.reservations}"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
@@ -71,7 +86,7 @@
 					<f:facet name="header">
 						<h:outputText value="email" />
 					</f:facet>
-					<h:outputText value="#{reservation.email}" />
+					<h:outputText value="#{reservation.email}" style="word-break: break-all;" />
 				</p:column>
 				
 				<p:column>

@@ -34,6 +34,7 @@ public class AdminReservationBean implements Serializable{
 	private String phone;
 	private String email;
 	private String people;
+	private long id;
 
 	@ManagedProperty("#{reservation}")
 	List<Reservation> reservations;
@@ -68,6 +69,16 @@ public class AdminReservationBean implements Serializable{
 		List<Reservation> result = dao.getBetweenTime(date, firstLocalTime, secondLocalTime, people);
 			
 		return result;
+	}
+	
+
+	public void deleteById(){
+		log.info("deleting reservation by id");
+		ReservationDAOImpl dao = new ReservationDAOImpl();
+		dao.deleteById(id);
+		
+		//refresh reservations list
+		reservations = dao.getAll();
 	}
 	
 	
@@ -166,5 +177,15 @@ public class AdminReservationBean implements Serializable{
 	
 	public void setPeople(String people) {
 		this.people = people;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }

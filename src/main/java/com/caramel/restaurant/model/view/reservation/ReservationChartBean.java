@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,8 +19,11 @@ import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.HorizontalBarChartModel;
 
+import com.caramel.restaurant.model.view.message.MessageDAOImpl;
+import com.caramel.restaurant.model.view.message.NumericMessageDAOImpl;
+
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class ReservationChartBean implements Serializable{
 	/**
 	 * 
@@ -28,14 +33,34 @@ public class ReservationChartBean implements Serializable{
 	private static ReservationDAOImpl dao = new ReservationDAOImpl();
 	
 	private BarChartModel barChart = new BarChartModel();
-	
+
 	private Date date1 = new Date();//date
-	private String people = "6";
-	private int openTime = 9;
+	private String people = new String();
+	private int maxTables;
 	private int spaceBetweenTimes = 15;
+	
 	
     @PostConstruct
     public void init() {
+
+    	//init before validation
+        NumericMessageDAOImpl numDAO = new NumericMessageDAOImpl();
+        MessageDAOImpl dao = new MessageDAOImpl();
+        
+        
+        //validations
+        if (!people.equals("6") && !people.equals("2") ) {
+        	people = "6";
+		}
+        
+        if (people.equals("6"))
+        	maxTables = numDAO.getMessageByTarget("tablesFor6");
+        
+        if (people.equals("2"))
+    		maxTables = numDAO.getMessageByTarget("tablesFor2");
+        
+        
+        //init after validation
         createBarModels();
     }
  
@@ -45,21 +70,21 @@ public class ReservationChartBean implements Serializable{
         ChartSeries series = new ChartSeries();
         series.setLabel(people + " people");
         
+        log.info(date1.toString());
         
         //init variables before loop
         String hoursAndMinutes;
-        DateTime dateTimeLoop = new DateTime(date1);
+        
+        //DateTime dateTimeLoop = new DateTime(date1);
         DateTime dateTime1;
         DateTime dateTime2;
         
-        
-        
 
         	//set time for first loop
-	        dateTime1 = new DateTime(date1).withHourOfDay(openTime)
+	        dateTime1 = new DateTime(date1.getTime()).withHourOfDay(0)
 	        								.withMinuteOfHour(0);
 	        		
-	        dateTime2 = new DateTime(date1).withHourOfDay(23)
+	        dateTime2 = new DateTime(date1.getTime()).withHourOfDay(23)
 											.withMinuteOfHour(59);
 	        
 	        
@@ -74,18 +99,18 @@ public class ReservationChartBean implements Serializable{
 			}
         
 	        
-        	
-        	
-	    dateTime1 = new DateTime(date1).withHourOfDay(openTime)
-	        							.withMinuteOfHour(0);
-	    
-        
-        //for everyone reservation 
-        for (Reservation reservation : dao.getByDay(dateTime1.getYear(), 
+	        
+	        //init for next loop
+	        dateTime1 = new DateTime(date1.getTime()).withHourOfDay(0)
+	        								.withMinuteOfHour(0);
+	        
+	        //for everyone reservation 
+	        for (Reservation reservation : dao.getByDay(dateTime1.getYear(), 
         											dateTime1.getMonthOfYear(), 
         											dateTime1.getDayOfMonth(), 
         											people)) {
         	
+
         	//set time for each loop
 	        dateTime1 = new DateTime(date1).withHourOfDay(reservation.getFirstTime().getHours())
 	        										.withMinuteOfHour(reservation.getFirstTime().getMinutes());
@@ -97,6 +122,7 @@ public class ReservationChartBean implements Serializable{
 	        
 	        
 	        while(dateTime1.isBefore(dateTime2.getMillis() + 1) ){//as long as is before
+	        	
 				
 	        	hoursAndMinutes = dateTime1.getHourOfDay() + ":" + dateTime1.getMinuteOfHour();//create hour:minutes sample
 	        	series.set( hoursAndMinutes,//use time as id
@@ -108,37 +134,17 @@ public class ReservationChartBean implements Serializable{
         }
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        List<Reservation> list = dao.getByDay(2016, 12, 1, "6");
-//        log.info(list.size());
-//        for (Reservation reservation : list) {
-//        	DateTime dateTime = new DateTime(reservation.getDate()).withHourOfDay(reservation.getFirstTime().getHours())//set date, hours and minutes
-//        															.withMinuteOfHour(reservation.getFirstTime().getMinutes());
-//		}
-        
-        
-        
-        
-        
-        
-        
         model.addSeries(series);
          
         return model;
     }
      
-    private void createBarModels() {
+    
+    public void createBarModels() {
         createBarModel();
     }
      
+    
     private void createBarModel() {
         barChart = initBarModel();
          
@@ -147,10 +153,11 @@ public class ReservationChartBean implements Serializable{
         barChart.setAnimate(true);
          
         Axis xAxis = barChart.getAxis(AxisType.X);
-        xAxis.setLabel("time");
-         
+        xAxis.setLabel("Tables");
+        xAxis.setMax(maxTables); 
+        
         Axis yAxis = barChart.getAxis(AxisType.Y);
-        yAxis.setLabel("table");
+        yAxis.setLabel("Time");
     }
     
     
@@ -164,4 +171,27 @@ public class ReservationChartBean implements Serializable{
 		this.barChart = barChart;
 	}
 
+	public Date getDate1() {
+		return date1;
+	}
+	
+	public void setDate1(Date date1) {
+		this.date1 = new DateTime(date1.getTime()).withHourOfDay(12).toDate();//if hour is set to 12 locale doesn't matter
+	}
+	
+	public String getPeople() {
+		return people;
+	}
+	
+	public void setPeople(String people) {
+		this.people = people;
+	}
+	
+	public int getSpaceBetweenTimes() {
+		return spaceBetweenTimes;
+	}
+	
+	public void setSpaceBetweenTimes(int spaceBetweenTimes) {
+		this.spaceBetweenTimes = spaceBetweenTimes;
+	}
 }

@@ -105,17 +105,25 @@ public class ReservationDAOImpl implements ReservationDAO{
 	}
 
 	@Override
-	public void deleteById(int id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
+	public void deleteById(long id) {
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			
+			Reservation reservation = session.load(Reservation.class, id);
+			session.delete(reservation);
+			session.flush();
+			session.getTransaction().commit();
+		}
 		
-		Reservation reservation = session.load(Reservation.class, id);
-		session.delete(reservation);
-		session.flush();
+		catch (Exception e) {
+			log.warn("Id doesn't exist");
+		}
 		
-		session.getTransaction().commit();
-		session.close();
-		
+		finally{
+			session.close();
+		}
 	}
 
 
@@ -131,50 +139,31 @@ public class ReservationDAOImpl implements ReservationDAO{
 		List<Reservation> result = null;
 		
 		
-		//init, create 2 date times
+		//init, create date time
 		DateTime jodaD1 = new DateTime(new Date()).withYear(year)
 													.withMonthOfYear(month)
 													.withDayOfMonth(day)
-													.withHourOfDay(0)
+													.withHourOfDay(12)
 													.withMinuteOfHour(0)
 													.withSecondOfMinute(0)
 													.withMillisOfSecond(0);
 		
-		
-		DateTime jodaD2 = new DateTime(new Date()).withYear(year)
-													.withMonthOfYear(month)
-													.withDayOfMonth(day)
-													.withHourOfDay(23)
-													.withMinuteOfHour(59)
-													.withSecondOfMinute(59)
-													.withMillisOfSecond(0);
-		
-		
-		//set second date
-		jodaD2 = jodaD2.plusMonths(1);
-		
 		//set datetime to dates
 		Date date1 = jodaD1.toDate();
-		Date date2 = jodaD2.toDate();
-		
-		log.debug("get reservations between date1 and date2: " + date1.toString() + ", " + date2.toString());
-
 		
 		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
 		result = session.createQuery("FROM Reservation a "
-														+ "WHERE date(a.date) >= date(:date1) " //date() cuts off time from date and
-															+ "AND date(a.date) <= date(:date2) "//between 2 dates
+														+ "WHERE date(a.date) = date(:date1) " //date() cuts off time from date and
 															+ "AND a.people = :people "// which table type
 														+ "ORDER by a.date DESC, a.firstTime DESC")
 											.setParameter("date1", date1)
-											.setParameter("date2", date2)
 											.setParameter("people", people)
 											.getResultList();
-//		} catch (Exception e) {
-//			log.info("checking reservation by day failed");
-//		}
+
+			log.info("received: " + result.size() + " reservations where date is: " + date1.toString());
+
 		
 		session.getTransaction().commit();
 		session.close();

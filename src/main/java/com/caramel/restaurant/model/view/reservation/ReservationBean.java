@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -25,7 +26,7 @@ import com.caramel.restaurant.model.view.message.NumericMessageDAOImpl;
 
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ReservationBean implements Serializable{
 	
     /**
@@ -198,41 +199,40 @@ public class ReservationBean implements Serializable{
 		requestContext.update("form:fail");
 		requestContext.execute("PF('fail').show()");
 		log.info("reservation failed");
-		log.info("start");
 		
+		
+		//logging
 		if(!(res.getDate().after(actualDate))){
-			log.info("!res.getDate().after(actualDate) return true");
+			log.debug("!res.getDate().after(actualDate) returned true");
 		}
 			
 		if(!(res.getFirstTime().before(closeDateChecker))){
-			log.info("!res.getFirstTime().before(closeDateChecker) return true " + closeDateChecker);
+			log.debug("!res.getFirstTime().before(closeDateChecker) returned true " + closeDateChecker);
 		}
 			
 		if( !(res.getSecondTime().after(openDateChecker))){
-			log.info("! res.getSecondTime().after(openDateChecker) return true " + openDateChecker);
+			log.debug("! res.getSecondTime().after(openDateChecker) returned true " + openDateChecker);
 		}
 			
 		if( !(res.getSecondTime().before(closeDateChecker))){
-			log.info("!res.getSecondTime().before(closeDateChecker) return true " + closeDateChecker);
+			log.debug("!res.getSecondTime().before(closeDateChecker) returned true " + closeDateChecker);
 		}
 		
 		if( !(res.getSecondTime().after(openDateChecker))){
-			log.info("!res.getSecondTime().after(openDateChecker) return true " + closeDateChecker);
+			log.debug("!res.getSecondTime().after(openDateChecker) returned true " + closeDateChecker);
 		}
 			
 		if( !(res.getPeople().equals("2") || res.getPeople().equals("6"))){
-			log.info("!res.getPeople().equals(2) || res.getPeople().equals(6) return true");
+			log.debug("!res.getPeople().equals(2) || res.getPeople().equals(6) returned true");
 		}
 			
 		if( !(res.getFirstTime().before( res.getSecondTime() ))){
-			log.info("!res.getFirstTime().before( res.getSecondTime() ) return true");
+			log.debug("!res.getFirstTime().before( res.getSecondTime() ) returned true");
 		}
 		
 		if(res.getFirstTime().equals( res.getSecondTime() )){
-			log.info("res.getFirstTime().equals( res.getSecondTime() ) return true");
+			log.debug("res.getFirstTime().equals( res.getSecondTime() ) returned true");
 		}
-		
-		log.info("end");
 	}
 	
 	
@@ -242,9 +242,6 @@ public class ReservationBean implements Serializable{
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected",
 				format.format(event.getObject())));
 	}
-	
-	
-	
 	
 	
 	
