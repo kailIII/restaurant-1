@@ -6,9 +6,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,6 +47,10 @@ public class AdminReservationBean implements Serializable{
 		reservations = dao.getAll();
 	}
 	
+	public void refresh(){
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Values was refreshed", null));
+		init();
+	}
 	
 	public boolean isEmpty(){
 		ReservationDAO dao = new ReservationDAOImpl();
@@ -179,11 +185,9 @@ public class AdminReservationBean implements Serializable{
 		this.people = people;
 	}
 
-
 	public long getId() {
 		return id;
 	}
-
 
 	public void setId(long id) {
 		this.id = id;

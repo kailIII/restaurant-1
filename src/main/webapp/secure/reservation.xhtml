@@ -7,20 +7,33 @@
 	template="../WEB-INF/templates/admin-main-template.xhtml">
 	<ui:define name="content">
 
-		<h:form styleClass="admin-settings-form">
-			<h:panelGrid columns="1">
-			<h:outputText value="Id to delete: " />
-	
-				<p:inputText value="#{adminReservationBean.id}" />
+		<div class="to-center">
+				<h:form styleClass="admin-reservations-form">
+						<p:panel header="Id to delete: ">
 
-				<p:commandButton value="submit" style="width: 100%;" 
-					update="reservation-form:tbl" action="#{adminReservationBean.deleteById()}" />
-			</h:panelGrid>
+							<p:inputText value="#{adminReservationBean.id}" />
 
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-		</h:form>
+							<p:commandButton value="submit"
+								update="reservation-form:tbl"
+								action="#{adminReservationBean.deleteById()}" />
+						</p:panel>
 
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:form>
+
+				<h:form styleClass="admin-refresh-reservations-form">
+					<p:panel header="refresh elements">
+
+					<p:commandButton value="Refresh reservations list"
+						action="#{adminReservationBean.refresh()}"
+						title="refresh elements" />
+
+				</p:panel>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</h:form>
+		</div>
 
 		<h:form id="reservation-form" styleClass="reservation-form">
 			<p:dataTable id="tbl" var="reservation"

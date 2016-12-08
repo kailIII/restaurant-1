@@ -40,7 +40,8 @@
 				<h:form id="form">
 					<p:growl id="msgs" showDetail="true" />
 
-					<h:panelGrid columns="2" cellspacing="15" styleClass="reservation-form">
+					<h:panelGrid columns="2" cellspacing="15"
+						styleClass="reservation-form">
 
 						<p:panel id="link-2-people-table" header="2 people table"
 							styleClass="reservation-form-panel">
@@ -59,29 +60,63 @@
 									style="width: 100%;" styleClass="reservation-form-image" />
 							</h:commandLink>
 						</p:panel>
-					</h:panelGrid>
-					
-					<h:panelGrid columns="1" styleClass="reservation-checker" style="width: 100%;">
-						<p:panel header="Check your booking">
-						<p:inputText id="input-reservation" value="#{reservationBean.email}" styleClass="reservation-checker-button" />
-						<p:watermark value="E-mail" for="input-reservation" />
 
-						<p:commandButton value="Submit" icon="fa fa-question"
-							update="table-for-clients" oncomplete="PF('dlg').show()"
-							action="#{reservationBean.setReservationsListByEmail()}" 
-							style="width: 100%;"/>
+						<p:panel header="Check your booking">
+							<h:panelGrid columns="1" styleClass="reservation-checker"
+								style="width: 100%;">
+								<p:inputText id="input-reservation"
+									value="#{reservationBean.email}"
+									styleClass="reservation-checker-button" />
+								<p:watermark value="E-mail" for="input-reservation" />
+
+								<p:commandButton value="Submit" icon="fa fa-question"
+									update="table-for-clients" oncomplete="PF('dlg').show()"
+									action="#{reservationBean.setReservationsListByEmail()}"
+									style="width: 100%;" />
+							</h:panelGrid>
 						</p:panel>
+
+						<p:panel header="Check free tables">
+							<h:panelGrid columns="1" styleClass="reservation-checker"
+								style="width: 100%;">
+
+								<p:selectOneMenu id="console"
+									value="#{reservationChartBean.people}" style="width: 100%;">
+									<f:selectItem itemLabel="2 people" itemValue="2" />
+									<f:selectItem itemLabel="6 people" itemValue="6" />
+								</p:selectOneMenu>
+
+								<p:calendar id="date" value="#{reservationChartBean.date1}"
+									mode="popup" pattern="dd/MM/yyyy" required="true"
+									requiredMessage="Date is required"
+									styleClass="reservation-checker-button" mindate="now" />
+
+								<p:commandButton value="Submit" icon="fa fa-question"
+									update="reservation-chart:chart" oncomplete="PF('chart').show()"
+									action="#{reservationChartBean.init()}" style="width: 100%;" />
+							</h:panelGrid>
+						</p:panel>
+
 					</h:panelGrid>
 
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 				</h:form>
 
+				<p:dialog header="Reservations" widgetVar="chart" showEffect="fade"
+					hideEffect="fade" resizable="false" draggable="false"
+					styleClass="restaurant-client-chart-form">
+					<h:form id="reservation-chart">
+						<p:chart id="chart" type="bar"
+							model="#{reservationChartBean.barChart}" responsive="true"
+							styleClass="restaurant-client-chart-content" />
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+					</h:form>
+				</p:dialog>
 
 
-
-
-				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+				<p:dialog header="Reservations" widgetVar="dlg" showEffect="fade"
 					hideEffect="fade" resizable="false" draggable="false" styleClass="restaurant-client-check-form">
 					
 					<h:form styleClass="reservation-form" id="table-for-clients" >

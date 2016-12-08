@@ -11,7 +11,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.logging.log4j.LogManager;
@@ -79,7 +78,7 @@ public class ReservationBean implements Serializable{
 	
 	public void setReservationsListByEmail(){
 		ReservationDAOImpl reservationDAO = new ReservationDAOImpl();
-		log.info("list was changed: " + email);
+		log.info("getByEmail was called: " + email);
 		this.reservations =  reservationDAO.getByEmail(email);
 	}
 	
@@ -99,6 +98,7 @@ public class ReservationBean implements Serializable{
 		dao.save(res);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void saveIfok(){
 		
 		//validation
@@ -138,11 +138,13 @@ public class ReservationBean implements Serializable{
 		
 		//create date with opening time for validation
 		Date openDateChecker = new Date(res.getFirstTime().getTime());
-		openDateChecker.setHours(Integer.parseInt(openingTime));
+		openDateChecker.setHours(Integer.parseInt(openingTime) - 1); // 1 minute before real open time
+		openDateChecker.setMinutes(59);
 		
 		//create date with closing time for validation
 		Date closeDateChecker = new Date(res.getFirstTime().getTime());
 		closeDateChecker.setHours(Integer.parseInt(closingTime));
+		closeDateChecker.setMinutes(0);
 		
 		
 		log.debug("validates reservation properties");
@@ -173,6 +175,8 @@ public class ReservationBean implements Serializable{
 			
 			
 		case "6":
+			
+			log.info("im alive" + checkList.size() + ", " + items6);
 			if(checkList.size() < items6 
 			&& res.getDate().after(actualDate)
 			

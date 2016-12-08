@@ -15,15 +15,16 @@ import com.caramel.restaurant.utils.HibernateUtil;
 public class ReservationDAOImpl implements ReservationDAO{
 	private final Logger log = LogManager.getLogger(ReservationDAOImpl.class.getName());
 
+	
 	//return list of reservations with selected id and ordered by date
 	@Override
 	public List<Reservation> getBetweenTime(Date date, Time firstTime, Time secondTime, String numberOfPeople) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		log.info("date: " + date.toString() + "firsttime: " + firstTime.toString() + "secondtime: " + secondTime.toString());
+		log.info("getBetweenTime was called with date: " + date.toString() + ", firsttime: " + firstTime.toString() + ", secondtime: " + secondTime.toString() + ", number of people: " + numberOfPeople);
 		
-		@SuppressWarnings({ "unchecked", "deprecation" })
+		@SuppressWarnings({ "unchecked" })
 		List<Reservation> result = session.createQuery("FROM Reservation a "
 														+ "WHERE date(a.date) like date(:date) " //date() cuts off time from date, the same date and
 															+ "AND a.people = :people "// which table type
@@ -31,9 +32,9 @@ public class ReservationDAOImpl implements ReservationDAO{
 																+ "OR (a.firstTime >= :first AND a.firstTime <= :second ) "// or first time should be between first and second
 																+ "OR (a.firstTime <= :first AND a.secondTime >= :second )) "// and data can be between two parameters from other records
 														+ "ORDER by a.date DESC, a.firstTime DESC")
-											.setDate("date", date)
-											.setTime("first", firstTime)
-											.setTime("second", secondTime)
+											.setParameter("date", date)
+											.setParameter("first", firstTime)
+											.setParameter("second", secondTime)
 											.setParameter("people", numberOfPeople)
 											.getResultList();
 		
@@ -43,6 +44,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return result;
 	}
 
+	
 	//return list of reservations with selected id and ordered by date
 	@Override
 	public List<Reservation> getById(int id) {
@@ -60,6 +62,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return result;
 	}
 
+	
 	//return list of reservations with selected surname and ordered by date
 	@Override
 	public List<Reservation> getByEmail(String email) {
@@ -77,6 +80,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return result;
 	}
 
+	
 	//return list of reservations ordered by date
 	@Override
 	public List<Reservation> getAll() {
@@ -93,6 +97,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return result;
 	}
 
+	
 	@Override
 	public void save(Reservation res) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -107,6 +112,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 	@Override
 	public void deleteById(long id) {
 		Session session = null;
+		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
@@ -162,7 +168,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 											.setParameter("people", people)
 											.getResultList();
 
-			log.info("received: " + result.size() + " reservations where date is: " + date1.toString());
+			log.debug("received: " + result.size() + " reservations where date is: " + date1.toString());
 
 		
 		session.getTransaction().commit();

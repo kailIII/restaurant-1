@@ -63,6 +63,8 @@
 	vertical-align: top;
 }
 
+.admin-reservations-form,
+.admin-refresh-reservations-form,
 .admin-settings-form{
 	display: inline-block;
 }

@@ -85,7 +85,7 @@ body{
 }
 
 .footer-info{
-	position: absolute;
+	position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -94,4 +94,19 @@ body{
     text-align: center;
 	z-index: 1000;
 	padding-bottom: 25px;
+}
+
+.restaurant-client-chart-form{
+	top: 10% !important;
+	bottom: 10%;
+	left: 10%;
+	right: 10%;
+	overflow-y: auto !important;	
+}
+
+.restaurant-client-chart-form .ui-widget-content{
+}
+
+.restaurant-client-chart-content{
+	height: 1200px; 
 }

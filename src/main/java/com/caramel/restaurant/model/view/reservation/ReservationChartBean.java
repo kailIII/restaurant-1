@@ -2,13 +2,10 @@ package com.caramel.restaurant.model.view.reservation;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +16,6 @@ import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.HorizontalBarChartModel;
 
-import com.caramel.restaurant.model.view.message.MessageDAOImpl;
 import com.caramel.restaurant.model.view.message.NumericMessageDAOImpl;
 
 @ManagedBean
@@ -42,10 +38,11 @@ public class ReservationChartBean implements Serializable{
 	
     @PostConstruct
     public void init() {
-
+    	
+    	log.debug("initlize reservation chart bean");
+    	
     	//init before validation
         NumericMessageDAOImpl numDAO = new NumericMessageDAOImpl();
-        MessageDAOImpl dao = new MessageDAOImpl();
         
         
         //validations
@@ -64,13 +61,15 @@ public class ReservationChartBean implements Serializable{
         createBarModels();
     }
  
-    private BarChartModel initBarModel() {
+    @SuppressWarnings("deprecation")
+	private BarChartModel initBarModel() {
+    	log.debug("initialize chart model");
+    	
         HorizontalBarChartModel model = new HorizontalBarChartModel();
  
         ChartSeries series = new ChartSeries();
         series.setLabel(people + " people");
         
-        log.info(date1.toString());
         
         //init variables before loop
         String hoursAndMinutes;
@@ -87,6 +86,7 @@ public class ReservationChartBean implements Serializable{
 	        dateTime2 = new DateTime(date1.getTime()).withHourOfDay(23)
 											.withMinuteOfHour(59);
 	        
+	        log.debug("initialize chart points");
 	        
 	        //charts ids need to be initialized before get function will be called
 	        while(dateTime1.isBefore(dateTime2.getMillis() + 1) ){//as long as is before
@@ -98,7 +98,7 @@ public class ReservationChartBean implements Serializable{
 	        	dateTime1 = dateTime1.plusMinutes(spaceBetweenTimes);
 			}
         
-	        
+	        log.debug("set data to chart points");
 	        
 	        //init for next loop
 	        dateTime1 = new DateTime(date1.getTime()).withHourOfDay(0)

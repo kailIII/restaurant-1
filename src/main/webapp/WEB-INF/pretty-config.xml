@@ -58,9 +58,9 @@
 		<view-id value="/admin/accounts.xhtml" />
 	</url-mapping>
 	
-	<url-mapping id="sec-settings">
-		<pattern value="/secure/settings" />
-		<view-id value="/secure/settings.xhtml" />
+	<url-mapping id="admin-settings">
+		<pattern value="/admin/settings" />
+		<view-id value="/admin/settings.xhtml" />
 	</url-mapping>
 
 	<!-- Maps "/user/#{username}" to the URL "/user/view.xhtml?username=value" -->

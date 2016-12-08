@@ -57,12 +57,12 @@
 							<h:outputText value="Since:" />
 							<p:calendar id="fTime" value="#{reservationBean.firstTime}"
 								mode="popup" timeOnly="true" minHour="#{basicDataBean.openTime}" 
-								pattern="HH:mm" maxHour="#{basicDataBean.closeTime}"
+								pattern="HH:mm" maxHour="#{basicDataBean.closeTimeMinus1}"
 								stepMinute="15" required="true" requiredMessage="time of arrival is required" />
 
 							<h:outputText value="To:" />
 							<p:calendar id="sTime" value="#{reservationBean.secondTime}"
-								mode="popup" timeOnly="true" minHour="#{basicDataBean.openTime}" maxHour="#{basicDataBean.closeTime}"
+								mode="popup" timeOnly="true" minHour="#{basicDataBean.openTime}" maxHour="#{basicDataBean.closeTimeMinus1}"
 								pattern="HH:mm" stepMinute="15" required="true" requiredMessage="time of departure is required" />
 
 							<h:outputText value="Firstname:" />

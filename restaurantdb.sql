@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Gru 2016, 00:42
+-- Czas generowania: 08 Gru 2016, 01:21
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -38,8 +38,7 @@ CREATE TABLE `authorities` (
 
 INSERT INTO `authorities` (`authority`, `role`, `username`) VALUES
 (1, 'ROLE_ADMIN', 'root'),
-(2, 'ROLE_MODERATOR', 'user1'),
-(3, 'ROLE_MODERATOR', 'user2');
+(2, 'ROLE_MODERATOR', 'user1');
 
 -- --------------------------------------------------------
 
@@ -94,15 +93,17 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id`, `message`, `target`) VALUES
-(53, 'myEmail@gmail.com', 'email'),
 (55, 'fine street, new city, new country', 'address'),
-(56, '/resources/img/weld.png', 'logoUrl'),
-(57, 'editable footer info for you', 'footerInfo'),
 (60, '23', 'closeTime'),
-(61, '<h1 style="text-align: center;">Your Topic</h1><div style="text-align: center;"><span style="font-size: 10pt;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie tristique est eget scelerisque. Nulla in nisl sed magna pulvinar hendrerit sed non metus. In cursus bibendum odio, ac posuere ligula. Vestibulum ipsum lacus, dictum a nisl a, hendrerit gravida est. Nam ut nisl congue, porta ipsum vel, porta tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer placerat lorem at eros rhoncus vulputate. Sed tellus urna, tincidunt quis ipsum non, vestibulum placerat dolor. Nam neque mi, feugiat a turpis ut, iaculis imperdiet urna.\r\n\r\nDonec sit amet tempor lectus, vitae scelerisque lectus. Pellentesque viverra cursus tincidunt. Maecenas laoreet enim nec vulputate blandit. </span></div><div style="text-align: center;"><span style="font-size: 10pt;"><br></span></div><div style="text-align: center;"><span style="font-size: 10pt;">Nullam elementum vitae lorem ac commodo. Donec accumsan tincidunt mattis. Donec ex diam, ornare vitae mollis a, gravida porttitor dui. Proin rhoncus egestas nisl. Quisque malesuada dolor vel ante eleifend ultrices. Proin sodales sem sit amet cursus feugiat. Aliquam id tempor diam. Nullam pellentesque accumsan velit sed dapibus. Vivamus pellentesque ipsum ut erat eleifend, quis efficitur lectus consequat. Vestibulum lobortis quis enim ut finibus. Aenean quis tristique ligula. Aliquam id nisl ultricies, molestie magna egestas, blandit justo.\r\n\r\nDonec suscipit mattis turpis ut faucibus. Sed accumsan ex vel erat pharetra venenatis. In consequat blandit lectus, non ultricies risus. Vivamus dignissim nulla a vehicula molestie. Maecenas ullamcorper leo at risus tempus, semper aliquet orci sodales. Donec vitae fermentum justo. Maecenas interdum blandit lectus sit amet facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras vestibulum molestie ante pretium blandit.</span></div>', 'about'),
-(63, '00 123 123 321', 'phone'),
 (64, 'Sushi Way', 'restaurantName'),
-(66, '9', 'openTime');
+(70, '00 123 123 321', 'phone'),
+(73, '9', 'openTime'),
+(82, 'Your description', 'description'),
+(85, '<h1 style="text-align: center;">Your Topic</h1><h1 style="text-align: center;"><div style="font-size: 13.3333px; font-weight: normal;"><span style="font-size: 10pt;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris molestie tristique est eget scelerisque. Nulla in nisl sed magna pulvinar hendrerit sed non metus. In cursus bibendum odio, ac posuere ligula. Vestibulum ipsum lacus, dictum a nisl a, hendrerit gravida est. Nam ut nisl congue, porta ipsum vel, porta tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer placerat lorem at eros rhoncus vulputate. Sed tellus urna, tincidunt quis ipsum non, vestibulum placerat dolor. Nam neque mi, feugiat a turpis ut, iaculis imperdiet urna. Donec sit amet tempor lectus, vitae scelerisque lectus. Pellentesque viverra cursus tincidunt. Maecenas laoreet enim nec vulputate blandit.&nbsp;</span></div><div style="font-size: 13.3333px; font-weight: normal;"><span style="font-size: 10pt;"><br></span></div><div style="font-size: 13.3333px; font-weight: normal;"><span style="font-size: 10pt;">Nullam elementum vitae lorem ac commodo. Donec accumsan tincidunt mattis. Donec ex diam, ornare vitae mollis a, gravida porttitor dui. Proin rhoncus egestas nisl. Quisque malesuada dolor vel ante eleifend ultrices. Proin sodales sem sit amet cursus feugiat. Aliquam id tempor diam. Nullam pellentesque accumsan velit sed dapibus. Vivamus pellentesque ipsum ut erat eleifend, quis efficitur lectus consequat. Vestibulum lobortis quis enim ut finibus. Aenean quis tristique ligula. Aliquam id nisl ultricies, molestie magna egestas, blandit justo. Donec suscipit mattis turpis ut faucibus. Sed accumsan ex vel erat pharetra venenatis. In consequat blandit lectus, non ultricies risus. Vivamus dignissim nulla a vehicula molestie. Maecenas ullamcorper leo at risus tempus, semper aliquet orci sodales. Donec vitae fermentum justo. Maecenas interdum blandit lectus sit amet facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras vestibulum molestie ante pretium blandit.</span></div></h1>', 'about'),
+(87, 'editable footer info for you', 'footerInfo'),
+(89, 'myEmail@gmail.com', 'email'),
+(91, 'Your Title', 'title'),
+(93, '/resources/img/sw.png', 'logoUrl');
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,7 @@ CREATE TABLE `numericmessage` (
 
 INSERT INTO `numericmessage` (`id`, `number`, `target`) VALUES
 (9, 12, 'tablesFor6'),
-(10, 5, 'tablesFor2');
+(11, 7, 'tablesFor2');
 
 -- --------------------------------------------------------
 
@@ -147,54 +148,23 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `date`, `email`, `firstTime`, `firstname`, `people`, `phone`, `secondTime`, `surname`) VALUES
-(2, '2016-11-18 23:00:00', 'qwe', '11:00:00', 'qwe', '2', 'ewq', '11:00:00', 'ewq'),
-(3, '2016-11-18 23:00:00', '', '13:00:00', '', '2', '', '13:15:00', ''),
-(4, '2016-11-18 23:00:00', '', '13:00:00', '', '2', '', '13:15:00', ''),
-(5, '2016-11-18 23:00:00', '', '13:00:00', '', '2', '', '13:15:00', ''),
-(6, '2016-11-20 23:00:00', '', '13:00:00', '', '2', '', '13:15:00', ''),
-(7, '2016-11-19 23:00:00', '', '13:00:00', '', '2', '', '13:15:00', ''),
-(8, '2016-11-19 23:00:00', '', '14:00:00', '', '2', '', '13:15:00', ''),
-(9, '2016-11-21 23:00:00', '', '11:00:00', '', '2', '', '11:00:00', ''),
-(10, '2016-11-21 23:00:00', '', '11:00:00', '', '2', '', '11:00:00', ''),
-(11, '2016-11-20 23:00:00', '', '11:00:00', '', '2', '', '11:00:00', ''),
-(12, '2016-11-19 23:00:00', '', '12:00:00', '', '2', '', '10:00:00', ''),
-(13, '2016-11-20 00:00:00', '', '14:00:00', '', '2', '', '14:00:00', ''),
-(14, '2016-11-24 00:00:00', '', '12:00:00', '', '2', '', '12:00:00', ''),
-(15, '2016-11-22 00:00:43', 'qweqweqweqwe', '16:15:00', 'qwe', '2', 'qweqweqwe', '17:00:00', 'qweqwe'),
-(16, '2016-11-20 00:00:43', '', '12:00:00', '', '6', '', '12:00:00', ''),
-(17, '2016-11-20 00:00:43', '', '19:00:00', '', '2', '', '20:00:00', ''),
-(18, '2016-11-20 00:00:43', 'qweqweqweqwe', '20:15:00', 'qwe', '2', 'qweqweqwe', '21:00:00', 'qweqwe'),
-(19, '2016-11-20 00:00:43', 'qweqweqweqwe', '22:00:00', 'qwe', '2', 'qweqweqwe', '22:00:00', 'qweqwe'),
-(20, '2016-11-20 00:00:43', 'qweqweqweqwe', '15:00:00', 'qwe', '2', 'qweqweqwe', '16:00:00', 'qweqwe'),
-(21, '2016-11-23 12:00:00', 'e', '12:00:00', 'qwe', '2', 'weqw', '12:01:00', 'qweq'),
-(22, '2016-11-23 12:00:00', 'e', '13:00:00', 'qwe', '2', 'weqw', '14:01:00', 'qweq'),
-(23, '2016-11-30 12:00:00', '', '13:00:00', '', '2', '', '13:30:00', ''),
-(24, '2016-11-30 12:00:00', '', '13:45:00', '', '6', '', '16:15:00', ''),
-(25, '2016-11-29 12:00:00', '', '12:00:00', '', '2', '', '12:00:00', ''),
-(27, '2016-11-27 12:00:00', '', '12:00:00', '', '2', '', '12:15:00', ''),
-(29, '2016-11-24 12:00:00', 'qwe', '23:00:00', 'qwe', '2', 'qwe', '23:30:00', 'qwe'),
-(30, '2016-11-27 12:00:00', 'qwe', '10:00:00', 'qweeeee', '2', 'qwee', '11:00:00', 'wqeee'),
-(31, '2016-11-20 12:00:00', '', '09:00:00', '', '2', '', '09:15:00', ''),
-(32, '2016-11-15 12:00:00', '', '05:00:00', '', '6', '', '06:00:00', ''),
-(33, '2016-12-22 12:00:00', '', '13:00:00', '', '6', '', '14:00:00', ''),
-(34, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '14:00:00', 'ewq'),
-(35, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '14:00:00', 'ewq'),
-(36, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:15:00', 'ewq'),
-(37, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(38, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(39, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(40, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(41, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(42, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(43, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(44, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(45, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(46, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(47, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(48, '2016-12-22 12:00:00', 'ewq', '13:00:00', 'qwe', '6', 'ewq', '13:30:00', 'ewq'),
-(49, '2016-11-28 12:00:00', '', '11:00:00', '', '6', '', '12:00:00', ''),
-(50, '2016-11-30 12:00:00', 'qwe', '11:00:00', 'qwe', '6', 'qwe', '12:00:00', 'qwe'),
-(51, '2016-12-03 12:00:00', 'ewq', '11:00:00', 'qwe', '6', 'ewq', '12:00:00', 'ewq');
+(5, '2016-12-31 12:00:00', 'John@Doe.com', '09:00:00', 'John', '6', '543897765', '11:00:00', 'Doe'),
+(6, '2016-12-31 12:00:00', 'Sue@sue.com', '09:00:00', 'Mia', '6', '654987345', '12:15:00', 'Sue'),
+(7, '2016-12-31 12:00:00', 'Peter@White.com', '17:15:00', 'Peter', '2', '543765765', '20:15:00', 'White'),
+(8, '2016-12-31 12:00:00', 'Melody@Clark.com', '16:30:00', 'Melody', '6', '654987098', '20:00:00', 'Clark'),
+(9, '2016-12-31 12:00:00', 'Melody@Clark.com', '18:30:00', 'Ruby', '6', '654987098', '22:00:00', 'Yang'),
+(10, '2016-12-31 12:00:00', 'Stephany@Lee.com', '18:30:00', 'Stephany', '6', '654987098', '22:00:00', 'Lee'),
+(11, '2016-12-31 12:00:00', 'Bob@Smith.com', '18:30:00', 'Bob', '6', '342678987', '22:00:00', 'Smith'),
+(12, '2016-12-31 12:00:00', 'Jeff@Bezos.com', '10:00:00', 'Jeff', '6', '354768970', '14:00:00', 'Bezos'),
+(13, '2016-12-31 12:00:00', 'Mark@Sandberg.com', '10:00:00', 'Mark', '6', '345234231', '14:00:00', 'Sandberg'),
+(14, '2016-12-31 12:00:00', 'Brand@Feld.com', '10:00:00', 'Brand', '6', '234654890', '14:00:00', 'Feld'),
+(15, '2016-12-31 12:00:00', 'Marissa@Mayer.com', '09:15:00', 'Marissa', '6', '654980345', '11:00:00', 'Mayer'),
+(16, '2016-12-31 12:00:00', 'Tom@Taylor.com', '17:30:00', 'Tom', '6', '659034563', '19:00:00', 'Taylor'),
+(17, '2016-12-31 12:00:00', 'Obmar@Wood.com', '17:30:00', 'Obmar', '6', '232345456', '19:00:00', 'Wood'),
+(18, '2016-12-31 12:00:00', 'Steve@Jobs.com', '12:15:00', 'Steve', '2', '123567897', '14:00:00', 'Jobs'),
+(19, '2016-12-31 12:00:00', 'Ruby@Bawn.com', '11:15:00', 'Ruby', '2', '676745342', '14:00:00', 'Bawn'),
+(20, '2016-12-31 12:00:00', 'Richard@Cornell.com', '09:15:00', 'Richard', '2', '123678098', '13:00:00', 'Cornell'),
+(21, '2016-12-31 12:00:00', 'Angela@Hill.com', '21:15:00', 'Angela', '2', '123654321', '22:45:00', 'Hill');
 
 -- --------------------------------------------------------
 
@@ -214,8 +184,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`username`, `enabled`, `password`) VALUES
 ('root', b'1', '123'),
-('user1', b'1', 'password'),
-('user2', b'1', 'qweqweqwe');
+('user1', b'1', 'password');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -287,17 +256,17 @@ ALTER TABLE `imageview`
 -- AUTO_INCREMENT dla tabeli `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 --
 -- AUTO_INCREMENT dla tabeli `numericmessage`
 --
 ALTER TABLE `numericmessage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT dla tabeli `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- Ograniczenia dla zrzutów tabel
 --

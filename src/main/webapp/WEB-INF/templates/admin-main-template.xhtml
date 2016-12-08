@@ -62,17 +62,17 @@
 	
 					<p:panelGrid columns="1" styleClass="admin-actions-menu" style="width: 100%;">
 						<h:outputText value="Main" styleClass="admin-actions-menu-text" />
-						<p:button value="Reservations Chart" outcome="/secure/chart-reservation.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+						<p:button value="Reservations Chart" outcome="/secure/chart-reservation.xhtml" icon="fa fa-bar-chart-o" styleClass="admin-actions-menu-buttons" />
 						
 						<h:outputText value="Website contents" styleClass="admin-actions-menu-text" />
-						<p:button value="Menu" outcome="/secure/menu.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
-						<p:button value="Reservations" outcome="/secure/reservation.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
-						<p:button value="About" outcome="/secure/about.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />						
+						<p:button value="Menu" outcome="/secure/menu.xhtml" icon="fa fa-coffee" styleClass="admin-actions-menu-buttons" />
+						<p:button value="Reservations" outcome="/secure/reservation.xhtml" icon="fa fa-calendar" styleClass="admin-actions-menu-buttons" />
+						<p:button value="About" outcome="/secure/about.xhtml" icon="fa fa-info-circle" styleClass="admin-actions-menu-buttons" />						
 						
 						<c:if test="#{userBean.hasRole('ROLE_ADMIN')}">
 						<h:outputText value="Settings" styleClass="admin-actions-menu-text" />
-							<p:button value="Settings" outcome="/admin/settings.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
-							<p:button value="Accounts" outcome="/admin/accounts.xhtml" icon="ui-icon-home" styleClass="admin-actions-menu-buttons" />
+							<p:button value="Settings" outcome="/admin/settings.xhtml" icon="fa fa-cogs" styleClass="admin-actions-menu-buttons" />
+							<p:button value="Accounts" outcome="/admin/accounts.xhtml" icon="fa fa-user-plus" styleClass="admin-actions-menu-buttons" />
 						</c:if>
 						
 					</p:panelGrid>

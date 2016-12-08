@@ -58,6 +58,10 @@ public class BasicDataBean implements Serializable{
 		setTablesFor6(numDAO.getMessageByTarget("tablesFor6"));
 	}
 	
+	public int getCloseTimeMinus1(){
+		return Integer.parseInt(getCloseTime())-1;
+	}
+	
 	public void sendPFSuccessMessage(){
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Value was saved ", null));
 	}
