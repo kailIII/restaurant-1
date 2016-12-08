@@ -15,7 +15,7 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	
-	<!-- command to disable absolute patch mapping  -->
-	<mvc:resources mapping="/files/**" location="file:c:\\mapped\" />
+	<!-- uncomment to enable absolute patch mapping
+	<mvc:resources mapping="/files/**" location="file:c:\\mapped\" /> -->
 	
 </beans:beans>

@@ -17,14 +17,6 @@
 			resources, i.e. build is platform dependent! -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<!-- To set the jboss.home environment variable the Maven way, set the 
-			jboss.home property in an active profile in the Maven 2 settings.xml file -->
-		<jboss.home>${env.JBOSS_HOME}</jboss.home>
-		<jboss.domain>default</jboss.domain>
-
-		<!-- The version of Weld extensions in use -->
-		<weld.extensions.version>1.0.0-CR2</weld.extensions.version>
-
 		<!-- The version of primefaces -->
 		<primefaces>6.0</primefaces>
 
@@ -72,6 +64,24 @@
 		<!-- pdf format support -->
 		<lowagie>2.1.7</lowagie>
 		
+		<joda>2.9.4</joda>
+		
+		<commons-log>1.1.3</commons-log>
+		
+		<commons-io>2.4</commons-io>
+		
+		<commons-fileupload>1.3.1</commons-fileupload>
+		
+		<jsr250>1.0</jsr250>
+		
+		<cdi>1.2</cdi>
+		
+		<javax-el>3.0.0</javax-el>
+		
+		<jstl>1.2</jstl>
+		
+		<c3p0>0.9.1.2</c3p0>
+		
 		<!-- The versions of maven plugins -->
 		<maven.eclipse.plugin>2.10</maven.eclipse.plugin>
 		<maven.compiler>3.5.1</maven.compiler>
@@ -91,27 +101,27 @@
 		<dependency>
 		    <groupId>joda-time</groupId>
 		    <artifactId>joda-time</artifactId>
-		    <version>2.9.4</version>
+		    <version>${joda}</version>
 		</dependency>
 	
 		<dependency>
         	<groupId>commons-logging</groupId>
         	<artifactId>commons-logging</artifactId>
-        	<version>1.1.3</version>
+        	<version>${commons-log}</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
 		    <groupId>commons-io</groupId>
 		    <artifactId>commons-io</artifactId>
-		    <version>2.4</version>
+		    <version>${commons-io}</version>
 		</dependency>
 		
 				<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
-		    <version>1.3.1</version>
+		    <version>${commons-fileupload}</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -125,14 +135,14 @@
 		<dependency>
 		    <groupId>com.lowagie</groupId>
 		    <artifactId>itext</artifactId>
-		    <version>2.1.7</version>
+		    <version>${lowagie}</version>
 		</dependency>
 		
 				<!-- CDI (JSR-299) -->
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
-			<version>1.2</version>
+			<version>${cdi}</version>
 		</dependency>
 		
 				<!-- Common annotations (e.g., @PostConstruct, @PreDestroy, @Generated, 
@@ -140,7 +150,7 @@
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>jsr250-api</artifactId>
-			<version>1.0</version>
+			<version>${jsr250}</version>
 		</dependency>
 		
 				<!-- Bean Validation (JSR-303) -->
@@ -154,7 +164,7 @@
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>
-			<version>3.0.0</version>
+			<version>${javax-el}</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -168,7 +178,7 @@
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
+		    <version>${jstl}</version>
 		</dependency>
 				
 		
@@ -208,7 +218,7 @@
 		<dependency>
 		    <groupId>c3p0</groupId>
 		    <artifactId>c3p0</artifactId>
-		    <version>0.9.1.2</version>
+		    <version>${c3p0}</version>
 		</dependency>
 		
 				<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
