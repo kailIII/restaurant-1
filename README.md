@@ -1,13 +1,13 @@
 
                                  restaurant 
 
-It's simple restaurant website build on jsf 2.2, Spring, Spring mvc, Hibernate, PrimeFaces, PrettyFaces and log4j2.
+It's a simple restaurant website build with use of jsf 2.2, Spring, Spring mvc, Hibernate, PrimeFaces, PrettyFaces and log4j2.
 
-To work with project i recommend to import db's backup from root dir to db named restaurantdb.
+To work with the project i recommend to import a db's backup from root to the db named restaurantdb.
 Project is already configured to work with mariadb from xampp.
 You can find db configuration inside hibernate.cfg.xml and SecurityConfig class.
 Tested with windows 10, jdk 1.8.0_102, mariadb 10.1.16-MariaDB and Tomcat 8.0.38.
-I prepared reservations inside db's backup for 31/12/2016, check them in chart.
+There are prepared reservations inside db's backup for 31/12/2016, check them in a chart.
 
 
 features:
@@ -15,8 +15,8 @@ features:
 - beautiful banner and old style template,
 - dynamically managed food menu with ajax,
 - booking tables for 2 or 6 people,
-- admin panel and login page,
-- chart and table with reservation data,
+- admin panel,
+- chart and tables with reservation data,
 - excel and pdf import option for reservation data,
 - editable content,
 - form to set basic website informations (e.g. e-mail, phone),
@@ -25,7 +25,7 @@ features:
 - 3 kinds of accounts (admin, anonymous and moderator)
 - restrictions for moderators
 - absolute dir for user to store files
-- mapped absolute patch for uploaded files (conf inside /restaurant/src/main/webapp/WEB-INF/spring/spring-context.xml)
+- mapped absolute patch for uploaded files (configuration inside /restaurant/src/main/webapp/WEB-INF/spring/spring-context.xml)
 
 
 To-Do list:
@@ -39,7 +39,7 @@ URL:
 - admin panel url: your-host-ip:port/restaurant/login
 
 
-admin account:
+default admin account:
 ===========
 - login: root
 - password: 123
